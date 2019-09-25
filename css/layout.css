@@ -8,16 +8,15 @@ header {
   height: 70px;
   background: #ededed;
 }
-header > a:first-child {
-  position: relative;
-  left: 280px;
-  width: 200px;
-  height: 70px;
+#logo-wrapper {
+  width: 960px;
+  margin: 0 auto;
 }
 
 /* NAV - HAMBURGER MENU - START */
 #menuToggle {
   display: block;
+  width: 100px;
   position: relative;
   top: -50px;
   left: 50px;
@@ -111,6 +110,7 @@ main {
   width: 960px;
   height: 1000px;
   margin: 0 auto;
+  padding: 50px 0;
   text-align: center;
   background-image: url("../img/cork_board.jpg");
   background-repeat: no-repeat;
