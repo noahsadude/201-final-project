@@ -10,7 +10,7 @@ header {
 }
 #logo {
   position: relative;
-  left: 400px;
+  left: 280px;
 }
 
 /* NAV - HAMBURGER MENU - START */
@@ -71,9 +71,10 @@ header {
 }
 #menu {
   position: absolute;
-  width: 300px;
+  width: 200px;
   margin: -100px 0 0 -50px;
   padding: 50px;
+  padding-left: 30px;
   padding-top: 125px;
   background: #ededed;
   list-style-type: none;
@@ -85,6 +86,8 @@ header {
 #menu li {
   padding: 10px 0;
   font-size: 22px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 #menu a {
   text-decoration: none;
@@ -104,8 +107,12 @@ header {
 /* MAIN - START*/
 main {
   width: 960px;
-  margin: 10px auto;
+  height: 1000px;
+  margin: 0 auto;
   text-align: center;
+  background-image: url("../img/cork_board.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 /* MAIN - END*/
 
