@@ -7,7 +7,18 @@ let allQuestions = [
   ['break statement', 'used to jump out of a switch() or a loop and resumes code after the loop'],
   ['continue statement', 'breaks one iteration in the loop, if a specified condition occurs, and continues with the next iteration in the loop.']
 ];
-let allQuestionsLength = allQuestions.length;
+let allQuestionsLength = allQuestions.length; // to avoid infinite loop hell
+let cardWrapperEl = document.getElementById('card-wrapper');
+let knowLevelWrapperEl = document.getElementById('know-level-wrapper');
+let footerEl = document.getElementsByTagName('footer');
+let pEl = document.getElementById('year')
+let date = new Date();
+let hour = date.getHours();
+let minutes = ('0'+ date.getMinutes()).slice(-2);
+let year = date.getFullYear();
+let day = date.getDay();
+let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
 
 function Question(question, answer) {
   this.question = question;
@@ -19,16 +30,18 @@ function Question(question, answer) {
 
   allQuestions.push(this);
 }
-console.log('allQuestions.length = ', allQuestions.length);
-// instantiate new Question objects from allQuestions[]
 
+// instantiate new Question objects from allQuestions[]
 for(let i = 0; i < allQuestionsLength; i++) {
-  let writeForTesting = new Question(allQuestions[i][0], allQuestions[i][1]);
-  console.log('A new object instance of Question: ', writeForTesting);
+  new Question(allQuestions[i][0], allQuestions[i][1]);
 }
 
-////// Test code //////
-console.log('allQuestions[] ', allQuestions);
+// render randomlyl selected question to index.html
+function randomNumber(min, max) {
+
+}
 
 
-////// Test code //////
+// footer content
+pEl.textContent = `${'\u00A9'} ${year} CodeFellows StrikeForce`;
+footerEl[0].appendChild(pEl);
