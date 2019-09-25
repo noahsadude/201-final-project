@@ -10,12 +10,34 @@
 
   <body>
     <header>
+      <a href="index.html"><img id="logo" src="" /></a>
+      <nav>
+        <ul>
+          <li><a href="index.html">START</a></li>
+          <li class="active"><a href="add_new.html">ADD NEW CARDS</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main>
+      <fieldset>
+        <form id="add-new-question">
+          <label for="question-dropdown"></label>
+          <select id="question-dropdown">
+          </select>
+          <label for="question"></label>
+          <input type="text" name="question">
+          <label for="answer"></label>
+          <input type="text" name="answer">
+          <button type="submit" value="Submit">SUBMIT</button>
+        </form>
+      </fieldset>
     </main>
 
     <footer>
+      <!-- TODO: copyright bla-bla-bla -->
+      &copy; CodeFellows StrikeForce 2019
     </footer>
 
     <script type="text/javascript" src="js/app.js"></script>
