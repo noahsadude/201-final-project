@@ -1,10 +1,11 @@
+/* section element that holds the card and contents */
 #card-wrapper {
   width: 480px;
   height: 320px;
   margin: 0 auto;
   background-image: url("../img/indexcardlined.png");
 }
-
+/* p element that holds the question or answer */
 #question-or-answer {
   color: black;
   width: 300px;
@@ -12,20 +13,23 @@
   padding-top: 108px;
   line-height: 27px;
 }
-
+/* 
 #response-wrapper {
   margin: 15px auto;
-}
+} */
 
+/* p element that holds rating buttons instruction */
 #rate-p {
   color: white;
   padding-top: 20px;
   padding-bottom: 10px;
 }
- .known-level {
+
+/* 3 img elements that hold the rating buttons */
+.known-level {
    width: 100px;
    padding: 20px;
- }
+}
 
 footer {
   position: fixed;

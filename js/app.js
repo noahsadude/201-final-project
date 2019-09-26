@@ -8,11 +8,10 @@ let baseQuestions = [
   ['continue statement', 'breaks one iteration in the loop, if a specified condition occurs, and continues with the next iteration in the loop.']
 ];
 let allQuestions = [];
-
 let allQuestionsLength;
-
 let cardWrapperEl = document.getElementById('card-wrapper');
 let qOrAEl = document.getElementById('question-or-answer');
+let startInstruction = 'Click on this card to start. Click again to reveal the answer. Each successive click  will flip the same card back and forth. To test yourself on a new question, rate your comfort-level with the current question by selecting one of the buttons below. You can add new cards or revise existing cards at any time by going to the Add New Cards page.';
 let questionIsShowing = false;
 let isRated = false;
 let knownLevelWrapperEl = document.getElementById('known-level-wrapper');
@@ -50,7 +49,13 @@ function instantiateAllQuestions(){
   for(let i = 0; i < allQuestionsLength; i++) {
     new Question(allQuestions[i][0], allQuestions[i][1]);
   }
+}
 
+function renderInstructions(instruction){
+  qOrAEl.style.paddingTop = '80.5px';
+  qOrAEl.style.width = '400px';
+  qOrAEl.textContent = instruction;
+  questionIsShowing = false;
 }
 
 // render randomly selected question to index.html
@@ -69,6 +74,8 @@ function handleCardClick(event) {
   if(isRated === true || currentQuestionIndex === undefined) {
     currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
     numberOfQuestionsAsked++;
+    qOrAEl.style.paddingTop = '108px';
+    qOrAEl.style.width = '300px';
     renderQuizCard(currentQuestionIndex);
   } else {
     renderQuizCard(currentQuestionIndex);
@@ -131,4 +138,5 @@ cardWrapperEl.addEventListener('click', handleCardClick);
 (function(){
   instantiateBaseQuestions();
   instantiateAllQuestions();
+  renderInstructions(startInstruction);
 })();
