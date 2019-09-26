@@ -12,6 +12,7 @@ let allQuestionsLength;
 let cardWrapperEl = document.getElementById('card-wrapper');
 let qOrAEl = document.getElementById('question-or-answer');
 let questionIsShowing = false;
+let isRated = false;
 let knownLevelWrapperEl = document.getElementById('known-level-wrapper');
 let currentQuestionIndex;
 let footerEl = document.getElementsByTagName('footer');
@@ -57,25 +58,34 @@ function randomNumber(min, max) {
 // Called by the Start nav link onclick event
 function handleCardClick(event) {
   console.log('event.target: ', event.target);
-  renderCard(randomNumber(0, allQuestions.length - 1));
+  if(isRated) {
+    let randomNum = randomNumber(0, allQuestions.length - 1);
+    console.log('randomNum from updateKnownProperties(): ', randomNum);
+    renderCard(randomNum);
+  } else {
+    console.log('currentQuestionIndex from updateKnownProperties(): ', currentQuestionIndex);
+    renderCard(currentQuestionIndex);
+  }
 }
 
 function renderCard(questionIndex){
   currentQuestionIndex = questionIndex;
   if(questionIsShowing){
     // If question value is showing, render answer value
-    qOrAEl.textContent = allQuestions[questionIndex].answer;
+    qOrAEl.textContent = allQuestions[currentQuestionIndex].answer;
     questionIsShowing = false;
-  } else {
+  } else if(isRated || questionIsShowing === false) {
     // If answer value is showing, render question value
-    qOrAEl.textContent = allQuestions[questionIndex].question;
+    qOrAEl.textContent = allQuestions[currentQuestionIndex].question;
     questionIsShowing = true;
+    isRated = false;
   }
 }
 
 function updateKnownProperties(event) {
   console.log('event.target.value: ', event.target.value);
   console.log('event.target: ', event.target);
+  questionIsShowing = false;
   // increment know property that was selected for the card that is showing
   if(event.target.value === 'know'){
     allQuestions[currentQuestionIndex].markedKnown++;
@@ -86,7 +96,10 @@ function updateKnownProperties(event) {
   }
   // then call renderCard()
   console.log('check known properties: ', allQuestions);
-  renderCard(randomNumber(0, allQuestions.length - 1));
+  isRated = true;
+  let randomNum = randomNumber(0, allQuestions.length - 1);
+  console.log('randomNum from updateKnownProperties(): ', randomNum);
+  renderCard(randomNum);
 }
 
 // footer content
@@ -102,5 +115,7 @@ knownLevelWrapperEl.addEventListener('click', updateKnownProperties);
   instantiateAllQuestions();
   console.log('allQuestions: ', allQuestions);
   allQuestionsLength = allQuestions.length;
-  renderCard(randomNumber(0, allQuestions.length - 1));
+  let randomNum = randomNumber(0, allQuestions.length - 1);
+  console.log('randomNum from IIFE: ', randomNum);
+  renderCard(randomNum);
 })();
