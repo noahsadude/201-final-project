@@ -1,16 +1,18 @@
 'use strict';
 
-let allQuestions = [
+let baseQuestions = [
   ['refactor', 'the process of restructuring existing computer code without changing its external behavior.'],
   ['instantiate', ' to create an instance of an object in an object-oriented programming language.'],
   ['do/while statement', 'creates a loop that executes a block of code once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.'],
   ['break statement', 'used to jump out of a switch() or a loop and resumes code after the loop'],
   ['continue statement', 'breaks one iteration in the loop, if a specified condition occurs, and continues with the next iteration in the loop.']
 ];
-let allQuestionsLength = allQuestions.length; // to avoid infinite loop hell
+let allQuestions = [];
+let allQuestionsLength;
 let cardWrapperEl = document.getElementById('card-wrapper');
-let firstSideShowing = true;
-let knowLevelWrapperEl = document.getElementById('know-level-wrapper');
+let qOrAEl = document.getElementById('question-or-answer');
+let questionShowing = false;
+let knownLevelWrapperEl = document.getElementById('known-level-wrapper');
 let footerEl = document.getElementsByTagName('footer');
 let pEl = document.getElementById('year');
 let date = new Date();
@@ -24,12 +26,19 @@ let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturda
 function Question(question, answer) {
   this.question = question;
   this.answer = answer;
-  this.timesShown = 0;
-  this.timesKnown = 0;
-  this.timesFamiliar = 0;
-  this.timesUnknown = 0;
+  this.timesTested = 0;
+  this.markedKnown = 0;
+  this.markedFamiliar = 0;
+  this.markedUnknown = 0;
 
   allQuestions.push(this);
+}
+
+function instantiateBaseQuestions(){
+  // instantiate new Question objects from baseQuestions[]
+  for(let i = 0; i < baseQuestions.length; i++) {
+    new Question(baseQuestions[i][0], baseQuestions[i][1]);
+  }
 }
 
 function instantiateAllQuestions(){
@@ -44,23 +53,46 @@ function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-function renderCard(){
-  if(firstSideShowing){
-    //
-  } else {
+// Called by the cardWrapperEl onclick event
+// Called by the Start nav link onclick event
+function handleCardClick(event) {
+  console.log('event.target: ', event.target);
+  let randomIndex = randomNumber(0, allQuestions.length - 1);
+  console.log('randomIndex: ', randomIndex);
+  renderCard(randomIndex);
+}
 
+function renderCard(questionIndex){
+  if(questionShowing){
+    // If question value is showing, render answer value
+    qOrAEl.textContent = allQuestions[questionIndex].answer;
+    questionShowing = false;
+  } else {
+    // If answer value is showing, render question value
+    qOrAEl.textContent = allQuestions[questionIndex].question;
+    questionShowing = true;
   }
 }
 
-function updateKnowProperties() {
+function updateKnownProperties(e) {
+  event.preventDefault();
   // increment know property that was selected for the card that is showing
+
   // then call renderCard()
 }
-
 
 // footer content
 pEl.textContent = `${'\u00A9'} ${year} CodeFellows StrikeForce`;
 footerEl[0].appendChild(pEl);
 
-cardWrapperEl.addEventListener('click', renderCard);
-knowLevelWrapperEl.addEventListener('click', updateKnowProperties);
+cardWrapperEl.addEventListener('click', handleCardClick);
+knownLevelWrapperEl.addEventListener('click', updateKnownProperties);
+
+(function(){
+  instantiateBaseQuestions();
+  console.log('baseQuestions: ', baseQuestions);
+  instantiateAllQuestions();
+  console.log('allQuestions: ', allQuestions);
+  allQuestionsLength = allQuestions.length;
+  renderCard(randomNumber(0, allQuestions.length - 1));
+})();

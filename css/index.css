@@ -5,6 +5,20 @@
   background-image: url("../img/indexcardlined.png");
 }
 
+#question-or-answer {
+  color: black;
+  width: 300px;
+  margin: 0 auto;
+  padding-top: 108px;
+  line-height: 27px;
+}
+
 #response-wrapper {
   margin: 15px auto;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
 }
