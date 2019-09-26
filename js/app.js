@@ -8,7 +8,9 @@ let baseQuestions = [
   ['continue statement', 'breaks one iteration in the loop, if a specified condition occurs, and continues with the next iteration in the loop.']
 ];
 let allQuestions = [];
+
 let allQuestionsLength;
+
 let cardWrapperEl = document.getElementById('card-wrapper');
 let qOrAEl = document.getElementById('question-or-answer');
 let questionIsShowing = false;
@@ -48,6 +50,7 @@ function instantiateAllQuestions(){
   for(let i = 0; i < allQuestionsLength; i++) {
     new Question(allQuestions[i][0], allQuestions[i][1]);
   }
+
 }
 
 // render randomly selected question to index.html
