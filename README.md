@@ -22,3 +22,5 @@ When you have the answer to the question on the flashcard, click on the card to 
 [Hamburger menu](https://codepen.io/erikterwan/pen/EVzeRP?editors=1100)
 
 [Cork board picture](https://unsplash.com/photos/KsAo8ouBn8A)
+
+[Question rating buttons] (https://favicon.io)

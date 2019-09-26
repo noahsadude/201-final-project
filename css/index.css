@@ -5,6 +5,30 @@
   background-image: url("../img/indexcardlined.png");
 }
 
+#question-or-answer {
+  color: black;
+  width: 300px;
+  margin: 0 auto;
+  padding-top: 108px;
+  line-height: 27px;
+}
+
 #response-wrapper {
   margin: 15px auto;
+}
+
+#rate-p {
+  color: white;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+ .known-level {
+   width: 100px;
+   padding: 20px;
+ }
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
 }
