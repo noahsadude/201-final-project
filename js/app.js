@@ -58,6 +58,11 @@ function randomNumber(min, max) {
 // Called by the cardWrapperEl onclick event
 // Called by the Start nav link onclick event ///////TODO////////
 function handleCardClick(event) {
+  if(numberOfQuestionsAsked === 0) {
+    // start timer
+    console.log(`Started at: ${hour}:${minutes}`);
+  }
+
   if(isRated === true || currentQuestionIndex === undefined) {
     currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
     numberOfQuestionsAsked++;
