@@ -1,0 +1,10 @@
+#card-wrapper {
+  width: 480px;
+  height: 320px;
+  margin: 0 auto;
+  background-image: url("../img/indexcardlined.png");
+}
+
+#response-wrapper {
+  margin: 15px auto;
+}

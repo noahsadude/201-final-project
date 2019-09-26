@@ -15,4 +15,10 @@ URL:
 Instructions:
 When you have the answer to the question on the flashcard, click on the card to reveal the answer. Click on the card again to get a new question.
 
-Free index card image from https://templatearchive.com/index-and-flash-cards/
+**CREDITS:**
+
+[Free index card image](https://templatearchive.com/index-and-flash-cards/)
+
+[Hamburger menu](https://codepen.io/erikterwan/pen/EVzeRP?editors=1100)
+
+[Cork board picture](https://unsplash.com/photos/KsAo8ouBn8A)
