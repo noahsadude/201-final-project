@@ -24,7 +24,6 @@ header {
   user-select: none; /* prevent text selection */
 }
 #menuToggle input {
-  /* display: block; */
   width: 40px;
   height: 32px;
   position: absolute;
@@ -114,6 +113,7 @@ main {
   text-align: center;
   background-image: url("../img/cork_board.jpg");
   background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
 }
 /* MAIN - END*/
