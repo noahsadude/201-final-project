@@ -1,12 +1,13 @@
 'use strict';
 
-let allQuestions = [
+let baseQuestions = [
   ['refactor', 'the process of restructuring existing computer code without changing its external behavior.'],
   ['instantiate', ' to create an instance of an object in an object-oriented programming language.'],
   ['do/while statement', 'creates a loop that executes a block of code once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.'],
   ['break statement', 'used to jump out of a switch() or a loop and resumes code after the loop'],
   ['continue statement', 'breaks one iteration in the loop, if a specified condition occurs, and continues with the next iteration in the loop.']
 ];
+let allQuestions = [];
 let allQuestionsLength = allQuestions.length; // to avoid infinite loop hell
 let cardWrapperEl = document.getElementById('card-wrapper');
 let knowLevelWrapperEl = document.getElementById('know-level-wrapper');
@@ -32,8 +33,8 @@ function Question(question, answer) {
 }
 
 // instantiate new Question objects from allQuestions[]
-for(let i = 0; i < allQuestionsLength; i++) {
-  new Question(allQuestions[i][0], allQuestions[i][1]);
+for(let i = 0; i < baseQuestions.length; i++) {
+  new Question(baseQuestions[i][0], baseQuestions[i][1]);
 }
 
 // render randomlyl selected question to index.html
