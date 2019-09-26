@@ -14,6 +14,7 @@ let qOrAEl = document.getElementById('question-or-answer');
 let questionIsShowing = false;
 let isRated = false;
 let knownLevelWrapperEl = document.getElementById('known-level-wrapper');
+// let knownLevelButtonsEl = document.getElementsByClassName('known-level');
 let currentQuestionIndex = undefined;
 let footerEl = document.getElementsByTagName('footer');
 let pEl = document.getElementById('year');
@@ -60,12 +61,9 @@ function handleCardClick(event) {
   console.log('event.target: ', event.target);
   if(isRated === true || currentQuestionIndex === undefined) {
     console.log('currentQuestionIndex from first part of if in handlce clikc ', currentQuestionIndex);
-    console.log('!currentQuestionIndex = ', !currentQuestionIndex);
     currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
-    console.log('new random currentquestionsindex from updateKnownProperties(): ', currentQuestionIndex);
     renderQuizCard(currentQuestionIndex);
   } else {
-    console.log('currentQuestionIndex from updateKnownProperties(): ', currentQuestionIndex);
     renderQuizCard(currentQuestionIndex);
   }
 }
@@ -88,20 +86,29 @@ function updateKnownProperties(event) {
   console.log('event.target.value: ', event.target.value);
   console.log('event.target: ', event.target);
   questionIsShowing = false;
+  let isValidClick = true;
   // increment know property that was selected for the card that is showing
-  if(event.target.value === 'know'){
-    allQuestions[currentQuestionIndex].markedKnown++;
-  } else if(event.target.value === 'familiar') {
-    allQuestions[currentQuestionIndex].markedFamiliar++;
-  } else if(event.target.value === 'not-known') {
-    allQuestions[currentQuestionIndex].markedUnknown++;
+  switch(event.target.value) {
+    case undefined:
+      isValidClick = false;
+      break;
+    case 'know':
+      allQuestions[currentQuestionIndex].markedKnown++;
+      break;
+    case 'familiar':
+      allQuestions[currentQuestionIndex].markedFamiliar++;
+      break;
+    case 'not-known':
+      allQuestions[currentQuestionIndex].markedUnknown++;
+      break;
   }
+
   // then call renderCard()
-  console.log('check known properties: ', allQuestions);
-  isRated = true;
-  let randomNum = randomNumber(0, allQuestions.length - 1);
-  console.log('randomNum from updateKnownProperties(): ', randomNum);
-  renderQuizCard(randomNum);
+  if(isValidClick) {
+    isRated = true;
+    let randomNum = randomNumber(0, allQuestions.length - 1);
+    renderQuizCard(randomNum);
+  }
 }
 
 // footer content
