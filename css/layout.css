@@ -108,7 +108,7 @@ header {
 /* MAIN - START*/
 main {
   width: 960px;
-  height: 1000px;
+  /* height: 1000px; temporary to see how the page looks */
   margin: 0 auto;
   padding: 50px 0;
   text-align: center;
