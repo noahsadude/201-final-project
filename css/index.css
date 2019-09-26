@@ -17,11 +17,15 @@
   margin: 15px auto;
 }
 
-legend {
+#rate-p {
   color: white;
   padding-top: 20px;
   padding-bottom: 10px;
 }
+ .known-level {
+   width: 100px;
+   padding: 20px;
+ }
 
 footer {
   position: fixed;

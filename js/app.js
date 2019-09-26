@@ -14,7 +14,6 @@ let qOrAEl = document.getElementById('question-or-answer');
 let questionIsShowing = false;
 let isRated = false;
 let knownLevelWrapperEl = document.getElementById('known-level-wrapper');
-// let knownLevelButtonsEl = document.getElementsByClassName('known-level');
 let currentQuestionIndex = undefined;
 let footerEl = document.getElementsByTagName('footer');
 let pEl = document.getElementById('year');
@@ -88,7 +87,7 @@ function updateKnownProperties(event) {
   questionIsShowing = false;
   let isValidClick = true;
   // increment know property that was selected for the card that is showing
-  switch(event.target.value) {
+  switch(event.target.alt) {
     case undefined:
       isValidClick = false;
       break;
