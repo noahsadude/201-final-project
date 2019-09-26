@@ -9,9 +9,10 @@ let allQuestions = [
 ];
 let allQuestionsLength = allQuestions.length; // to avoid infinite loop hell
 let cardWrapperEl = document.getElementById('card-wrapper');
+let firstSideShowing = true;
 let knowLevelWrapperEl = document.getElementById('know-level-wrapper');
 let footerEl = document.getElementsByTagName('footer');
-let pEl = document.getElementById('year')
+let pEl = document.getElementById('year');
 let date = new Date();
 let hour = date.getHours();
 let minutes = ('0'+ date.getMinutes()).slice(-2);
@@ -31,17 +32,35 @@ function Question(question, answer) {
   allQuestions.push(this);
 }
 
-// instantiate new Question objects from allQuestions[]
-for(let i = 0; i < allQuestionsLength; i++) {
-  new Question(allQuestions[i][0], allQuestions[i][1]);
+function instantiateAllQuestions(){
+  // instantiate new Question objects from allQuestions[]
+  for(let i = 0; i < allQuestionsLength; i++) {
+    new Question(allQuestions[i][0], allQuestions[i][1]);
+  }
 }
 
-// render randomlyl selected question to index.html
+// render randomly selected question to index.html
 function randomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
+function renderCard(){
+  if(firstSideShowing){
+    //
+  } else {
+
+  }
+}
+
+function updateKnowProperties() {
+  // increment know property that was selected for the card that is showing
+  // then call renderCard()
 }
 
 
 // footer content
 pEl.textContent = `${'\u00A9'} ${year} CodeFellows StrikeForce`;
 footerEl[0].appendChild(pEl);
+
+cardWrapperEl.addEventListener('click', renderCard);
+knowLevelWrapperEl.addEventListener('click', updateKnowProperties);
