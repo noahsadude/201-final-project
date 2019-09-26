@@ -14,7 +14,7 @@ let qOrAEl = document.getElementById('question-or-answer');
 let questionIsShowing = false;
 let isRated = false;
 let knownLevelWrapperEl = document.getElementById('known-level-wrapper');
-let currentQuestionIndex;
+let currentQuestionIndex = undefined;
 let footerEl = document.getElementsByTagName('footer');
 let pEl = document.getElementById('year');
 let date = new Date();
@@ -58,17 +58,19 @@ function randomNumber(min, max) {
 // Called by the Start nav link onclick event
 function handleCardClick(event) {
   console.log('event.target: ', event.target);
-  if(isRated || !currentQuestionIndex) {
-    let randomNum = randomNumber(0, allQuestions.length - 1);
-    console.log('randomNum from updateKnownProperties(): ', randomNum);
-    renderCard(randomNum);
+  if(isRated === true || currentQuestionIndex === undefined) {
+    console.log('currentQuestionIndex from first part of if in handlce clikc ', currentQuestionIndex);
+    console.log('!currentQuestionIndex = ', !currentQuestionIndex);
+    currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
+    console.log('new random currentquestionsindex from updateKnownProperties(): ', currentQuestionIndex);
+    renderQuizCard(currentQuestionIndex);
   } else {
     console.log('currentQuestionIndex from updateKnownProperties(): ', currentQuestionIndex);
-    renderCard(currentQuestionIndex);
+    renderQuizCard(currentQuestionIndex);
   }
 }
 
-function renderCard(questionIndex){
+function renderQuizCard(questionIndex){
   currentQuestionIndex = questionIndex;
   if(questionIsShowing){
     // If question value is showing, render answer value
@@ -99,7 +101,7 @@ function updateKnownProperties(event) {
   isRated = true;
   let randomNum = randomNumber(0, allQuestions.length - 1);
   console.log('randomNum from updateKnownProperties(): ', randomNum);
-  renderCard(randomNum);
+  renderQuizCard(randomNum);
 }
 
 // footer content
@@ -114,5 +116,4 @@ knownLevelWrapperEl.addEventListener('click', updateKnownProperties);
   console.log('baseQuestions: ', baseQuestions);
   instantiateAllQuestions();
   console.log('allQuestions: ', allQuestions);
-
 })();
