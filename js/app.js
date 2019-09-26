@@ -17,6 +17,7 @@ let knownLevelWrapperEl = document.getElementById('known-level-wrapper');
 let currentQuestionIndex = undefined;
 let footerEl = document.getElementsByTagName('footer');
 let pEl = document.getElementById('year');
+let numberOfQuestionsAsked = 0;
 let date = new Date();
 let hour = date.getHours();
 let minutes = ('0'+ date.getMinutes()).slice(-2);
@@ -55,15 +56,18 @@ function randomNumber(min, max) {
 }
 
 // Called by the cardWrapperEl onclick event
-// Called by the Start nav link onclick event
+// Called by the Start nav link onclick event ///////TODO////////
 function handleCardClick(event) {
-  console.log('event.target: ', event.target);
   if(isRated === true || currentQuestionIndex === undefined) {
-    console.log('currentQuestionIndex from first part of if in handlce clikc ', currentQuestionIndex);
     currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
+    numberOfQuestionsAsked++;
     renderQuizCard(currentQuestionIndex);
   } else {
     renderQuizCard(currentQuestionIndex);
+  }
+
+  if(numberOfQuestionsAsked === 1) {
+    knownLevelWrapperEl.addEventListener('click', updateKnownProperties);
   }
 }
 
@@ -115,11 +119,8 @@ pEl.textContent = `${'\u00A9'} ${year} CodeFellows StrikeForce`;
 footerEl[0].appendChild(pEl);
 
 cardWrapperEl.addEventListener('click', handleCardClick);
-knownLevelWrapperEl.addEventListener('click', updateKnownProperties);
 
 (function(){
   instantiateBaseQuestions();
-  console.log('baseQuestions: ', baseQuestions);
   instantiateAllQuestions();
-  console.log('allQuestions: ', allQuestions);
 })();
