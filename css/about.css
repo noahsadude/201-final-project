@@ -20,7 +20,7 @@
   margin-bottom: 15px;
 }
 
-.flex-container > section > img {
+.flex-container > section > a {
   float: left;
   margin: 10px 30px 10px 10px;
   box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.4);

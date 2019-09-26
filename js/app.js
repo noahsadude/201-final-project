@@ -100,18 +100,18 @@ function updateKnownProperties(event) {
   let isValidClick = true;
   // increment know property that was selected for the card that is showing
   switch(event.target.alt) {
-    case undefined:
-      isValidClick = false;
-      break;
-    case 'know':
-      allQuestions[currentQuestionIndex].markedKnown++;
-      break;
-    case 'familiar':
-      allQuestions[currentQuestionIndex].markedFamiliar++;
-      break;
-    case 'not-known':
-      allQuestions[currentQuestionIndex].markedUnknown++;
-      break;
+  case undefined:
+    isValidClick = false;
+    break;
+  case 'know':
+    allQuestions[currentQuestionIndex].markedKnown++;
+    break;
+  case 'familiar':
+    allQuestions[currentQuestionIndex].markedFamiliar++;
+    break;
+  case 'not-known':
+    allQuestions[currentQuestionIndex].markedUnknown++;
+    break;
   }
 
   // then call renderCard()
