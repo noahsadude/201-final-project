@@ -35,16 +35,17 @@
       </section>
 
       <section id="card-wrapper">
-        <!-- TODO: card with question and answer -->
         <p id="question-or-answer"></p>
       </section>
 
-      <section id="known-level-wrapper"> 
-        <!-- TODO: user response buttons -->
-        <button type="button" value="know">Know</button>
-        <button type="button" value="familiar">Familiar</button>
-        <button type="button" value="not_known">Don't know</button>
-      </section>
+      <form id="known-level-wrapper"> 
+        <fieldset>
+          <legend>Rate your knowledge to move on to the next card.</legend>
+          <button type="button" value="know">I know this!</button>
+          <button type="button" value="familiar">I'm not sure about this.</button>
+          <button type="button" value="not-known">I don't know this at all.</button>
+        </fieldset>
+      </form>
       <section id="next-question-wrapper">
         <!-- TODO: cards with next questions -->
       </section>

@@ -17,6 +17,12 @@
   margin: 15px auto;
 }
 
+legend {
+  color: white;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
 footer {
   position: fixed;
   left: 0;

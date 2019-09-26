@@ -11,8 +11,9 @@ let allQuestions = [];
 let allQuestionsLength;
 let cardWrapperEl = document.getElementById('card-wrapper');
 let qOrAEl = document.getElementById('question-or-answer');
-let questionShowing = false;
+let questionIsShowing = false;
 let knownLevelWrapperEl = document.getElementById('known-level-wrapper');
+let currentQuestionIndex;
 let footerEl = document.getElementsByTagName('footer');
 let pEl = document.getElementById('year');
 let date = new Date();
@@ -21,7 +22,6 @@ let minutes = ('0'+ date.getMinutes()).slice(-2);
 let year = date.getFullYear();
 let day = date.getDay();
 let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-
 
 function Question(question, answer) {
   this.question = question;
@@ -57,28 +57,36 @@ function randomNumber(min, max) {
 // Called by the Start nav link onclick event
 function handleCardClick(event) {
   console.log('event.target: ', event.target);
-  let randomIndex = randomNumber(0, allQuestions.length - 1);
-  console.log('randomIndex: ', randomIndex);
-  renderCard(randomIndex);
+  renderCard(randomNumber(0, allQuestions.length - 1));
 }
 
 function renderCard(questionIndex){
-  if(questionShowing){
+  currentQuestionIndex = questionIndex;
+  if(questionIsShowing){
     // If question value is showing, render answer value
     qOrAEl.textContent = allQuestions[questionIndex].answer;
-    questionShowing = false;
+    questionIsShowing = false;
   } else {
     // If answer value is showing, render question value
     qOrAEl.textContent = allQuestions[questionIndex].question;
-    questionShowing = true;
+    questionIsShowing = true;
   }
 }
 
-function updateKnownProperties(e) {
-  event.preventDefault();
+function updateKnownProperties(event) {
+  console.log('event.target.value: ', event.target.value);
+  console.log('event.target: ', event.target);
   // increment know property that was selected for the card that is showing
-
+  if(event.target.value === 'know'){
+    allQuestions[currentQuestionIndex].markedKnown++;
+  } else if(event.target.value === 'familiar') {
+    allQuestions[currentQuestionIndex].markedFamiliar++;
+  } else if(event.target.value === 'not-known') {
+    allQuestions[currentQuestionIndex].markedUnknown++;
+  }
   // then call renderCard()
+  console.log('check known properties: ', allQuestions);
+  renderCard(randomNumber(0, allQuestions.length - 1));
 }
 
 // footer content
