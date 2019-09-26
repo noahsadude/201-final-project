@@ -58,7 +58,7 @@ function randomNumber(min, max) {
 // Called by the Start nav link onclick event
 function handleCardClick(event) {
   console.log('event.target: ', event.target);
-  if(isRated) {
+  if(isRated || !currentQuestionIndex) {
     let randomNum = randomNumber(0, allQuestions.length - 1);
     console.log('randomNum from updateKnownProperties(): ', randomNum);
     renderCard(randomNum);
@@ -114,8 +114,5 @@ knownLevelWrapperEl.addEventListener('click', updateKnownProperties);
   console.log('baseQuestions: ', baseQuestions);
   instantiateAllQuestions();
   console.log('allQuestions: ', allQuestions);
-  allQuestionsLength = allQuestions.length;
-  let randomNum = randomNumber(0, allQuestions.length - 1);
-  console.log('randomNum from IIFE: ', randomNum);
-  renderCard(randomNum);
+
 })();
