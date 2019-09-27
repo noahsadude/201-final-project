@@ -26,3 +26,5 @@ When you have the answer to the question on the flashcard, click on the card to 
 [Question rating buttons](https://favicon.io)
 
 [Post-it notes CSS](https://mentormate.com/blog/css-postit-note/)
+
+[Icon](https://icons8.com/)

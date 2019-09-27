@@ -9,14 +9,8 @@ body {
   width: 480px;
   min-height: 320px;
   margin: 0 auto;
+  padding: 20px;
   cursor: pointer;
-  /* background-image: url("../img/indexcardlined.png"); */
-}
-
-/* p element that holds the question or answer */
-#question-or-answer {
-  color: black;
-  margin: 20px;
 }
 
 /* p element that holds rating buttons instruction */
