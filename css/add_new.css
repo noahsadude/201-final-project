@@ -39,4 +39,5 @@ please use it for stuff like dropdown, buttons etc that is unique to this page *
   min-height: 160px;
   margin: 20px;
   padding: 10px;
+  word-break: break-all; 
 }
