@@ -4,25 +4,14 @@ please use it for stuff like card, buttons etc that is unique to this page */
 body {
   user-select: none; /* prevent text selection */
 }
+
 #card-wrapper {
   width: 480px;
-  height: 320px;
+  min-height: 320px;
   margin: 0 auto;
-  background-image: url("../img/indexcardlined.png");
+  padding: 20px;
   cursor: pointer;
 }
-/* p element that holds the question or answer */
-#question-or-answer {
-  color: black;
-  width: 300px;
-  margin: 0 auto;
-  padding-top: 108px;
-  line-height: 27px;
-}
-/* 
-#response-wrapper {
-  margin: 15px auto;
-} */
 
 /* p element that holds rating buttons instruction */
 #rate-p {

@@ -10,7 +10,7 @@ Version 1.0.0
 
 Libraries, Frameworks, Packages:
 
-URL: 
+URL: https://noahsadude.github.io/201-final-project
 
 Instructions:
 When you have the answer to the question on the flashcard, click on the card to reveal the answer. Click on the card again to get a new question.
@@ -23,4 +23,8 @@ When you have the answer to the question on the flashcard, click on the card to 
 
 [Cork board picture](https://unsplash.com/photos/KsAo8ouBn8A)
 
-[Question rating buttons] (https://favicon.io)
+[Question rating buttons](https://favicon.io)
+
+[Post-it notes CSS](https://mentormate.com/blog/css-postit-note/)
+
+[Icon](https://icons8.com/)
