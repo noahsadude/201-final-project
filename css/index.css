@@ -26,8 +26,9 @@ body {
   color: black;
   width: 300px;
   margin: 0 auto;
-  padding-top: 108px;
+  padding-top: 105px;
   line-height: 27px;
+  font-size: 18px;
 }
 
 /* p element that holds rating buttons instruction */
