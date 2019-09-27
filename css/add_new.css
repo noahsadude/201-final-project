@@ -1,3 +1,6 @@
+/* THIS FILE CONTAINS STYLING THAT IS UNIQUE TO add_new.html:
+please use it for stuff like dropdown, buttons etc that is unique to this page */
+
 #add-new-question {
   width: 720px;
   margin: 20px auto;
