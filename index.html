@@ -7,6 +7,7 @@
     <link href="css/layout.css" type="text/css" rel="stylesheet" />
     <link href="css/index.css" type="text/css" rel="stylesheet" />
     <!-- <link rel="icon" href="" type="image/x-icon"> -->
+    <link rel="unsure" sizes="180x180" href="../img/unsure-icon.png">
   </head>
 
   <body>
@@ -30,31 +31,32 @@
     </header>
 
     <main>
+      <h1 id="title">Flash Cards</h1>
+
       <section id="progress">
         <!-- TODO: progress bar and timer -->
       </section>
 
       <section id="card-wrapper">
-        <!-- TODO: card with question and answer -->
+        <p id="question-or-answer"></p>
       </section>
 
-      <section id="know-level-wrapper"> 
-        <!-- TODO: user response buttons -->
-        <button type="button" value="know">Know</button>
-        <button type="button" value="familiar">Familiar</button>
-        <button type="button" value="don't_know">Don't know</button>
+      <section id="known-level-wrapper"> 
+        <p id="rate-p">Rate your knowledge to move on to the next card.</p>
+          <!-- <button class="known-level" type="button" value="know">I know this!</button>
+          <button class="known-level" type="button" value="familiar">I might know.</button>
+          <button class="known-level" type="button" value="not-known">I don't know this at all.</button> -->
+        <img class="known-level" src="../img/trophy-icon.png" alt="known" title="I know this!" />
+        <img class="known-level" src="../img/unsure-icon.png" alt="unsure" title="I'm not sure" />
+        <img class="known-level" src="../img/sweating-icon.png" alt="unknown" title="I don't know that at all." />
       </section>
-
       <section id="next-question-wrapper">
         <!-- TODO: cards with next questions -->
       </section>
     </main>
-
     <footer>
-      <!-- TODO: copyright bla-bla-bla -->
       <p id="year"></p>
     </footer>
-
     <script type="text/javascript" src="js/app.js"></script>
   </body>
 </html>

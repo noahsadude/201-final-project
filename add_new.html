@@ -5,6 +5,7 @@
     <title></title>
     <link href="css/reset.css" type="text/css" rel="stylesheet" />
     <link href="css/layout.css" type="text/css" rel="stylesheet" />
+    <link href="css/add_new.css" type="text/css" rel="stylesheet" />
     <!-- <link rel="icon" href="" type="image/x-icon"> -->
   </head>
 
@@ -29,15 +30,18 @@
     </header>
 
     <main>
+      <h3 id="input">Flash Card</h3>
+      <p id="information">Input the flash card data in the fields to generate your flash cards.</p>
       <fieldset>
         <form id="add-new-question">
           <label for="question-dropdown"></label>
-          <select id="question-dropdown">
+          <select id="question-dropdown" name="question_dropdown" selected="Add New">
+            
           </select>
           <label for="question"></label>
-          <input type="text" name="question">
+          <textarea  id="question" type="text" name="question" rows="10" cols="30"> </textarea>
           <label for="answer"></label>
-          <input type="text" name="answer">
+          <textarea  id="answer" type="text" name="answer" rows="10" cols="30"> </textarea>
           <button type="submit" value="Submit">SUBMIT</button>
         </form>
       </fieldset>
@@ -49,5 +53,6 @@
     </footer>
 
     <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/add_new.js"></script>
   </body>
 </html>
