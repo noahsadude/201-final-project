@@ -8,11 +8,10 @@ let baseQuestions = [
   ['continue statement', 'breaks one iteration in the loop, if a specified condition occurs, and continues with the next iteration in the loop.']
 ];
 let allQuestions = [];
-
 let allQuestionsLength;
-
 let cardWrapperEl = document.getElementById('card-wrapper');
 let qOrAEl = document.getElementById('question-or-answer');
+let startInstruction = 'Click on this card to start. Click again to reveal the answer. Each successive click  will flip the same card back and forth. To test yourself on a new question, rate your comfort-level with the current question by selecting one of the buttons below. You can add new cards or revise existing cards at any time by going to the Add New Cards page.';
 let questionIsShowing = false;
 let isRated = false;
 let knownLevelWrapperEl = document.getElementById('known-level-wrapper');
@@ -38,19 +37,26 @@ function Question(question, answer) {
   allQuestions.push(this);
 }
 
+// instantiate new Question objects from baseQuestions[]
 function instantiateBaseQuestions(){
-  // instantiate new Question objects from baseQuestions[]
   for(let i = 0; i < baseQuestions.length; i++) {
     new Question(baseQuestions[i][0], baseQuestions[i][1]);
   }
 }
 
+// instantiate new Question objects from allQuestions[]
 function instantiateAllQuestions(){
-  // instantiate new Question objects from allQuestions[]
   for(let i = 0; i < allQuestionsLength; i++) {
     new Question(allQuestions[i][0], allQuestions[i][1]);
   }
+}
 
+// called at the end of app.js
+function renderInstructions(instruction){
+  qOrAEl.style.paddingTop = '80.5px';
+  qOrAEl.style.width = '400px';
+  qOrAEl.textContent = instruction;
+  questionIsShowing = false;
 }
 
 // render randomly selected question to index.html
@@ -58,29 +64,10 @@ function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-// Called by the cardWrapperEl onclick event
-// Called by the Start nav link onclick event ///////TODO////////
-function handleCardClick(event) {
-  if(numberOfQuestionsAsked === 0) {
-    // start timer
-    console.log(`Started at: ${hour}:${minutes}`);
-  }
-
-  if(isRated === true || currentQuestionIndex === undefined) {
-    currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
-    numberOfQuestionsAsked++;
-    renderQuizCard(currentQuestionIndex);
-  } else {
-    renderQuizCard(currentQuestionIndex);
-  }
-
-  if(numberOfQuestionsAsked === 1) {
-    knownLevelWrapperEl.addEventListener('click', updateKnownProperties);
-  }
-}
-
+// called in updateKnownProperties(e) and handleCardClick(e)
 function renderQuizCard(questionIndex){
   currentQuestionIndex = questionIndex;
+
   if(questionIsShowing){
     // If question value is showing, render answer value
     qOrAEl.textContent = allQuestions[currentQuestionIndex].answer;
@@ -91,14 +78,44 @@ function renderQuizCard(questionIndex){
     questionIsShowing = true;
     isRated = false;
   }
+} // end renderQuizCard()
+
+// Called by the cardWrapperEl onclick event
+// Called by the Start nav link onclick event ///////     TODO      ////////
+function handleCardClick(event) {
+  if(numberOfQuestionsAsked === 0) {
+    // start timer
+    console.log(`Started at: ${hour}:${minutes}`);
+    // need stop event to stop timer and calculate time elapsed
+  }
+  // if a rating was submitted or this is the first card is being requested
+  if(isRated === true || currentQuestionIndex === undefined) {
+    currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
+    qOrAEl.style.paddingTop = '108px';
+    qOrAEl.style.width = '300px';
+
+    // Update timesTested every time a new card is rendered
+    numberOfQuestionsAsked++;
+    allQuestions[currentQuestionIndex].timesTested++;
+    console.log('updated numberofQeustionsAsked from handleCardClick(): ', numberOfQuestionsAsked);
+    console.log('updated timesTested in handleCardClick():', allQuestions[currentQuestionIndex].timesTested);
+    renderQuizCard(currentQuestionIndex);
+  } else {
+    renderQuizCard(currentQuestionIndex);
+  }
+
+  if(numberOfQuestionsAsked === 1) {
+    knownLevelWrapperEl.addEventListener('click', updateKnownProperties);
+  }
 }
 
+// increment selected known property for the card that is showing
 function updateKnownProperties(event) {
-  console.log('event.target.value: ', event.target.value);
+  console.log('event.target.alt: ', event.target.alt);
   console.log('event.target: ', event.target);
   questionIsShowing = false;
   let isValidClick = true;
-  // increment know property that was selected for the card that is showing
+
   switch(event.target.alt) {
     case undefined:
       isValidClick = false;
@@ -114,13 +131,17 @@ function updateKnownProperties(event) {
       break;
   }
 
-  // then call renderCard()
+  // then render a new card
   if(isValidClick) {
     isRated = true;
     let randomNum = randomNumber(0, allQuestions.length - 1);
     renderQuizCard(randomNum);
+    numberOfQuestionsAsked++;
+    console.log('updated numberofQeustionsAsked from updateknownproperties(): ', numberOfQuestionsAsked);
+    allQuestions[randomNum].timesTested++;
+    console.log('updated timesTested in updateKnownProperties():', allQuestions[randomNum].timesTested);
   }
-}
+} // end updateKnownProperties()
 
 // footer content
 pEl.textContent = `${'\u00A9'} ${year} CodeFellows StrikeForce`;
@@ -131,4 +152,5 @@ cardWrapperEl.addEventListener('click', handleCardClick);
 (function(){
   instantiateBaseQuestions();
   instantiateAllQuestions();
+  renderInstructions(startInstruction);
 })();
