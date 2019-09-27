@@ -30,10 +30,17 @@ function Question(question, answer) {
   this.timesUnknown = 0;
 
   allQuestions.push(this);
+}
 
+//local storage
+function store(key, value){
   //local storage
-  localStorage.setItem('allQuestions', JSON.stringify(allQuestions));
-  JSON.parse(localStorage.getItem('allQuestions'));
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+function retrieve(key){
+  let value = JSON.parse(localStorage.getItem(key));
+  return value;
 }
 
 // instantiate new Question objects from allQuestions[]
