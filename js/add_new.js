@@ -4,8 +4,9 @@ let formEl = document.getElementById('add-new-question');
 let selectQuestionEl = document.getElementById('question-dropdown');
 let questionEl = document.getElementById('question');
 let answerEl = document.getElementById('answer');
-let questionFound = false;
-let questionFoundIndex = 0;
+let deleteButtonEl = document.getElementById('delete');
+let questionFound;
+let questionFoundIndex;
 
 // ***HELPER FUNCTIONS***
 //fuction for rendering element to the page
@@ -29,7 +30,7 @@ function populateForm() {
   }
   //and then add new questions
   render('option', selectQuestionEl, 'Add New');
-  for (var i = 0; i < allQuestions.length;i++) {
+  for (var i = 0; i < allQuestions.length; i++) {
     render('option', selectQuestionEl, allQuestions[i].question);
   }
 }
@@ -66,8 +67,9 @@ function submitQuestionHandler(e) {
   let answer = e.target.answer.value;
   //if this is a new question - add it to the array of questions, else - edit selected
   if(dropdown === 'Add New') {
-    new Question(question,answer);
+    new Question(question, answer);
     console.log('new question submitted!');
+    store('questionsKey', allQuestions);
     resetFormValues();
     populateForm();
   } else {
@@ -76,17 +78,27 @@ function submitQuestionHandler(e) {
       allQuestions[questionFoundIndex].answer = answer;
       console.log('question successfully edited');
       selectQuestionEl.value = 'Add New';
+      store('questionsKey', allQuestions);
       resetFormValues();
       populateForm();
     }
   }
-  store('questionsKey',allQuestions);
 }
 
+//function for deleting selected question
+function deleteQuestionHandler() {
+  if(questionFound) {
+    allQuestions.splice(questionFoundIndex, 1);
+    store('questionsKey', allQuestions);
+    resetFormValues();
+    populateForm();
+  }
+}
 
 // ***EVENT LISTENERS***
 formEl.addEventListener('submit', submitQuestionHandler);
 selectQuestionEl.addEventListener('change', selectQuestionHandler);
+deleteButtonEl.addEventListener('click', deleteQuestionHandler);
 
 // ***EXECUTING CODE***
 populateForm();

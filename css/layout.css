@@ -118,7 +118,7 @@ main {
   background-image: url("../img/cork_board.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
+  background-position: center;
 }
 /* MAIN - END*/
 

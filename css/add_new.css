@@ -21,6 +21,5 @@ please use it for stuff like dropdown, buttons etc that is unique to this page *
 }
 
 #add-new-question > button {
-  display: block;
   margin: 10px auto;
 }
