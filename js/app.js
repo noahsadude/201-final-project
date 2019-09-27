@@ -8,7 +8,6 @@ let baseQuestions = [
   ['continue statement', 'breaks one iteration in the loop, if a specified condition occurs, and continues with the next iteration in the loop.']
 ];
 let allQuestions = [];
-let allQuestionsLength;
 let cardWrapperEl = document.getElementById('card-wrapper');
 let qOrAEl = document.getElementById('question-or-answer');
 let startInstruction = 'Click on this card to start. Click again to reveal the answer. Each successive click  will flip the same card back and forth. To test yourself on a new question, rate your comfort-level with the current question by selecting one of the buttons below. You can add new cards or revise existing cards at any time by going to the Add New Cards page.';
@@ -46,9 +45,7 @@ function instantiateBaseQuestions(){
 
 // instantiate new Question objects from allQuestions[]
 function instantiateAllQuestions(){
-  for(let i = 0; i < allQuestionsLength; i++) {
-    new Question(allQuestions[i][0], allQuestions[i][1]);
-  }
+  allQuestions = retrieve('questionsKey');
 }
 
 // called at the end of app.js
@@ -140,7 +137,9 @@ function updateKnownProperties(event) {
     console.log('updated numberofQeustionsAsked from updateknownproperties(): ', numberOfQuestionsAsked);
     allQuestions[randomNum].timesTested++;
     console.log('updated timesTested in updateKnownProperties():', allQuestions[randomNum].timesTested);
+    store('questionsKey',allQuestions);
   }
+
 } // end updateKnownProperties()
 
 // footer content
@@ -152,8 +151,14 @@ if(pEl){
 }
 
 (function(){
-  instantiateBaseQuestions();
-  instantiateAllQuestions();
+  let test = localStorage.getItem('questionsKey');
+  if(test){
+    instantiateAllQuestions();
+    console.log('all questions instantiated');
+  } else {
+    instantiateBaseQuestions();
+    console.log('base questions instantiated');
+  }
   if(qOrAEl){
     renderInstructions(startInstruction);
   }
@@ -162,9 +167,11 @@ if(pEl){
 function store(key, value){
   //local storage
   localStorage.setItem(key, JSON.stringify(value));
+  console.log('local storage stored');
 }
 
 function retrieve(key){
   let value = JSON.parse(localStorage.getItem(key));
+  console.log('local storage called');
   return value;
 }

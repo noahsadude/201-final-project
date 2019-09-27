@@ -19,6 +19,10 @@ function render(element, parent, content) {
 
 //function for filling selectQuestion dropdown with values from allQuestions array
 function populateForm() {
+  let test = localStorage.getItem('questionsKey');
+  if(test){
+    allQuestions = retrieve('questionsKey');
+  }
   //clear the dropdown first
   while(selectQuestionEl.firstChild) {
     selectQuestionEl.removeChild(selectQuestionEl.firstChild);
@@ -76,6 +80,7 @@ function submitQuestionHandler(e) {
       populateForm();
     }
   }
+  store('questionsKey',allQuestions);
 }
 
 
