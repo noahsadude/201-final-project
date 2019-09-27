@@ -5,6 +5,7 @@
     <title></title>
     <link href="css/reset.css" type="text/css" rel="stylesheet" />
     <link href="css/layout.css" type="text/css" rel="stylesheet" />
+    <link href="css/add_new.css" type="text/css" rel="stylesheet" />
     <!-- <link rel="icon" href="" type="image/x-icon"> -->
   </head>
 
@@ -34,13 +35,13 @@
       <fieldset>
         <form id="add-new-question">
           <label for="question-dropdown"></label>
-          <select id="question-dropdown" selected="Add New">
+          <select id="question-dropdown" name="question_dropdown" selected="Add New">
             
           </select>
           <label for="question"></label>
-          <input type="text" name="question" id="question">
+          <textarea  id="question" type="text" name="question" rows="10" cols="30"> </textarea>
           <label for="answer"></label>
-          <input type="text" name="answer" id="answer">
+          <textarea  id="answer" type="text" name="answer" rows="10" cols="30"> </textarea>
           <button type="submit" value="Submit">SUBMIT</button>
         </form>
       </fieldset>

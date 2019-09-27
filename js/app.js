@@ -8,11 +8,17 @@ let baseQuestions = [
   ['continue statement', 'breaks one iteration in the loop, if a specified condition occurs, and continues with the next iteration in the loop.']
 ];
 let allQuestions = [];
-let allQuestionsLength = allQuestions.length; // to avoid infinite loop hell
+let allQuestionsLength;
 let cardWrapperEl = document.getElementById('card-wrapper');
-let knowLevelWrapperEl = document.getElementById('know-level-wrapper');
+let qOrAEl = document.getElementById('question-or-answer');
+let startInstruction = 'Click on this card to start. Click again to reveal the answer. Each successive click  will flip the same card back and forth. To test yourself on a new question, rate your comfort-level with the current question by selecting one of the buttons below. You can add new cards or revise existing cards at any time by going to the Add New Cards page.';
+let questionIsShowing = false;
+let isRated = false;
+let knownLevelWrapperEl = document.getElementById('known-level-wrapper');
+let currentQuestionIndex = undefined;
 let footerEl = document.getElementsByTagName('footer');
 let pEl = document.getElementById('year');
+let numberOfQuestionsAsked = 0;
 let date = new Date();
 let hour = date.getHours();
 let minutes = ('0'+ date.getMinutes()).slice(-2);
@@ -20,19 +26,137 @@ let year = date.getFullYear();
 let day = date.getDay();
 let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
-
 function Question(question, answer) {
   this.question = question;
   this.answer = answer;
-  this.timesShown = 0;
-  this.timesKnown = 0;
-  this.timesFamiliar = 0;
-  this.timesUnknown = 0;
+  this.timesTested = 0;
+  this.markedKnown = 0;
+  this.markedFamiliar = 0;
+  this.markedUnknown = 0;
 
   allQuestions.push(this);
 }
 
-//local storage
+// instantiate new Question objects from baseQuestions[]
+function instantiateBaseQuestions(){
+  for(let i = 0; i < baseQuestions.length; i++) {
+    new Question(baseQuestions[i][0], baseQuestions[i][1]);
+  }
+}
+
+// instantiate new Question objects from allQuestions[]
+function instantiateAllQuestions(){
+  for(let i = 0; i < allQuestionsLength; i++) {
+    new Question(allQuestions[i][0], allQuestions[i][1]);
+  }
+}
+
+// called at the end of app.js
+function renderInstructions(instruction){
+  qOrAEl.style.paddingTop = '80.5px';
+  qOrAEl.style.width = '400px';
+  qOrAEl.textContent = instruction;
+  questionIsShowing = false;
+}
+
+// render randomly selected question to index.html
+function randomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+// called in updateKnownProperties(e) and handleCardClick(e)
+function renderQuizCard(questionIndex){
+  currentQuestionIndex = questionIndex;
+
+  if(questionIsShowing){
+    // If question value is showing, render answer value
+    qOrAEl.textContent = allQuestions[currentQuestionIndex].answer;
+    questionIsShowing = false;
+  } else if(isRated || questionIsShowing === false) {
+    // If answer value is showing, render question value
+    qOrAEl.textContent = allQuestions[currentQuestionIndex].question;
+    questionIsShowing = true;
+    isRated = false;
+  }
+} // end renderQuizCard()
+
+// Called by the cardWrapperEl onclick event
+// Called by the Start nav link onclick event ///////     TODO      ////////
+function handleCardClick(event) {
+  if(numberOfQuestionsAsked === 0) {
+    // start timer
+    console.log(`Started at: ${hour}:${minutes}`);
+    // need stop event to stop timer and calculate time elapsed
+  }
+  // if a rating was submitted or this is the first card is being requested
+  if(isRated === true || currentQuestionIndex === undefined) {
+    currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
+    qOrAEl.style.paddingTop = '108px';
+    qOrAEl.style.width = '300px';
+
+    // Update timesTested every time a new card is rendered
+    numberOfQuestionsAsked++;
+    allQuestions[currentQuestionIndex].timesTested++;
+    console.log('updated numberofQeustionsAsked from handleCardClick(): ', numberOfQuestionsAsked);
+    console.log('updated timesTested in handleCardClick():', allQuestions[currentQuestionIndex].timesTested);
+    renderQuizCard(currentQuestionIndex);
+  } else {
+    renderQuizCard(currentQuestionIndex);
+  }
+
+  if(numberOfQuestionsAsked === 1) {
+    knownLevelWrapperEl.addEventListener('click', updateKnownProperties);
+  }
+}
+
+// increment selected known property for the card that is showing
+function updateKnownProperties(event) {
+  console.log('event.target.alt: ', event.target.alt);
+  console.log('event.target: ', event.target);
+  questionIsShowing = false;
+  let isValidClick = true;
+
+  switch(event.target.alt) {
+    case undefined:
+      isValidClick = false;
+      break;
+    case 'know':
+      allQuestions[currentQuestionIndex].markedKnown++;
+      break;
+    case 'familiar':
+      allQuestions[currentQuestionIndex].markedFamiliar++;
+      break;
+    case 'not-known':
+      allQuestions[currentQuestionIndex].markedUnknown++;
+      break;
+  }
+
+  // then render a new card
+  if(isValidClick) {
+    isRated = true;
+    let randomNum = randomNumber(0, allQuestions.length - 1);
+    renderQuizCard(randomNum);
+    numberOfQuestionsAsked++;
+    console.log('updated numberofQeustionsAsked from updateknownproperties(): ', numberOfQuestionsAsked);
+    allQuestions[randomNum].timesTested++;
+    console.log('updated timesTested in updateKnownProperties():', allQuestions[randomNum].timesTested);
+  }
+} // end updateKnownProperties()
+
+// footer content
+if(pEl){
+pEl.textContent = `${'\u00A9'} ${year} CodeFellows StrikeForce`;
+footerEl[0].appendChild(pEl);
+
+cardWrapperEl.addEventListener('click', handleCardClick);
+}
+
+(function(){
+  instantiateBaseQuestions();
+  instantiateAllQuestions();
+  renderInstructions(startInstruction);
+})();
+
 function store(key, value){
   //local storage
   localStorage.setItem(key, JSON.stringify(value));
@@ -42,20 +166,3 @@ function retrieve(key){
   let value = JSON.parse(localStorage.getItem(key));
   return value;
 }
-
-// instantiate new Question objects from allQuestions[]
-for(let i = 0; i < baseQuestions.length; i++) {
-  new Question(baseQuestions[i][0], baseQuestions[i][1]);
-}
-
-// render randomlyl selected question to index.html
-function randomNumber(min, max) {
-
-  //local storage
-  localStorage.setItem('allRandomNumber', JSON.stringify(randomNumber));
-  JSON.parse(localStorage.getItem('allRandomNumber'));
-}
-
-// footer content
-pEl.textContent = `${'\u00A9'} ${year} CodeFellows StrikeForce`;
-footerEl[0].appendChild(pEl);
