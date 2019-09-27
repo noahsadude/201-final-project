@@ -43,12 +43,26 @@
 
       <section id="known-level-wrapper"> 
         <p id="rate-p">Rate your knowledge to move on to the next card.</p>
-          <!-- <button class="known-level" type="button" value="know">I know this!</button>
-          <button class="known-level" type="button" value="familiar">I might know.</button>
-          <button class="known-level" type="button" value="not-known">I don't know this at all.</button> -->
-        <img class="known-level" src="img/trophy-icon.png" alt="known" title="I know this!" />
-        <img class="known-level" src="img/unsure-icon.png" alt="unsure" title="I'm not sure" />
-        <img class="known-level" src="img/sweating-icon.png" alt="unknown" title="I don't know that at all." />
+        <ul id="known-ul">
+          <li>
+            <figure>
+              <img class="known-level" src="img/trophy-icon.png" alt="known" title="I know this!" />
+              <figcaption>I know this!</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img class="known-level" src="img/unsure-icon.png" alt="unsure" title="I'm not sure" />
+              <figcaption>I'm not sure.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img class="known-level" src="img/sweating-icon.png" alt="unknown" title="I don't know that at all." />
+              <figcaption>I don't know.</figcaption>
+            </figure>
+          </li>
+        </ul>
       </section>
       <section id="next-question-wrapper">
         <!-- TODO: cards with next questions -->

@@ -1,5 +1,6 @@
 /* THIS FILE CONTAINS STYLING THAT IS APPLIED TO ALL PAGES:
 please use it for stuff like headers, footers, nav etc that is not unique to one page */
+@import url('https://fonts.googleapis.com/css?family=Federo|Kaushan+Script|Philosopher&display=swap');
 
 html {
   font-family: "Avenir Next", "Avenir", sans-serif;
@@ -116,7 +117,7 @@ main {
   padding: 50px 0;
   text-align: center;
   background-image: url("../img/cork_board.jpg");
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-attachment: fixed;
   background-size: cover;
 }

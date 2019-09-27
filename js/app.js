@@ -5,12 +5,65 @@ let baseQuestions = [
   ['instantiate', ' to create an instance of an object in an object-oriented programming language.'],
   ['do/while statement', 'creates a loop that executes a block of code once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.'],
   ['break statement', 'used to jump out of a switch() or a loop and resumes code after the loop'],
-  ['continue statement', 'breaks one iteration in the loop, if a specified condition occurs, and continues with the next iteration in the loop.']
+  ['continue statement', 'breaks one iteration in the loop, if a specified condition occurs, and continues with the next iteration in the loop.'],
+  ['ophidiophobia', 'the fear of snakes'],
+  ['cynophobia', 'the fear of dogs'],
+  ['acrophobia', 'the fear of heights'],
+  ['astraphobia', 'the fear of thunder/lightning'],
+  ['mysophobia', 'the fear of germs'],
+  ['aerophobia', 'the fear of flying'],
+  ['thanatophobia', 'the fear of death'],
+  ['glossophobia', 'the fear of public speaking'],
+  ['atychiphobia', 'the fear of failure'],
+  ['alektorophobia', 'the fear of chickens'],
+  ['enochlophobia', 'the fear of crowds'],
+  ['autophobia', 'the fear of abandonment'],
+  ['hemophobia', 'the fear of blood'],
+  ['xenophobia', 'the fear of the unknown'],
+  ['vehophobia', 'the fear of driving'],
+  ['basiphobia', 'the fear of falling'],
+  ['achievemephobia', 'the fear of success'],
+  ['ailurophobia', 'the fear of cats'],
+  ['metathesiophobia', 'the fear of change'],
+  ['globophobia', 'the fear of balloons'],
+  ['nyctophobia', 'the fear of darkness'],
+  ['philophobia', 'the fear of love'],
+  ['triskaidekaphobia', 'the fear of the number 13'],
+  ['emetophobia', 'the fear of vomiting'],
+  ['gephyrophobia', 'the fear of bridges'],
+  ['panophobia', 'the fear of everything'],
+  ['paraskevidekatriaphobia', 'the fear of Friday the 13th'],
+  ['apiphobia', 'the fear of bees'],
+  ['koumpounophobia', 'the fear of buttons'],
+  ['athazagoraphobia', 'the fear of being forgotten or not remembering things'],
+  ['katsaridaphobia', 'the fear of cockroaches'],
+  ['latrophobia', 'the fear of doctors'],
+  ['pediophobia', 'the fear of dolls'],
+  ['ichthyophobia', 'the fear of fish'],
+  ['sidonglobophobia', 'the fear of cotton balls'],
+  ['scelerophobia', 'the fear of crime'],
+  ['pogonophobia', 'the fear of beards'],
+  ['omphalophobia', 'the fear of belly buttons'],
+  ['chaetophobia', 'the fear of hair'],
+  ['nosocomephobia', 'the fear of hospitals'],
+  ['ligyrophobia', 'the fear of loud noises'],
+  ['spheksophobia', 'the fear of wasps'],
+  ['coulrophobia', 'the fear of clowns'],
+  ['allodoxaphobia', 'the fear of other people\'s opinions of you'],
+  ['kinemortophobia', 'the fear of zombies'],
+  ['taphophobia', 'the fear of being buried alive'],
+  ['aurophobia', 'the fear of finding gold'],
+  ['nomophobia', 'the fear of being without cellphones'],
+  ['Hippopotomonstrosesquippedaliophobia', 'the fear of long words. This is one of two names for this condition.'],
+  ['Sesquipedalophobia', 'the fear of long words. This is one of two names for this condition.'],
+  ['phobophobia', 'the fear of fear'],
+  ['haphephobia', 'the fear of being touched']
 ];
+
 let allQuestions = [];
 let allQuestionsLength;
 let cardWrapperEl = document.getElementById('card-wrapper');
-let qOrAEl = document.getElementById('question-or-answer');
+let questionOrAnswerEl = document.getElementById('question-or-answer');
 let startInstruction = 'Click on this card to start. Click again to reveal the answer. Each successive click  will flip the same card back and forth. To test yourself on a new question, rate your comfort-level with the current question by selecting one of the buttons below. You can add new cards or revise existing cards at any time by going to the Add New Cards page.';
 let questionIsShowing = false;
 let isRated = false;
@@ -53,9 +106,9 @@ function instantiateAllQuestions(){
 
 // called at the end of app.js
 function renderInstructions(instruction){
-  qOrAEl.style.paddingTop = '80.5px';
-  qOrAEl.style.width = '400px';
-  qOrAEl.textContent = instruction;
+  questionOrAnswerEl.style.paddingTop = '80.5px';
+  questionOrAnswerEl.style.width = '400px';
+  questionOrAnswerEl.textContent = instruction;
   questionIsShowing = false;
 }
 
@@ -70,11 +123,11 @@ function renderQuizCard(questionIndex){
 
   if(questionIsShowing){
     // If question value is showing, render answer value
-    qOrAEl.textContent = allQuestions[currentQuestionIndex].answer;
+    questionOrAnswerEl.textContent = allQuestions[currentQuestionIndex].answer;
     questionIsShowing = false;
   } else if(isRated || questionIsShowing === false) {
     // If answer value is showing, render question value
-    qOrAEl.textContent = allQuestions[currentQuestionIndex].question;
+    questionOrAnswerEl.textContent = allQuestions[currentQuestionIndex].question;
     questionIsShowing = true;
     isRated = false;
   }
@@ -91,8 +144,8 @@ function handleCardClick(event) {
   // if a rating was submitted or this is the first card is being requested
   if(isRated === true || currentQuestionIndex === undefined) {
     currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
-    qOrAEl.style.paddingTop = '108px';
-    qOrAEl.style.width = '300px';
+    questionOrAnswerEl.style.paddingTop = '108px';
+    questionOrAnswerEl.style.width = '300px';
 
     // Update timesTested every time a new card is rendered
     numberOfQuestionsAsked++;
@@ -151,14 +204,6 @@ if(pEl){
   cardWrapperEl.addEventListener('click', handleCardClick);
 }
 
-(function(){
-  instantiateBaseQuestions();
-  instantiateAllQuestions();
-  if(qOrAEl){
-    renderInstructions(startInstruction);
-  }
-})();
-
 function store(key, value){
   //local storage
   localStorage.setItem(key, JSON.stringify(value));
@@ -168,3 +213,11 @@ function retrieve(key){
   let value = JSON.parse(localStorage.getItem(key));
   return value;
 }
+
+(function(){
+  instantiateBaseQuestions();
+  instantiateAllQuestions();
+  if(questionOrAnswerEl){
+    renderInstructions(startInstruction);
+  }
+})();
