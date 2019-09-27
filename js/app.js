@@ -61,7 +61,7 @@ let baseQuestions = [
 ];
 let allQuestions = [];
 let cardWrapperEl = document.getElementById('card-wrapper');
-let qOrAEl = document.getElementById('question-or-answer');
+let questionOrAnswerEl = document.getElementById('question-or-answer');
 let startInstruction = 'Click on this card to start. Click again to reveal the answer. Each successive click  will flip the same card back and forth. To test yourself on a new question, rate your comfort-level with the current question by selecting one of the buttons below. You can add new cards or revise existing cards at any time by going to the Add New Cards page.';
 let questionIsShowing = false;
 let isRated = false;
@@ -102,7 +102,7 @@ function instantiateAllQuestions(){
 
 // called at the end of app.js
 function renderInstructions(instruction){
-  qOrAEl.textContent = instruction;
+  questionOrAnswerEl.textContent = instruction;
   questionIsShowing = false;
 }
 
@@ -117,11 +117,11 @@ function renderQuizCard(questionIndex){
 
   if(questionIsShowing){
     // If question value is showing, render answer value
-    qOrAEl.textContent = allQuestions[currentQuestionIndex].answer;
+    questionOrAnswerEl.textContent = allQuestions[currentQuestionIndex].answer;
     questionIsShowing = false;
   } else if(isRated || questionIsShowing === false) {
     // If answer value is showing, render question value
-    qOrAEl.textContent = allQuestions[currentQuestionIndex].question;
+    questionOrAnswerEl.textContent = allQuestions[currentQuestionIndex].question;
     questionIsShowing = true;
     isRated = false;
   }
@@ -198,20 +198,6 @@ if(cardWrapperEl){
   cardWrapperEl.addEventListener('click', handleCardClick);
 }
 
-(function(){
-  let test = localStorage.getItem('questionsKey');
-  if(test){
-    instantiateAllQuestions();
-    console.log('all questions instantiated');
-  } else {
-    instantiateBaseQuestions();
-    console.log('base questions instantiated');
-  }
-  if(qOrAEl){
-    renderInstructions(startInstruction);
-  }
-})();
-
 function store(key, value){
   //local storage
   localStorage.setItem(key, JSON.stringify(value));
@@ -223,3 +209,17 @@ function retrieve(key){
   console.log('local storage called');
   return value;
 }
+
+(function(){
+  let test = localStorage.getItem('questionsKey');
+  if(test){
+    instantiateAllQuestions();
+    console.log('all questions instantiated');
+  } else {
+    instantiateBaseQuestions();
+    console.log('base questions instantiated');
+  }
+  if(questionOrAnswerEl){
+    renderInstructions(startInstruction);
+  }
+})();

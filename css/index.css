@@ -1,5 +1,6 @@
 /* THIS FILE CONTAINS STYLING THAT IS UNIQUE TO index.html:
 please use it for stuff like card, buttons etc that is unique to this page */
+@import url('https://fonts.googleapis.com/css?family=Federo|Kaushan+Script|Philosopher&display=swap');
 
 body {
   user-select: none; /* prevent text selection */
@@ -15,17 +16,48 @@ body {
 
 /* p element that holds rating buttons instruction */
 #rate-p {
+  font-family: 'Philosopher', sans-serif;
   color: white;
+  font-size: 20px;
   padding-top: 20px;
   padding-bottom: 10px;
 }
 
 /* 3 img elements that hold the rating buttons */
 .known-level {
-  width: 100px;
+  width: 50px;
   padding: 20px;
 }
 
 #known-level-wrapper > img {
   cursor: pointer;
+}
+#known-ul {
+  width: 300px;
+  margin: auto;
+}
+
+#known-ul li {
+  margin: 5px;
+}
+
+#known-ul li:nth-child(1) {
+  float: left;
+}
+
+#known-ul li:nth-child(2) {
+  float: left;
+  
+} 
+
+#known-ul li:last-child {
+  float: right;
+}
+
+figure {
+}
+
+figcaption {
+  color: white;
+  font-size: 15px;
 }

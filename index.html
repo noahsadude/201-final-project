@@ -7,7 +7,6 @@
     <link href="css/layout.css" type="text/css" rel="stylesheet" />
     <link href="css/index.css" type="text/css" rel="stylesheet" />
     <link rel="icon" href="https://img.icons8.com/ios/100/000000/flashcards.png" type="image/x-icon">
-    <link rel="unsure" sizes="180x180" href="../img/unsure-icon.png">
   </head>
 
   <body>
@@ -37,16 +36,29 @@
       <section id="card-wrapper" class="post-it">
         <p id="question-or-answer"></p>
       </section>
-
       <section id="known-level-wrapper"> 
         <p id="rate-p">Rate your knowledge to move on to the next card.</p>
-          <!-- <button class="known-level" type="button" value="know">I know this!</button>
-          <button class="known-level" type="button" value="familiar">I might know.</button>
-          <button class="known-level" type="button" value="not-known">I don't know this at all.</button> -->
-        <img class="known-level" src="img/trophy-icon.png" alt="known" title="I know this!" />
-        <img class="known-level" src="img/unsure-icon.png" alt="unsure" title="I'm not sure" />
-        <img class="known-level" src="img/sweating-icon.png" alt="unknown" title="I don't know that at all." />
-      </section>
+        <ul id="known-ul">
+          <li>
+            <figure>
+              <img class="known-level" src="img/trophy-icon.png" alt="known" title="I know this!" />
+              <figcaption>I know this!</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img class="known-level" src="img/unsure-icon.png" alt="unsure" title="I'm not sure" />
+              <figcaption>I'm not sure.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img class="known-level" src="img/sweating-icon.png" alt="unknown" title="I don't know that at all." />
+              <figcaption>I don't know.</figcaption>
+            </figure>
+          </li>
+        </ul>
+        </section>
       <section id="next-question-wrapper">
         <!-- TODO: cards with next questions -->
       </section>
