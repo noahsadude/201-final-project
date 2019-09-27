@@ -1,3 +1,6 @@
+/* THIS FILE CONTAINS STYLING THAT IS UNIQUE TO about.html:
+please use it for stuff like images, paragrphs etc that is unique to this page */
+
 .flex-container {
   display: flex;
   flex-direction: row;

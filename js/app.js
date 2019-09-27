@@ -117,18 +117,18 @@ function updateKnownProperties(event) {
   let isValidClick = true;
 
   switch(event.target.alt) {
-    case undefined:
-      isValidClick = false;
-      break;
-    case 'know':
-      allQuestions[currentQuestionIndex].markedKnown++;
-      break;
-    case 'familiar':
-      allQuestions[currentQuestionIndex].markedFamiliar++;
-      break;
-    case 'not-known':
-      allQuestions[currentQuestionIndex].markedUnknown++;
-      break;
+  case undefined:
+    isValidClick = false;
+    break;
+  case 'know':
+    allQuestions[currentQuestionIndex].markedKnown++;
+    break;
+  case 'familiar':
+    allQuestions[currentQuestionIndex].markedFamiliar++;
+    break;
+  case 'not-known':
+    allQuestions[currentQuestionIndex].markedUnknown++;
+    break;
   }
 
   // then render a new card
@@ -145,17 +145,17 @@ function updateKnownProperties(event) {
 
 // footer content
 if(pEl){
-pEl.textContent = `${'\u00A9'} ${year} CodeFellows StrikeForce`;
-footerEl[0].appendChild(pEl);
+  pEl.textContent = `${'\u00A9'} ${year} CodeFellows StrikeForce`;
+  footerEl[0].appendChild(pEl);
 
-cardWrapperEl.addEventListener('click', handleCardClick);
+  cardWrapperEl.addEventListener('click', handleCardClick);
 }
 
 (function(){
   instantiateBaseQuestions();
   instantiateAllQuestions();
   if(qOrAEl){
-  renderInstructions(startInstruction);
+    renderInstructions(startInstruction);
   }
 })();
 
