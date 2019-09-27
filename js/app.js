@@ -62,7 +62,7 @@ let baseQuestions = [
 let allQuestions = [];
 let cardWrapperEl = document.getElementById('card-wrapper');
 let qOrAEl = document.getElementById('question-or-answer');
-let startInstruction = 'Click on this card to start. Click again to reveal the answer. Each successive click  will flip the same card back and forth. To test yourself on a new question, rate your comfort-level with the current question by selecting one of the buttons below. You can add new cards or revise existing cards at any time by going to the Add New Cards page.';
+const startInstruction = 'Click on this card to start. Click again to reveal the answer. Each successive click  will flip the same card back and forth. To test yourself on a new question, rate your comfort-level with the current question by selecting one of the buttons below. You can add new cards or revise existing cards at any time by going to the Add New Cards page.';
 let questionIsShowing = false;
 let isRated = false;
 let knownLevelWrapperEl = document.getElementById('known-level-wrapper');
@@ -162,18 +162,18 @@ function updateKnownProperties(event) {
   let isValidClick = true;
 
   switch(event.target.alt) {
-  case undefined:
-    isValidClick = false;
-    break;
-  case 'know':
-    allQuestions[currentQuestionIndex].markedKnown++;
-    break;
-  case 'familiar':
-    allQuestions[currentQuestionIndex].markedFamiliar++;
-    break;
-  case 'not-known':
-    allQuestions[currentQuestionIndex].markedUnknown++;
-    break;
+    case undefined:
+      isValidClick = false;
+      break;
+    case 'know':
+      allQuestions[currentQuestionIndex].markedKnown++;
+      break;
+    case 'familiar':
+      allQuestions[currentQuestionIndex].markedFamiliar++;
+      break;
+    case 'not-known':
+      allQuestions[currentQuestionIndex].markedUnknown++;
+      break;
   }
 
   // then render a new card
@@ -189,6 +189,18 @@ function updateKnownProperties(event) {
   }
 
 } // end updateKnownProperties()
+
+function store(key, value){
+  //local storage
+  localStorage.setItem(key, JSON.stringify(value));
+  console.log('local storage stored');
+}
+
+function retrieve(key){
+  let value = JSON.parse(localStorage.getItem(key));
+  console.log('local storage called');
+  return value;
+}
 
 // footer content
 pEl.textContent = `${'\u00A9'} ${year} CodeFellows StrikeForce`;
@@ -212,14 +224,3 @@ if(cardWrapperEl){
   }
 })();
 
-function store(key, value){
-  //local storage
-  localStorage.setItem(key, JSON.stringify(value));
-  console.log('local storage stored');
-}
-
-function retrieve(key){
-  let value = JSON.parse(localStorage.getItem(key));
-  console.log('local storage called');
-  return value;
-}
