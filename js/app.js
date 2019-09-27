@@ -154,7 +154,9 @@ cardWrapperEl.addEventListener('click', handleCardClick);
 (function(){
   instantiateBaseQuestions();
   instantiateAllQuestions();
+  if(qOrAEl){
   renderInstructions(startInstruction);
+  }
 })();
 
 function store(key, value){
