@@ -157,3 +157,12 @@ cardWrapperEl.addEventListener('click', handleCardClick);
   renderInstructions(startInstruction);
 })();
 
+function store(key, value){
+  //local storage
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+function retrieve(key){
+  let value = JSON.parse(localStorage.getItem(key));
+  return value;
+}
