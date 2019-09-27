@@ -144,13 +144,16 @@ function updateKnownProperties(event) {
 } // end updateKnownProperties()
 
 // footer content
+if(pEl){
 pEl.textContent = `${'\u00A9'} ${year} CodeFellows StrikeForce`;
 footerEl[0].appendChild(pEl);
 
 cardWrapperEl.addEventListener('click', handleCardClick);
+}
 
 (function(){
   instantiateBaseQuestions();
   instantiateAllQuestions();
   renderInstructions(startInstruction);
 })();
+

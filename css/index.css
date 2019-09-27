@@ -1,9 +1,12 @@
-/* section element that holds the card and contents */
+body {
+  user-select: none; /* prevent text selection */
+}
 #card-wrapper {
   width: 480px;
   height: 320px;
   margin: 0 auto;
   background-image: url("../img/indexcardlined.png");
+  cursor: pointer;
 }
 /* p element that holds the question or answer */
 #question-or-answer {
@@ -27,12 +30,10 @@
 
 /* 3 img elements that hold the rating buttons */
 .known-level {
-   width: 100px;
-   padding: 20px;
+  width: 100px;
+  padding: 20px;
 }
 
-footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
+#known-level-wrapper > img {
+  cursor: pointer;
 }

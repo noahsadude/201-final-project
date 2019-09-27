@@ -9,7 +9,7 @@ let questionFoundIndex = 0;
 
 // ***HELPER FUNCTIONS***
 //fuction for rendering element to the page
-function render(element,parent,content) {
+function render(element, parent, content) {
   let el = document.createElement(element);
   if(content) {
     el.textContent = content;
@@ -24,9 +24,9 @@ function populateForm() {
     selectQuestionEl.removeChild(selectQuestionEl.firstChild);
   }
   //and then add new questions
-  render('option',selectQuestionEl,'Add New');
-  for (var i = 0; i<allQuestions.length;i++) {
-    render('option',selectQuestionEl,allQuestions[i].question);
+  render('option', selectQuestionEl, 'Add New');
+  for (var i = 0; i < allQuestions.length;i++) {
+    render('option', selectQuestionEl, allQuestions[i].question);
   }
 }
 
@@ -54,7 +54,7 @@ function selectQuestionHandler() {
 }
 
 //function for adding new question or editing existing
-function submitQuestionHandler(e){
+function submitQuestionHandler(e) {
   e.preventDefault();
   //get the form values
   let dropdown = selectQuestionEl.value;
@@ -80,8 +80,8 @@ function submitQuestionHandler(e){
 
 
 // ***EVENT LISTENERS***
-formEl.addEventListener('submit',submitQuestionHandler);
-selectQuestionEl.addEventListener('change',selectQuestionHandler);
+formEl.addEventListener('submit', submitQuestionHandler);
+selectQuestionEl.addEventListener('change', selectQuestionHandler);
 
 // ***EXECUTING CODE***
 populateForm();
