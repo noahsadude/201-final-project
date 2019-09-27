@@ -8,7 +8,7 @@ body {
   background-image: url("../img/indexcardlined.png");
   cursor: pointer;
 }
-
+/* p element that holds the question or answer */
 #question-or-answer {
   color: black;
   width: 300px;
@@ -16,17 +16,19 @@ body {
   padding-top: 108px;
   line-height: 27px;
 }
-
+/* 
 #response-wrapper {
   margin: 15px auto;
-}
+} */
 
+/* p element that holds rating buttons instruction */
 #rate-p {
   color: white;
   padding-top: 20px;
   padding-bottom: 10px;
 }
 
+/* 3 img elements that hold the rating buttons */
 .known-level {
   width: 100px;
   padding: 20px;
