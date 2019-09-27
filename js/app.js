@@ -30,6 +30,10 @@ function Question(question, answer) {
   this.timesUnknown = 0;
 
   allQuestions.push(this);
+
+  //local storage
+  localStorage.setItem('allQuestions', JSON.stringify(allQuestions));
+  JSON.parse(localStorage.getItem('allQuestions'));
 }
 
 // instantiate new Question objects from allQuestions[]
@@ -40,8 +44,10 @@ for(let i = 0; i < baseQuestions.length; i++) {
 // render randomlyl selected question to index.html
 function randomNumber(min, max) {
 
+  //local storage
+  localStorage.setItem('allRandomNumber', JSON.stringify(randomNumber));
+  JSON.parse(localStorage.getItem('allRandomNumber'));
 }
-
 
 // footer content
 pEl.textContent = `${'\u00A9'} ${year} CodeFellows StrikeForce`;
