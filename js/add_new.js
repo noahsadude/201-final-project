@@ -5,6 +5,8 @@ let selectQuestionEl = document.getElementById('question-dropdown');
 let questionEl = document.getElementById('question');
 let answerEl = document.getElementById('answer');
 let deleteButtonEl = document.getElementById('delete');
+let showAllCardsButtonEl = document.getElementById('show-all-cards');
+let allCardsWrapperEl = document.getElementById('all-cards-wrapper');
 let questionFound;
 let questionFoundIndex;
 
@@ -16,6 +18,7 @@ function render(element, parent, content) {
     el.textContent = content;
   }
   parent.appendChild(el);
+  return el;
 }
 
 //function for filling selectQuestion dropdown with values from allQuestions array
@@ -95,10 +98,24 @@ function deleteQuestionHandler() {
   }
 }
 
+//function for rendering card for all questions from allQuestion array
+function showAllCards() {
+  while (allCardsWrapperEl.firstChild) {
+    allCardsWrapperEl.removeChild(allCardsWrapperEl.firstChild);
+  }
+  for (let i in allQuestions) {
+    let divEl = render('div', allCardsWrapperEl);
+    divEl.className = 'card-container post-it';
+    render('p', divEl, allQuestions[i].question);
+  }
+  showAllCardsButtonEl.textContent = 'REFRESH CARDS';
+}
+
 // ***EVENT LISTENERS***
 formEl.addEventListener('submit', submitQuestionHandler);
 selectQuestionEl.addEventListener('change', selectQuestionHandler);
 deleteButtonEl.addEventListener('click', deleteQuestionHandler);
+showAllCardsButtonEl.addEventListener('click', showAllCards);
 
 // ***EXECUTING CODE***
 populateForm();

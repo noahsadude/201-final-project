@@ -50,8 +50,6 @@ function instantiateAllQuestions(){
 
 // called at the end of app.js
 function renderInstructions(instruction){
-  qOrAEl.style.paddingTop = '80.5px';
-  qOrAEl.style.width = '400px';
   qOrAEl.textContent = instruction;
   questionIsShowing = false;
 }
@@ -88,8 +86,6 @@ function handleCardClick(event) {
   // if a rating was submitted or this is the first card is being requested
   if(isRated === true || currentQuestionIndex === undefined) {
     currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
-    qOrAEl.style.paddingTop = '108px';
-    qOrAEl.style.width = '300px';
 
     // Update timesTested every time a new card is rendered
     numberOfQuestionsAsked++;
@@ -143,10 +139,10 @@ function updateKnownProperties(event) {
 } // end updateKnownProperties()
 
 // footer content
-if(pEl){
-  pEl.textContent = `${'\u00A9'} ${year} CodeFellows StrikeForce`;
-  footerEl[0].appendChild(pEl);
+pEl.textContent = `${'\u00A9'} ${year} CodeFellows StrikeForce`;
+footerEl[0].appendChild(pEl);
 
+if(cardWrapperEl){
   cardWrapperEl.addEventListener('click', handleCardClick);
 }
 

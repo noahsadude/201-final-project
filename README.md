@@ -23,4 +23,6 @@ When you have the answer to the question on the flashcard, click on the card to 
 
 [Cork board picture](https://unsplash.com/photos/KsAo8ouBn8A)
 
-[Question rating buttons] (https://favicon.io)
+[Question rating buttons](https://favicon.io)
+
+[Post-it notes CSS](https://mentormate.com/blog/css-postit-note/)

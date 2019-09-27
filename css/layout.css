@@ -1,19 +1,15 @@
 /* THIS FILE CONTAINS STYLING THAT IS APPLIED TO ALL PAGES:
 please use it for stuff like headers, footers, nav etc that is not unique to one page */
+@import url('https://fonts.googleapis.com/css?family=Frijole|Gloria+Hallelujah&display=swap');
 
 html {
   font-family: "Avenir Next", "Avenir", sans-serif;
+  background: #e4f1fa;
 }
 
 /* HEADER - START */
 header {
-  width: 100%;
-  height: 70px;
-  background: #ededed;
-}
-#logo-wrapper {
-  width: 960px;
-  margin: 0 auto;
+  height: 0px;
 }
 
 /* NAV - HAMBURGER MENU - START */
@@ -21,8 +17,8 @@ header {
   display: block;
   width: 100px;
   position: relative;
-  top: -50px;
-  left: 50px;
+  top: 30px;
+  left: 40px;
   z-index: 1;
   user-select: none; /* prevent text selection */
 }
@@ -43,7 +39,7 @@ header {
   height: 4px;
   margin-bottom: 5px;
   position: relative;
-  background: #cdcdcd;
+  background: #838383;
   border-radius: 3px;
   z-index: 1;
   transform-origin: 4px 0px;
@@ -80,7 +76,7 @@ header {
   padding: 50px;
   padding-left: 30px;
   padding-top: 125px;
-  background: #ededed;
+  background: #e4f1fa;
   list-style-type: none;
   -webkit-font-smoothing: antialiased; /* to stop flickering of text in safari */
   transform-origin: 0% 0%;
@@ -111,7 +107,7 @@ header {
 /* MAIN - START*/
 main {
   width: 960px;
-  min-height: 1000px;
+  min-height: 1200px;
   margin: 0 auto;
   padding: 50px 0;
   text-align: center;
@@ -119,6 +115,13 @@ main {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+}
+
+h1 {
+  margin-bottom: 50px;
+  font-family: 'Frijole', cursive;
+  font-size: 50px;
+  color: #ffffd9;
 }
 /* MAIN - END*/
 
@@ -131,3 +134,17 @@ footer {
   text-align: center;
 }
 /* FOOTER - END*/
+
+/* STYLING CLASSES */
+.post-it {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 25px;
+  line-height: 30px;
+  border: 1px solid #E8E8E8; 
+  border-bottom-right-radius: 60px 5px; 
+  background: -webkit-linear-gradient(-45deg, #f8f893 81%,#f5f591 82%,#f5f58d 82%,#f7f7c2 100%);
+  box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.4);
+}
