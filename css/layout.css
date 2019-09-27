@@ -1,3 +1,6 @@
+/* THIS FILE CONTAINS STYLING THAT IS APPLIED TO ALL PAGES:
+please use it for stuff like headers, footers, nav etc that is not unique to one page */
+
 html {
   font-family: "Avenir Next", "Avenir", sans-serif;
 }
