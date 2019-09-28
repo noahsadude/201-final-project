@@ -63,7 +63,6 @@ function selectQuestionHandler() {
 
 //function for adding new question or editing existing
 function submitQuestionHandler(e) {
-  e.preventDefault();
   //get the form values
   let dropdown = selectQuestionEl.value;
   let question = removeEnter(e.target.question.value);

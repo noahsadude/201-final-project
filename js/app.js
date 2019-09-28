@@ -63,11 +63,10 @@ let baseQuestions = [
 let allQuestions = [];
 let cardWrapperEl = document.getElementById('card-wrapper');
 let startInstruction = 'Click on this card to start. Click again to reveal the answer. Each successive click  will flip the same card back and forth. To test yourself on a new question, rate your comfort-level with the current question by selecting one of the buttons below. You can add new cards or revise existing cards at any time by going to the Add New Cards page.';
-let isRated = false;
 let knownLevelWrapperEl = document.getElementById('known-level-wrapper');
-let currentQuestionIndex = undefined;
 let footerEl = document.getElementsByTagName('footer');
 let pEl = document.getElementById('year');
+let currentQuestionIndex;
 let numberOfQuestionsAsked = 0;
 let date = new Date();
 let hour = date.getHours();
@@ -114,8 +113,10 @@ function instantiateAllQuestions(){
 
 // called at the end of app.js
 function renderInstructions(instruction){
-  let divEl = render('div', cardWrapperEl, false, 'post-it instructions');
-  render('p', divEl, instruction);
+  if(cardWrapperEl){
+    let divEl = render('div', cardWrapperEl, false, 'post-it instructions');
+    render('p', divEl, instruction);
+  }
 }
 
 // function for generating a random number
@@ -123,7 +124,7 @@ function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-// function for rendering a card with a passed into it index
+// function for rendering a card
 function renderQuizCard(questionIndex){
   while (cardWrapperEl.firstChild) {
     cardWrapperEl.removeChild(cardWrapperEl.firstChild);
@@ -134,9 +135,10 @@ function renderQuizCard(questionIndex){
   let flipCardBackEl = render('div', flipCardInnerEl, false, 'flip-card-inner flip-card-back post-it');
   render('p', flipCardBackEl, allQuestions[questionIndex].answer);
 
-  //not sure what do we need these for:
+  //update values
   currentQuestionIndex = questionIndex;
-  isRated = false;
+  numberOfQuestionsAsked++;
+  allQuestions[currentQuestionIndex].timesTested++;
 }
 
 function flipCard() {
@@ -144,68 +146,55 @@ function flipCard() {
   card.classList.toggle('is-flipped');
 }
 
-// Called by the cardWrapperEl onclick event
-// Called by the Start nav link onclick event ///////     TODO      ////////
+// ***EVENT HANDLERS***
+//while instructions are displayed replace them with question, add eventListener for answer buttons and make the card flip when clicked
 function handleCardClick() {
-  if(numberOfQuestionsAsked === 0) {
-    // start timer
-    console.log(`Started at: ${hour}:${minutes}`);
-    // need stop event to stop timer and calculate time elapsed
-  }
-  // if a rating was submitted or this is the first card is being requested
-  if(currentQuestionIndex === undefined) {
-    currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
-    // Update timesTested every time a new card is rendered
-    numberOfQuestionsAsked++;
-    allQuestions[currentQuestionIndex].timesTested++;
-    console.log('updated numberofQeustionsAsked from handleCardClick(): ', numberOfQuestionsAsked);
-    console.log('updated timesTested in handleCardClick():', allQuestions[currentQuestionIndex].timesTested);
-    renderQuizCard(currentQuestionIndex);
-  } else {
-    renderQuizCard(currentQuestionIndex);
-  }
+  // start timer
+  console.log(`Started at: ${hour}:${minutes}`);
+  // need stop event to stop timer and calculate time elapsed
 
-  if(numberOfQuestionsAsked === 1) {
-    cardWrapperEl.removeEventListener('click', handleCardClick);
-    cardWrapperEl.addEventListener('click', flipCard);
-    knownLevelWrapperEl.addEventListener('click', updateKnownProperties);
-  }
+  currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
+  renderQuizCard(currentQuestionIndex);
+
+  cardWrapperEl.removeEventListener('click', handleCardClick);
+  cardWrapperEl.addEventListener('click', flipCard);
+  knownLevelWrapperEl.addEventListener('click', handleRateClick);
 }
 
 // increment selected known property for the card that is showing
-function updateKnownProperties(event) {
-  console.log('event.target.alt: ', event.target.alt);
-  console.log('event.target: ', event.target);
-  let isValidClick = true;
+function handleRateClick(event) {
+  if(numberOfQuestionsAsked > 0) {
 
-  switch(event.target.alt) {
-  case undefined:
-    isValidClick = false;
-    break;
-  case 'know':
-    allQuestions[currentQuestionIndex].markedKnown++;
-    break;
-  case 'familiar':
-    allQuestions[currentQuestionIndex].markedFamiliar++;
-    break;
-  case 'not-known':
-    allQuestions[currentQuestionIndex].markedUnknown++;
-    break;
+    console.log('event.target.alt: ', event.target.alt);
+    let isValidClick = true;
+
+    switch(event.target.alt) {
+    case undefined:
+      isValidClick = false;
+      break;
+    case 'know':
+      allQuestions[currentQuestionIndex].markedKnown++;
+      break;
+    case 'familiar':
+      allQuestions[currentQuestionIndex].markedFamiliar++;
+      break;
+    case 'not-known':
+      allQuestions[currentQuestionIndex].markedUnknown++;
+      break;
+    }
+
+    // then render a new card
+    if(isValidClick) {
+      let randomNum = randomNumber(0, allQuestions.length - 1);
+      renderQuizCard(randomNum);
+      numberOfQuestionsAsked++;
+      console.log('updated numberofQeustionsAsked from handleRateClick(): ', numberOfQuestionsAsked);
+      allQuestions[randomNum].timesTested++;
+      console.log('updated timesTested in handleRateClick():', allQuestions[randomNum].timesTested);
+      store('questionsKey',allQuestions);
+    }
   }
-
-  // then render a new card
-  if(isValidClick) {
-    isRated = true;
-    let randomNum = randomNumber(0, allQuestions.length - 1);
-    renderQuizCard(randomNum);
-    numberOfQuestionsAsked++;
-    console.log('updated numberofQeustionsAsked from updateknownproperties(): ', numberOfQuestionsAsked);
-    allQuestions[randomNum].timesTested++;
-    console.log('updated timesTested in updateKnownProperties():', allQuestions[randomNum].timesTested);
-    store('questionsKey',allQuestions);
-  }
-
-} // end updateKnownProperties()
+} // end handleRateClick()
 
 function store(key, value){
   //local storage
@@ -219,14 +208,12 @@ function retrieve(key){
   return value;
 }
 
-// footer content
-pEl.textContent = `${'\u00A9'} ${year} CodeFellows StrikeForce`;
-footerEl[0].appendChild(pEl);
-
+// ***EVENT LISTENERS***
 if(cardWrapperEl){
   cardWrapperEl.addEventListener('click', handleCardClick);
 }
 
+// ***EXECUTING CODE***
 (function(){
   let test = localStorage.getItem('questionsKey');
   if(test){
@@ -238,3 +225,7 @@ if(cardWrapperEl){
   }
   renderInstructions(startInstruction);
 })();
+
+// footer content
+pEl.textContent = `${'\u00A9'} ${year} CodeFellows StrikeForce`;
+footerEl[0].appendChild(pEl);
