@@ -28,6 +28,10 @@ body {
   padding: 20px;
 }
 
+.known-level:hover {
+  transform: scale(1.4);
+}
+
 #known-level-wrapper > img {
   cursor: pointer;
 }
@@ -46,7 +50,6 @@ body {
 
 #known-ul li:nth-child(2) {
   float: left;
-  
 } 
 
 #known-ul li:last-child {
