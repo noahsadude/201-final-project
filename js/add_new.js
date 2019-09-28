@@ -12,10 +12,13 @@ let questionFoundIndex;
 
 // ***HELPER FUNCTIONS***
 //fuction for rendering element to the page
-function render(element, parent, content) {
+function render(element, parent, content, className) {
   let el = document.createElement(element);
   if(content) {
     el.textContent = content;
+  }
+  if(className) {
+    el.className = className;
   }
   parent.appendChild(el);
   return el;
@@ -43,6 +46,13 @@ function resetFormValues() {
   questionEl.value = answerEl.value = '';
 }
 
+//function for removing enter keys
+function removeEnter(string) {
+  console.log(string);
+  console.log(string.replace(/\n/g, ''));
+  return string.replace(/\n/g, '');
+}
+
 // ***EVENT HANDLERS***
 //function for getting element index if such question exists in allQuestions array
 function selectQuestionHandler() {
@@ -66,8 +76,8 @@ function submitQuestionHandler(e) {
   e.preventDefault();
   //get the form values
   let dropdown = selectQuestionEl.value;
-  let question = e.target.question.value;
-  let answer = e.target.answer.value;
+  let question = removeEnter(e.target.question.value);
+  let answer = removeEnter(e.target.answer.value);
   //if this is a new question - add it to the array of questions, else - edit selected
   if(dropdown === 'Add New') {
     new Question(question, answer);
@@ -104,9 +114,12 @@ function showAllCards() {
     allCardsWrapperEl.removeChild(allCardsWrapperEl.firstChild);
   }
   for (let i in allQuestions) {
-    let divEl = render('div', allCardsWrapperEl);
-    divEl.className = 'card-container post-it';
-    render('p', divEl, allQuestions[i].question);
+    let flipCardEl = render('div', allCardsWrapperEl, false, 'card-container flip-card');
+    let flipCardInnerEl = render('div', flipCardEl, false, 'flip-card-inner post-it');
+    let flipCardFronEl = render('div', flipCardInnerEl, false, 'flip-card-front post-it');
+    render('p', flipCardFronEl, allQuestions[i].question);
+    let flipCardBackEl = render('div', flipCardInnerEl, false, 'flip-card-back post-it');
+    render('p', flipCardBackEl, allQuestions[i].answer);
   }
   showAllCardsButtonEl.textContent = 'REFRESH CARDS';
 }

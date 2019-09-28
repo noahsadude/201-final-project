@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* THIS FILE CONTAINS STYLING THAT IS UNIQUE TO add_new.html:
 please use it for stuff like dropdown, buttons etc that is unique to this page */
 
@@ -96,3 +97,97 @@ button {
   color: #00069D;
   font-size: 18px;
 }
+=======
+/* THIS FILE CONTAINS STYLING THAT IS UNIQUE TO add_new.html:
+please use it for stuff like dropdown, buttons etc that is unique to this page */
+
+#add-new {
+  width: 720px;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.4);
+  border-radius: 5px;
+}
+
+#question-dropdown {
+  display: block;
+  width: 200px;
+  margin: 10px auto;
+}
+
+#add-new-question > textarea {
+  margin: 20px;
+}
+
+#add-new-question > button {
+  margin: 10px auto;
+}
+
+#all-cards-wrapper {
+  width: 760px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.card-container {
+  margin: 30px;
+  word-break: break-all;
+  word-break: break-word;
+}
+
+textarea {
+  padding: 10px;
+  line-height: 1.5;
+  border-radius: 5px;
+  box-shadow: 5px 10px 5px #296A9B;
+}
+
+button {
+  background-color: #FFFFDA;
+  border-radius: 5px;
+  padding: 8px;
+  margin: 0 20px;
+}
+
+/* FLIP CARD START */
+.flip-card {
+  background-color: transparent;
+  width: 320px;
+  cursor: pointer;
+  user-select: none;
+  perspective: 1000px; /* for 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  min-height: 200px;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateX(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  min-height: 200px;
+  padding: 10px;
+  backface-visibility: hidden;
+}
+
+/* Style the back side */
+.flip-card-back {
+  transform: rotateX(180deg);
+}
+/* FLIP CARD END */
+
+>>>>>>> 76aa5af8ecdc28325a88e82ead0acc74a4359c2f
