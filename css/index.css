@@ -1,5 +1,6 @@
 /* THIS FILE CONTAINS STYLING THAT IS UNIQUE TO index.html:
 please use it for stuff like card, buttons etc that is unique to this page */
+@import url('https://fonts.googleapis.com/css?family=Federo|Kaushan+Script|Philosopher&display=swap');
 
 body {
   user-select: none; /* prevent text selection */
@@ -51,6 +52,9 @@ body {
 
 #known-ul li:last-child {
   float: right;
+}
+
+figure {
 }
 
 figcaption {
