@@ -1,5 +1,3 @@
-/* THIS FILE CONTAINS STYLING THAT IS UNIQUE TO add_new.html:
-please use it for stuff like dropdown, buttons etc that is unique to this page */
 
 #cardify-logo {
   padding-top: 5px;
@@ -18,9 +16,51 @@ please use it for stuff like dropdown, buttons etc that is unique to this page *
 
 #question-dropdown {
   display: block;
-  width: 200px;
+  width: 300px;
   margin: 10px auto;
+ 
+  /* START of Edited from https://www.filamentgroup.com/lab/select-css.html */
+	font-size: 14px;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 700;
+	color: #444;
+	line-height: 1.3;
+	padding: .6em 1.4em .5em .8em;
+	max-width: 100%;
+	box-sizing: border-box;
+	border: 1px solid #aaa;
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+	border-radius: .5em;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: #fff;
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+	  linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+	background-repeat: no-repeat, repeat;
+	background-position: right .7em top 50%, 0 0;
+  background-size: .65em auto, 100%;
 }
+
+#question-dropdown::-ms-expand {
+	display: none;
+}
+
+#question-dropdown:hover {
+	border-color: #FBDB53;
+}
+
+#question-dropdown:focus {
+	border-color: #aaa;
+	box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+	box-shadow: 0 0 0 3px -moz-mac-focusring;
+	color: #222;
+	outline: none;
+}
+#question-dropdown option {
+	font-weight:normal;
+}
+/* END of Edited from  https://www.filamentgroup.com/lab/select-css.html */
 
 #add-new-question > textarea {
   margin: 20px;
@@ -50,14 +90,30 @@ textarea {
   padding: 10px;
   line-height: 1.5;
   border-radius: 5px;
-  box-shadow: 5px 10px 5px #296A9B;
+  box-shadow: 5px 10px 5px #014579;
 }
 
 button {
   background-color: #FFFFDA;
   border-radius: 5px;
-  padding: 8px;
-  margin: 0 20px;
+  padding: 6px 20px;
+  margin: 15px 18px 0 18px;
+  font-family: "Times New Roman, serif";
+  color: #00069D;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+}
+
+button:hover {
+  border-color: #FBDB53;
+}
+
+#add-new-question > textarea {
+  margin: 20px;
+}
+
+#add-new-question > button {
+  margin: 10px auto;
 }
 
 /* FLIP CARD START */
@@ -68,31 +124,28 @@ button {
   user-select: none;
   perspective: 1000px; /* for 3D effect */
 }
-
 /* This container is needed to position the front and back side */
 .flip-card-inner {
-  min-height: 200px;
   transition: transform 0.8s;
   transform-style: preserve-3d;
 }
-
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
-  transform: rotateX(180deg);
-}
-
 /* Position the front and back side */
 .flip-card-front, .flip-card-back {
   position: absolute;
   width: 100%;
-  min-height: 200px;
   padding: 10px;
   backface-visibility: hidden;
 }
-
 /* Style the back side */
 .flip-card-back {
   transform: rotateX(180deg);
 }
-/* FLIP CARD END */
 
+.flip-card-inner, .flip-card-front, .flip-card-back {
+  min-height: 200px;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateX(180deg);
+}
+/* FLIP CARD END */

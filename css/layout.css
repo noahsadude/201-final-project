@@ -1,6 +1,6 @@
 /* THIS FILE CONTAINS STYLING THAT IS APPLIED TO ALL PAGES:
 please use it for stuff like headers, footers, nav etc that is not unique to one page */
-
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Source+Sans+Pro&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Frijole|Gloria+Hallelujah&display=swap');
 
 html {
