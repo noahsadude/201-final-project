@@ -105,6 +105,8 @@ function deleteQuestionHandler() {
     store('questionsKey', allQuestions);
     resetFormValues();
     populateForm();
+  } else {
+    resetFormValues();
   }
 }
 
