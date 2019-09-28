@@ -11,19 +11,6 @@ let questionFound;
 let questionFoundIndex;
 
 // ***HELPER FUNCTIONS***
-//fuction for rendering element to the page
-function render(element, parent, content, className) {
-  let el = document.createElement(element);
-  if(content) {
-    el.textContent = content;
-  }
-  if(className) {
-    el.className = className;
-  }
-  parent.appendChild(el);
-  return el;
-}
-
 //function for filling selectQuestion dropdown with values from allQuestions array
 function populateForm() {
   let test = localStorage.getItem('questionsKey');
@@ -76,7 +63,6 @@ function selectQuestionHandler() {
 
 //function for adding new question or editing existing
 function submitQuestionHandler(e) {
-  e.preventDefault();
   //get the form values
   let dropdown = selectQuestionEl.value;
   let question = removeEnter(e.target.question.value);
