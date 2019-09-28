@@ -26,6 +26,7 @@ body {
 .known-level {
   width: 50px;
   padding: 20px;
+  transition: 0.5s;
 }
 
 .known-level:hover {
