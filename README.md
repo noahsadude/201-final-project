@@ -43,11 +43,16 @@ If you would like to add a new card, go to Add New Cards in the drop-down menu a
 
 [Post-it notes CSS](https://mentormate.com/blog/css-postit-note/)
 
+[Flip card when hover](https://www.w3schools.com/howto/howto_css_flip_card.asp)
+
+[Flip card when clicked](https://codepen.io/desandro/pen/LmWoWe)
+
 [Icon](https://icons8.com/)
 
 [Logo](https://www.freelogodesign.org/)
 
-License
+
+**License**
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
