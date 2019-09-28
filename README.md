@@ -18,6 +18,7 @@ URL: https://noahsadude.github.io/201-final-project/index.html
 
 [Javascript](https://github.com/noahsadude/201-final-project/tree/master/js)
 
+
 Instructions:
 1. Click on the flashcard to start.
 
@@ -45,3 +46,8 @@ If you would like to add a new card, go to Add New Cards in the drop-down menu a
 
 # License
 [MIT](https://choosealicense.com/licenses/mit/)
+
+[Post-it notes CSS](https://mentormate.com/blog/css-postit-note/)
+
+[Icon](https://icons8.com/)
+
