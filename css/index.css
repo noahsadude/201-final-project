@@ -27,6 +27,11 @@ body {
 .known-level {
   width: 50px;
   padding: 20px;
+  transition: 0.5s;
+}
+
+.known-level:hover {
+  transform: scale(1.4);
 }
 
 #known-level-wrapper > img {
@@ -47,7 +52,6 @@ body {
 
 #known-ul li:nth-child(2) {
   float: left;
-  
 } 
 
 #known-ul li:last-child {
