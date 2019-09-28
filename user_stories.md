@@ -1,12 +1,12 @@
 [Google Docs to user stories.](https://docs.google.com/document/d/1D36ofhP0-x6LyAE3bMIzaEb7nMFDQVV3T-MfjSWazy0/edit?ts=5d899229#heading=h.ojffrdlt1o98)
 
-1. - As a developer, I want to make a fun, intuitive, simple GUI;
-1. - As a developer, I want to make three distinct web pages:
+1.  As a developer, I want to make a fun, intuitive, simple GUI;
+1.  As a developer, I want to make three distinct web pages:
   - index.html - flash card page
   - add-question.html  - add a new question and its answer to the mix
   - about.html - photo and description of each dev team member;
-1. - As a developer, I want to enable the user to add more questions and answers;
-1. - As a developer, I want to make a Question constructor function with:
+1.  As a developer, I want to enable the user to add more questions and answers;
+1.  As a developer, I want to make a Question constructor function with:
   - Properties:
     - question category
     - question
@@ -18,16 +18,16 @@
   - Prototypes:
     - calcPlayerScore = answered/shown;
 
-1. - As a developer, I want to enable onclick events:
+1.  As a developer, I want to enable onclick events:
 When the card is showing a question, the click will flip the card over and show the answer and vice versa;
-1. - As a developer, I want to keep track of when a question was last shown;
+1.  As a developer, I want to keep track of when a question was last shown;
 E.g. If a question was shown within the last 5 times, don’t show. One possible way to do this for this example:
 five arrays: inLastOne[], inLastTwo[], inLastThree[], inLastFour[], inLastFive[] (this might make the code easier to read than creating one array of these individual arrays)
 After each question, store that question’s key (the question string);
-1. - As a developer, I want to keep track of the user’s number of times correct for each question shown;
-1. - As a developer, I want to provide a navigation link to allow the user to view information about the app developer team;
-1. - As a developer, I want to provide a navigation link to allow the user to add new question/answer pairs to the localStorage database of questions and answers;
-1. - As a developer, I want to store updated Questions objects in localStorage (when the user selects an answer);
+1.  As a developer, I want to keep track of the user’s number of times correct for each question shown;
+1.  As a developer, I want to provide a navigation link to allow the user to view information about the app developer team;
+1.  As a developer, I want to provide a navigation link to allow the user to add new question/answer pairs to the localStorage database of questions and answers;
+1.  As a developer, I want to store updated Questions objects in localStorage (when the user selects an answer);
 
 1. As a flash card user, I want to be presented a random question.
 1. As a flash card user, I want to be able to choose a familiarity button card and be shown the answer to the question currently shown.
