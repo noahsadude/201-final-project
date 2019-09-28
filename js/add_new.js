@@ -132,4 +132,3 @@ showAllCardsButtonEl.addEventListener('click', showAllCards);
 
 // ***EXECUTING CODE***
 populateForm();
-
