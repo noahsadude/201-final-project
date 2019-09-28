@@ -12,10 +12,13 @@ let questionFoundIndex;
 
 // ***HELPER FUNCTIONS***
 //fuction for rendering element to the page
-function render(element, parent, content) {
+function render(element, parent, content, className) {
   let el = document.createElement(element);
   if(content) {
     el.textContent = content;
+  }
+  if(className) {
+    el.className = className;
   }
   parent.appendChild(el);
   return el;
@@ -111,9 +114,12 @@ function showAllCards() {
     allCardsWrapperEl.removeChild(allCardsWrapperEl.firstChild);
   }
   for (let i in allQuestions) {
-    let divEl = render('div', allCardsWrapperEl);
-    divEl.className = 'card-container post-it';
-    render('p', divEl, allQuestions[i].question);
+    let flipCardEl = render('div', allCardsWrapperEl, false, 'card-container flip-card');
+    let flipCardInnerEl = render('div', flipCardEl, false, 'flip-card-inner post-it');
+    let flipCardFronEl = render('div', flipCardInnerEl, false, 'flip-card-front post-it');
+    render('p', flipCardFronEl, allQuestions[i].question);
+    let flipCardBackEl = render('div', flipCardInnerEl, false, 'flip-card-back post-it');
+    render('p', flipCardBackEl, allQuestions[i].answer);
   }
   showAllCardsButtonEl.textContent = 'REFRESH CARDS';
 }
