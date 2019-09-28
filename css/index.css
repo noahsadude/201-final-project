@@ -1,6 +1,12 @@
 /* THIS FILE CONTAINS STYLING THAT IS UNIQUE TO index.html:
 please use it for stuff like card, buttons etc that is unique to this page */
 
+#cardify-logo {
+  padding-top: 5px;
+  padding-bottom: 20px;
+  margin: auto;
+}
+
 body {
   user-select: none; /* prevent text selection */
 }

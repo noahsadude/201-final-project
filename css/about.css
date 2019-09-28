@@ -1,6 +1,12 @@
 /* THIS FILE CONTAINS STYLING THAT IS UNIQUE TO about.html:
 please use it for stuff like images, paragrphs etc that is unique to this page */
 
+#cardify-logo {
+  padding-top: 5px;
+  padding-bottom: 20px;
+  margin: auto;
+}
+
 .flex-container {
   display: flex;
   flex-direction: row;
