@@ -162,18 +162,18 @@ function updateKnownProperties(event) {
   let isValidClick = true;
 
   switch(event.target.alt) {
-  case undefined:
-    isValidClick = false;
-    break;
-  case 'know':
-    allQuestions[currentQuestionIndex].markedKnown++;
-    break;
-  case 'familiar':
-    allQuestions[currentQuestionIndex].markedFamiliar++;
-    break;
-  case 'not-known':
-    allQuestions[currentQuestionIndex].markedUnknown++;
-    break;
+    case undefined:
+      isValidClick = false;
+      break;
+    case 'know':
+      allQuestions[currentQuestionIndex].markedKnown++;
+      break;
+    case 'familiar':
+      allQuestions[currentQuestionIndex].markedFamiliar++;
+      break;
+    case 'not-known':
+      allQuestions[currentQuestionIndex].markedUnknown++;
+      break;
   }
 
   // then render a new card
@@ -189,6 +189,18 @@ function updateKnownProperties(event) {
   }
 
 } // end updateKnownProperties()
+
+function store(key, value){
+  //local storage
+  localStorage.setItem(key, JSON.stringify(value));
+  console.log('local storage stored');
+}
+
+function retrieve(key){
+  let value = JSON.parse(localStorage.getItem(key));
+  console.log('local storage called');
+  return value;
+}
 
 // footer content
 pEl.textContent = `${'\u00A9'} ${year} CodeFellows StrikeForce`;
@@ -223,3 +235,4 @@ function retrieve(key){
     renderInstructions(startInstruction);
   }
 })();
+

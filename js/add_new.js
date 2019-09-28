@@ -43,6 +43,13 @@ function resetFormValues() {
   questionEl.value = answerEl.value = '';
 }
 
+//function for removing enter keys
+function removeEnter(string) {
+  console.log(string);
+  console.log(string.replace(/\n/g, ''));
+  return string.replace(/\n/g, '');
+}
+
 // ***EVENT HANDLERS***
 //function for getting element index if such question exists in allQuestions array
 function selectQuestionHandler() {
@@ -66,8 +73,8 @@ function submitQuestionHandler(e) {
   e.preventDefault();
   //get the form values
   let dropdown = selectQuestionEl.value;
-  let question = e.target.question.value;
-  let answer = e.target.answer.value;
+  let question = removeEnter(e.target.question.value);
+  let answer = removeEnter(e.target.answer.value);
   //if this is a new question - add it to the array of questions, else - edit selected
   if(dropdown === 'Add New') {
     new Question(question, answer);
