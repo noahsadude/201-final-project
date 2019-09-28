@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Cardify</title>
     <link href="css/reset.css" type="text/css" rel="stylesheet" />
     <link href="css/layout.css" type="text/css" rel="stylesheet" />
     <link href="css/add_new.css" type="text/css" rel="stylesheet" />
@@ -27,7 +27,7 @@
     </header>
 
     <main>
-      <h1>ADD NEW CARDS</h1>
+      <h1>ADD OR EDIT CARDS</h1>
       <section id="add-new">
         <!-- <h3 id="input">Flash Card</h3>
         <p id="information">Input the flash card data in the fields to generate your flash cards.</p> -->
@@ -36,12 +36,12 @@
             <label for="question-dropdown"></label>
             <select id="question-dropdown" name="question_dropdown" selected="Add New"></select>
             <label for="question"></label>
-            <textarea  id="question" type="text" name="question" rows="10" cols="30" placeholder="Select an existing question from the drop down list above to edit, or type a new question here." required></textarea>
+            <textarea  id="question" type="text" name="question" rows="10" cols="30" placeholder="Select an existing question from the drop down list above to edit, or type a new question here." onfocus="this.placeholder=''" required></textarea>
             <label for="answer"></label>
-            <textarea  id="answer" type="text" name="answer" rows="10" cols="30" placeholder="Edit an existing answer, or type a new answer here." required></textarea>
+            <textarea  id="answer" type="text" name="answer" rows="10" cols="30" placeholder="Edit an existing answer, or type a new answer here." onfocus="this.placeholder=''" required></textarea>
             <div>
-              <button id="delete" type="button" value="Delete">DELETE</button>
-              <button type="submit" value="Submit">SUBMIT</button>
+              <button id="delete" type="button" value="Delete">Delete</button>
+              <button type="submit" value="Submit">Submit</button>
             </div>
           </form>
         </fieldset>
