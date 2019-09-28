@@ -12,11 +12,7 @@ Version 1.0.0
 
 Libraries, Frameworks, Packages:
 
-URL: https://noahsadude.github.io/201-final-project/index.html
-
-[index.html](https://github.com/noahsadude/201-final-project/blob/master/index.html)
-
-[Javascript](https://github.com/noahsadude/201-final-project/tree/master/js)
+URL: https://noahsadude.github.io/201-final-project/
 
 
 Instructions:
@@ -44,10 +40,11 @@ If you would like to add a new card, go to Add New Cards in the drop-down menu a
 
 [Dave DeSandro flip](https://codepen.io/desandro/pen/LmWoWe)
 
-# License
-[MIT](https://choosealicense.com/licenses/mit/)
-
 [Post-it notes CSS](https://mentormate.com/blog/css-postit-note/)
 
 [Icon](https://icons8.com/)
+
+# License
+[MIT](https://choosealicense.com/licenses/mit/)
+
 
