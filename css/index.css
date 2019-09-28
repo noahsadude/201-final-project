@@ -13,6 +13,10 @@ body {
   cursor: pointer;
 }
 
+.instructions, .flip-card-inner, .flip-card-front, .flip-card-back  {
+  min-height: 320px;
+}
+
 /* p element that holds rating buttons instruction */
 #rate-p {
   color: white;

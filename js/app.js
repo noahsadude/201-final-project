@@ -61,9 +61,8 @@ let baseQuestions = [
 ];
 let allQuestions = [];
 let cardWrapperEl = document.getElementById('card-wrapper');
-let questionOrAnswerEl = document.getElementById('question-or-answer');
 let startInstruction = 'Click on this card to start. Click again to reveal the answer. Each successive click  will flip the same card back and forth. To test yourself on a new question, rate your comfort-level with the current question by selecting one of the buttons below. You can add new cards or revise existing cards at any time by going to the Add New Cards page.';
-let questionIsShowing = false;
+// let questionIsShowing = false;
 let isRated = false;
 let knownLevelWrapperEl = document.getElementById('known-level-wrapper');
 let currentQuestionIndex = undefined;
@@ -86,6 +85,20 @@ function Question(question, answer) {
   allQuestions.push(this);
 }
 
+//fuction for rendering element to the page
+// eslint-disable-next-line no-unused-vars
+function render(element, parent, content, className) {
+  let el = document.createElement(element);
+  if(content) {
+    el.textContent = content;
+  }
+  if(className) {
+    el.className = className;
+  }
+  parent.appendChild(el);
+  return el;
+}
+
 // instantiate new Question objects from baseQuestions[]
 function instantiateBaseQuestions(){
   for(let i in baseQuestions) {
@@ -100,8 +113,9 @@ function instantiateAllQuestions(){
 
 // called at the end of app.js
 function renderInstructions(instruction){
-  questionOrAnswerEl.textContent = instruction;
-  questionIsShowing = false;
+  let divEl = render('div', cardWrapperEl, false, 'post-it instructions');
+  render('p', divEl, instruction);
+  // questionIsShowing = false;
 }
 
 // render randomly selected question to index.html
@@ -111,18 +125,27 @@ function randomNumber(min, max) {
 
 // called in updateKnownProperties(e) and handleCardClick(e)
 function renderQuizCard(questionIndex){
-  currentQuestionIndex = questionIndex;
-
-  if(questionIsShowing){
-    // If question value is showing, render answer value
-    questionOrAnswerEl.textContent = allQuestions[currentQuestionIndex].answer;
-    questionIsShowing = false;
-  } else if(isRated || questionIsShowing === false) {
-    // If answer value is showing, render question value
-    questionOrAnswerEl.textContent = allQuestions[currentQuestionIndex].question;
-    questionIsShowing = true;
-    isRated = false;
+  while (cardWrapperEl.firstChild) {
+    cardWrapperEl.removeChild(cardWrapperEl.firstChild);
   }
+  let flipCardInnerEl = render('div', cardWrapperEl, false, 'flip-card-inner post-it');
+  let flipCardFronEl = render('div', flipCardInnerEl, false, 'flip-card-front post-it');
+  render('p', flipCardFronEl, allQuestions[questionIndex].question);
+  let flipCardBackEl = render('div', flipCardInnerEl, false, 'flip-card-back post-it');
+  render('p', flipCardBackEl, allQuestions[questionIndex].answer);
+
+  isRated = false; //??
+  // currentQuestionIndex = questionIndex;
+  // if(questionIsShowing){
+  //   // If question value is showing, render answer value
+  //   questionOrAnswerEl.textContent = allQuestions[currentQuestionIndex].answer;
+  //   questionIsShowing = false;
+  // } else if(isRated || questionIsShowing === false) {
+  //   // If answer value is showing, render question value
+  //   questionOrAnswerEl.textContent = allQuestions[currentQuestionIndex].question;
+  //   questionIsShowing = true;
+  // isRated = false;
+  // }
 } // end renderQuizCard()
 
 // Called by the cardWrapperEl onclick event
@@ -134,7 +157,7 @@ function handleCardClick(event) {
     // need stop event to stop timer and calculate time elapsed
   }
   // if a rating was submitted or this is the first card is being requested
-  if(isRated === true || currentQuestionIndex === undefined) {
+  if(currentQuestionIndex === undefined) {
     currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
 
     // Update timesTested every time a new card is rendered
@@ -149,6 +172,8 @@ function handleCardClick(event) {
 
   if(numberOfQuestionsAsked === 1) {
     knownLevelWrapperEl.addEventListener('click', updateKnownProperties);
+    var card = document.getElementsByClassName('flip-card-inner')[0];
+    card.classList.toggle('is-flipped');
   }
 }
 
@@ -156,7 +181,7 @@ function handleCardClick(event) {
 function updateKnownProperties(event) {
   console.log('event.target.alt: ', event.target.alt);
   console.log('event.target: ', event.target);
-  questionIsShowing = false;
+  // questionIsShowing = false;
   let isValidClick = true;
 
   switch(event.target.alt) {
@@ -217,8 +242,5 @@ if(cardWrapperEl){
     instantiateBaseQuestions();
     console.log('base questions instantiated');
   }
-  if(questionOrAnswerEl){
-    renderInstructions(startInstruction);
-  }
+  renderInstructions(startInstruction);
 })();
- 
