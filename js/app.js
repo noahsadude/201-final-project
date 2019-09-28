@@ -74,8 +74,6 @@ let date = new Date();
 let hour = date.getHours();
 let minutes = ('0'+ date.getMinutes()).slice(-2);
 let year = date.getFullYear();
-let day = date.getDay();
-let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
 function Question(question, answer) {
   this.question = question;
@@ -90,7 +88,7 @@ function Question(question, answer) {
 
 // instantiate new Question objects from baseQuestions[]
 function instantiateBaseQuestions(){
-  for(let i = 0; i < baseQuestions.length; i++) {
+  for(let i in baseQuestions) {
     new Question(baseQuestions[i][0], baseQuestions[i][1]);
   }
 }
@@ -210,18 +208,6 @@ if(cardWrapperEl){
   cardWrapperEl.addEventListener('click', handleCardClick);
 }
 
-function store(key, value){
-  //local storage
-  localStorage.setItem(key, JSON.stringify(value));
-  console.log('local storage stored');
-}
-
-function retrieve(key){
-  let value = JSON.parse(localStorage.getItem(key));
-  console.log('local storage called');
-  return value;
-}
-
 (function(){
   let test = localStorage.getItem('questionsKey');
   if(test){
@@ -235,4 +221,4 @@ function retrieve(key){
     renderInstructions(startInstruction);
   }
 })();
-
+ 
