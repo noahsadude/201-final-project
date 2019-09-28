@@ -1,5 +1,6 @@
 'use strict';
 
+// ***GLOBAL VARIABLES***
 let baseQuestions = [
   ['refactor', 'the process of restructuring existing computer code without changing its external behavior.'],
   ['instantiate', ' to create an instance of an object in an object-oriented programming language.'],
@@ -62,7 +63,6 @@ let baseQuestions = [
 let allQuestions = [];
 let cardWrapperEl = document.getElementById('card-wrapper');
 let startInstruction = 'Click on this card to start. Click again to reveal the answer. Each successive click  will flip the same card back and forth. To test yourself on a new question, rate your comfort-level with the current question by selecting one of the buttons below. You can add new cards or revise existing cards at any time by going to the Add New Cards page.';
-// let questionIsShowing = false;
 let isRated = false;
 let knownLevelWrapperEl = document.getElementById('known-level-wrapper');
 let currentQuestionIndex = undefined;
@@ -74,6 +74,7 @@ let hour = date.getHours();
 let minutes = ('0'+ date.getMinutes()).slice(-2);
 let year = date.getFullYear();
 
+// ***CONSTRUCTOR FUNCTIONS***
 function Question(question, answer) {
   this.question = question;
   this.answer = answer;
@@ -85,8 +86,8 @@ function Question(question, answer) {
   allQuestions.push(this);
 }
 
+// ***HELPER FUNCTIONS***
 //fuction for rendering element to the page
-// eslint-disable-next-line no-unused-vars
 function render(element, parent, content, className) {
   let el = document.createElement(element);
   if(content) {
@@ -115,15 +116,14 @@ function instantiateAllQuestions(){
 function renderInstructions(instruction){
   let divEl = render('div', cardWrapperEl, false, 'post-it instructions');
   render('p', divEl, instruction);
-  // questionIsShowing = false;
 }
 
-// render randomly selected question to index.html
+// function for generating a random number
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-// called in updateKnownProperties(e) and handleCardClick(e)
+// function for rendering a card with a passed into it index
 function renderQuizCard(questionIndex){
   while (cardWrapperEl.firstChild) {
     cardWrapperEl.removeChild(cardWrapperEl.firstChild);
@@ -134,30 +134,19 @@ function renderQuizCard(questionIndex){
   let flipCardBackEl = render('div', flipCardInnerEl, false, 'flip-card-inner flip-card-back post-it');
   render('p', flipCardBackEl, allQuestions[questionIndex].answer);
 
-
-  isRated = false; //??
-  // currentQuestionIndex = questionIndex;
-  // if(questionIsShowing){
-  //   // If question value is showing, render answer value
-  //   questionOrAnswerEl.textContent = allQuestions[currentQuestionIndex].answer;
-  //   questionIsShowing = false;
-  // } else if(isRated || questionIsShowing === false) {
-  //   // If answer value is showing, render question value
-  //   questionOrAnswerEl.textContent = allQuestions[currentQuestionIndex].question;
-  //   questionIsShowing = true;
-  // isRated = false;
-  // }
-} // end renderQuizCard()
-
-// Called by the cardWrapperEl onclick event
-// Called by the Start nav link onclick event ///////     TODO      ////////
+  //not sure what do we need these for:
+  currentQuestionIndex = questionIndex;
+  isRated = false;
+}
 
 function flipCard() {
   var card = document.querySelector('.card');
   card.classList.toggle('is-flipped');
 }
 
-function handleCardClick(event) {
+// Called by the cardWrapperEl onclick event
+// Called by the Start nav link onclick event ///////     TODO      ////////
+function handleCardClick() {
   if(numberOfQuestionsAsked === 0) {
     // start timer
     console.log(`Started at: ${hour}:${minutes}`);
@@ -177,15 +166,8 @@ function handleCardClick(event) {
   }
 
   if(numberOfQuestionsAsked === 1) {
-    // alert('hello');
     cardWrapperEl.removeEventListener('click', handleCardClick);
     cardWrapperEl.addEventListener('click', flipCard);
-    // var card = document.querySelector('.card');
-    // card.addEventListener( 'click', function() {
-    //   card.classList.toggle('is-flipped');
-    // });
-    // var card = document.getElementsByClassName('flip-card-inner')[0];
-    // card.classList.toggle('is-flipped');
     knownLevelWrapperEl.addEventListener('click', updateKnownProperties);
   }
 }
@@ -194,7 +176,6 @@ function handleCardClick(event) {
 function updateKnownProperties(event) {
   console.log('event.target.alt: ', event.target.alt);
   console.log('event.target: ', event.target);
-  // questionIsShowing = false;
   let isValidClick = true;
 
   switch(event.target.alt) {
