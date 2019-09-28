@@ -1,11 +1,13 @@
 # 201-final-project
 
-(name of the flash card project goes here)
+Cardify
 
-Development Team (alphabetical order)
-Diana Kim, Leo Kukharau, Noah Rhodes, Kevin Tuchman
+Development Team: Diana Kim, Leo Kukharau, Noah Rhodes, Kevin Tuchman
 
 <!-- (Overall problem domain goes here) -->
+
+The problem domains are: assisting users study with flashcards, storing multiple flashcards, and assisting users create and share multiple flashcards.
+
 A website that allows you to generate flash cards to use for studying.
 
 Version 1.0.0
@@ -13,7 +15,6 @@ Version 1.0.0
 Libraries, Frameworks, Packages:
 
 URL: https://noahsadude.github.io/201-final-project/
-
 
 Instructions:
 1. Click on the flashcard to start.
@@ -44,7 +45,10 @@ If you would like to add a new card, go to Add New Cards in the drop-down menu a
 
 [Icon](https://icons8.com/)
 
-# License
+[Logo](https://www.freelogodesign.org/)
+
+License
+
 [MIT](https://choosealicense.com/licenses/mit/)
 
 
