@@ -1,4 +1,4 @@
-# 201-final-project
+![logo](/img/logo.png "Cardify Logo")
 
 Cardify
 
@@ -12,7 +12,7 @@ A website that allows you to generate flash cards to use for studying.
 
 Version 1.0.0
 
-Libraries, Frameworks, Packages:
+<!-- Libraries, Frameworks, Packages: -->
 
 URL: https://noahsadude.github.io/201-final-project/
 

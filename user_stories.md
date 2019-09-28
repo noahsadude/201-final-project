@@ -1,23 +1,9 @@
 # Developer
 1.  As a developer, I want to make a fun, intuitive, simple GUI;
-1.  As a developer, I want to make three distinct web pages:
-  - index.html - flash card page
-  - add-question.html  - add a new question and its answer to the mix
-  - about.html - photo and description of each dev team member;
+1.  As a developer, I want to make three distinct web pages: index.html,       add-question.html with the ability to add new question and its answer to the mix, about.html with photo and description of each member;
 1.  As a developer, I want to enable the user to add more questions and answers;
-1.  As a developer, I want to make a Question constructor function with:
-  - Properties:
-    - question category
-    - question
-    - answer
-    - number of times shown
-  - Number of times the user selects that they know the answer
-  - Number of times the user selects that they do not know the answer.
-  - Number of times the user selects that they are familiar, but not certain.
-  - Prototypes:
-    - calcPlayerScore = answered/shown;
-1.  As a developer, I want to enable onclick events:
-When the card is showing a question, the click will flip the card over and show the answer and vice versa;
+1.  As a developer, I want to make a question constructor function with the following properties: question category, question, answer, and number of times shown they know the answer; don't know the answer; or answers they select that are familiar, but not certain;
+1.  As a developer, I want to enable onclick events: when the card is showing a question, the click will flip the card over and show the answer and vice versa;
 1.  As a developer, I want to keep track of when a question was last shown;
 E.g. If a question was shown within the last 5 times, don’t show. One possible way to do this for this example:
 five arrays: inLastOne[], inLastTwo[], inLastThree[], inLastFour[], inLastFive[] (this might make the code easier to read than creating one array of these individual arrays)
@@ -49,5 +35,8 @@ After each question, store that question’s key (the question string);
 1. As a flash card user, I want to be able to upload images or draw on the question or answer side;
 1. As a flash card user, I want the card to flip;
 1. As a flash card user, I want to be able to create a 1000 cards and have them where ever I go on my device instead of carrying 1000 physical flash cards;
+1. As a flash card user, I want to change color of the cards;
+1. As a flash card user, I want my cards to be able to be downloaded;
+1. As a flash card user, I want my cards to have animation;
 
 [Google Docs to user stories.](https://docs.google.com/document/d/1D36ofhP0-x6LyAE3bMIzaEb7nMFDQVV3T-MfjSWazy0/edit?ts=5d899229#heading=h.ojffrdlt1o98)
