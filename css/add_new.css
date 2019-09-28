@@ -40,6 +40,20 @@ please use it for stuff like dropdown, buttons etc that is unique to this page *
   word-break: break-word;
 }
 
+textarea {
+  padding: 10px;
+  line-height: 1.5;
+  border-radius: 5px;
+  box-shadow: 5px 10px 5px #296A9B;
+}
+
+button {
+  background-color: #FFFFDA;
+  border-radius: 5px;
+  padding: 8px;
+  margin: 0 20px;
+}
+
 /* FLIP CARD START */
 .flip-card {
   background-color: transparent;
@@ -75,3 +89,4 @@ please use it for stuff like dropdown, buttons etc that is unique to this page *
   transform: rotateX(180deg);
 }
 /* FLIP CARD END */
+
