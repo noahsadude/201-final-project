@@ -68,3 +68,41 @@ figcaption {
   color: white;
   font-size: 13px;
 }
+
+
+
+/* FLIPPING FRONT PAGE CART */
+.flip-card {
+  width: 480px;
+  min-height: 320px;
+  perspective: 1000px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-card-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  min-height: 320px;
+}
+
+.flip-card-back {
+  min-height: 320px;
+  transform: rotateY(180deg);
+}

@@ -128,11 +128,12 @@ function renderQuizCard(questionIndex){
   while (cardWrapperEl.firstChild) {
     cardWrapperEl.removeChild(cardWrapperEl.firstChild);
   }
-  let flipCardInnerEl = render('div', cardWrapperEl, false, 'flip-card-inner post-it');
-  let flipCardFronEl = render('div', flipCardInnerEl, false, 'flip-card-front post-it');
+  let flipCardInnerEl = render('div', cardWrapperEl, false, 'card');
+  let flipCardFronEl = render('div', flipCardInnerEl, false, 'flip-card-inner flip-card-front post-it');
   render('p', flipCardFronEl, allQuestions[questionIndex].question);
-  let flipCardBackEl = render('div', flipCardInnerEl, false, 'flip-card-back post-it');
+  let flipCardBackEl = render('div', flipCardInnerEl, false, 'flip-card-inner flip-card-back post-it');
   render('p', flipCardBackEl, allQuestions[questionIndex].answer);
+
 
   isRated = false; //??
   // currentQuestionIndex = questionIndex;
@@ -150,6 +151,12 @@ function renderQuizCard(questionIndex){
 
 // Called by the cardWrapperEl onclick event
 // Called by the Start nav link onclick event ///////     TODO      ////////
+
+function flipCard() {
+  var card = document.querySelector('.card');
+  card.classList.toggle('is-flipped');
+}
+
 function handleCardClick(event) {
   if(numberOfQuestionsAsked === 0) {
     // start timer
@@ -159,7 +166,6 @@ function handleCardClick(event) {
   // if a rating was submitted or this is the first card is being requested
   if(currentQuestionIndex === undefined) {
     currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
-
     // Update timesTested every time a new card is rendered
     numberOfQuestionsAsked++;
     allQuestions[currentQuestionIndex].timesTested++;
@@ -171,9 +177,16 @@ function handleCardClick(event) {
   }
 
   if(numberOfQuestionsAsked === 1) {
+    // alert('hello');
+    cardWrapperEl.removeEventListener('click', handleCardClick);
+    cardWrapperEl.addEventListener('click', flipCard);
+    // var card = document.querySelector('.card');
+    // card.addEventListener( 'click', function() {
+    //   card.classList.toggle('is-flipped');
+    // });
+    // var card = document.getElementsByClassName('flip-card-inner')[0];
+    // card.classList.toggle('is-flipped');
     knownLevelWrapperEl.addEventListener('click', updateKnownProperties);
-    var card = document.getElementsByClassName('flip-card-inner')[0];
-    card.classList.toggle('is-flipped');
   }
 }
 
@@ -185,18 +198,18 @@ function updateKnownProperties(event) {
   let isValidClick = true;
 
   switch(event.target.alt) {
-    case undefined:
-      isValidClick = false;
-      break;
-    case 'know':
-      allQuestions[currentQuestionIndex].markedKnown++;
-      break;
-    case 'familiar':
-      allQuestions[currentQuestionIndex].markedFamiliar++;
-      break;
-    case 'not-known':
-      allQuestions[currentQuestionIndex].markedUnknown++;
-      break;
+  case undefined:
+    isValidClick = false;
+    break;
+  case 'know':
+    allQuestions[currentQuestionIndex].markedKnown++;
+    break;
+  case 'familiar':
+    allQuestions[currentQuestionIndex].markedFamiliar++;
+    break;
+  case 'not-known':
+    allQuestions[currentQuestionIndex].markedUnknown++;
+    break;
   }
 
   // then render a new card
