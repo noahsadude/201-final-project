@@ -9,6 +9,7 @@ let showAllCardsButtonEl = document.getElementById('show-all-cards');
 let allCardsWrapperEl = document.getElementById('all-cards-wrapper');
 let questionFound;
 let questionFoundIndex;
+let showCards = false;
 
 // ***HELPER FUNCTIONS***
 //function for filling selectQuestion dropdown with values from allQuestions array
@@ -63,6 +64,7 @@ function selectQuestionHandler() {
 
 //function for adding new question or editing existing
 function submitQuestionHandler(e) {
+  e.preventDefault();
   //get the form values
   let dropdown = selectQuestionEl.value;
   let question = removeEnter(e.target.question.value);
@@ -85,6 +87,9 @@ function submitQuestionHandler(e) {
       populateForm();
     }
   }
+  if(showCards) {
+    showAllCards();
+  }
 }
 
 //function for deleting selected question
@@ -96,6 +101,9 @@ function deleteQuestionHandler() {
     populateForm();
   } else {
     resetFormValues();
+  }
+  if(showCards) {
+    showAllCards();
   }
 }
 
@@ -112,7 +120,21 @@ function showAllCards() {
     let flipCardBackEl = render('div', flipCardInnerEl, false, 'flip-card-back post-it');
     render('p', flipCardBackEl, allQuestions[i].answer);
   }
-  showAllCardsButtonEl.textContent = 'REFRESH CARDS';
+  showCards = true;
+  showAllCardsButtonEl.textContent = 'HIDE CARDS';
+  showAllCardsButtonEl.removeEventListener('click', showAllCards);
+  showAllCardsButtonEl.addEventListener('click', hideCards);
+}
+
+//function for hiding all cards
+function hideCards() {
+  while (allCardsWrapperEl.firstChild) {
+    allCardsWrapperEl.removeChild(allCardsWrapperEl.firstChild);
+  }
+  showCards = false;
+  showAllCardsButtonEl.textContent = 'SHOW ALL CARDS';
+  showAllCardsButtonEl.removeEventListener('click', hideCards);
+  showAllCardsButtonEl.addEventListener('click', showAllCards);
 }
 
 // ***EVENT LISTENERS***
