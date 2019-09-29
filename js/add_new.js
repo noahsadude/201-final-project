@@ -102,6 +102,9 @@ function deleteQuestionHandler() {
   } else {
     resetFormValues();
   }
+  if(showCards) {
+    showAllCards();
+  }
 }
 
 //function for rendering card for all questions from allQuestion array
