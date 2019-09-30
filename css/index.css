@@ -13,13 +13,13 @@ body {
   cursor: pointer;
 }
 
-.instructions, .flip-card-inner, .flip-card-front, .flip-card-back  {
-  min-height: 320px;
+.instructions {
+  min-height: 350px;
 }
 
 /* p element that holds rating buttons instruction */
 #rate-p {
-  color: #303952;
+  color: #f7f5f5;
   font-size: 18px;
   font-weight: 900;
   padding-top: 20px;
@@ -43,14 +43,13 @@ body {
   transition: 0.5s;
 }
 
-.known-level:hover {
+/* .known-level:hover {
   transform: scale(1.4);
-}
+} */
 
 #known-level-wrapper {
   font-family: "Montserrat", sans-serif;
 }
-
 #known-level-wrapper > img {
   cursor: pointer;
 }
@@ -58,6 +57,7 @@ body {
   width: 300px;
   margin: auto;
 }
+
 /* 
 #known-ul li {
   margin: 5px;
@@ -83,7 +83,7 @@ figcaption {
 /* FLIPPING FRONT PAGE CART */
 .flip-card {
   width: 480px;
-  min-height: 320px;
+  min-height: 350px;
   perspective: 1000px;
 }
 
@@ -107,11 +107,23 @@ figcaption {
   backface-visibility: hidden;
 }
 
+.flip-card-inner p {
+  margin: 25px;
+}
+
 .flip-card-front {
-  min-height: 320px;
+  color: #546de5;
+  min-height: 350px;
+  background: url('../img/paper_front.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .flip-card-back {
-  min-height: 320px;
+  color: #e15f41;
+  min-height: 350px;
   transform: rotateY(180deg);
+  background: url('../img/paper_back.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }

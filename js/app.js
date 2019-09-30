@@ -114,7 +114,8 @@ function instantiateAllQuestions(){
 // called at the end of app.js
 function renderInstructions(instruction){
   if(cardWrapperEl){
-    let divEl = render('div', cardWrapperEl, false, 'post-it instructions');
+    let flipCardInnerEl = render('div', cardWrapperEl, false, 'card');
+    let divEl = render('div', flipCardInnerEl, false, 'flip-card-inner instructions post-it');
     render('p', divEl, instruction);
   }
 }
@@ -165,10 +166,10 @@ function handleCardClick() {
 function handleRateClick(event) {
   if(numberOfQuestionsAsked > 0) {
 
-    console.log('event.target.alt: ', event.target.alt);
+    console.log('event.target.alt: ', event.target.value);
     let isValidClick = true;
 
-    switch(event.target.alt) {
+    switch(event.target.value) {
     case undefined:
       isValidClick = false;
       break;
