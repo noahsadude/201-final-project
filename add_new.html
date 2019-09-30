@@ -10,7 +10,9 @@
   </head>
 
   <body>
-    <header>
+    <header> 
+      <a href="index.html" ><img id="cardify-logo" src="img/logo_cardify.png" alt="logo" title="cardify" /></a>
+      <h1>ADD OR REVISE CARDS</h1>
       <nav role="navigation">
         <div id="menuToggle">
           <input type="checkbox" />
@@ -27,32 +29,32 @@
     </header>
 
     <main>
-        <img id="cardify-logo" src="img/logo.png" alt="logo" title="cardify" />
-      <h1>ADD OR REVISE CARDS</h1>
-      <section id="add-new">
-        <!-- <h3 id="input">Flash Card</h3>
-        <p id="information">Input the flash card data in the fields to generate your flash cards.</p> -->
-        <fieldset>
-          <form id="add-new-question">
-            <label for="question-dropdown"></label>
-            <select id="question-dropdown" name="question_dropdown" selected="Add New"></select>
-            <label for="question"></label>
-            <textarea  id="question" type="text" name="question" rows="10" cols="30" placeholder="Select an existing question from the drop down list above to edit, or type a new question here." onfocus="this.placeholder=''" required></textarea>
-            <label for="answer"></label>
-            <textarea  id="answer" type="text" name="answer" rows="10" cols="30" placeholder="Edit an existing answer, or type a new answer here." onfocus="this.placeholder=''" required></textarea>
-            <div>
-              <button id="delete" type="button" value="Delete">Clear</button>
-              <button type="submit" value="Submit">Submit</button>
-            </div>
-          </form>
-        </fieldset>
-      </section>
-      <section id="show-all">
-        <button id="show-all-cards">SHOW ALL CARDS</button>
-        <div id="all-cards-wrapper">
+      <div class="content-wrapper">
+        <section id="add-new">
+          <!-- <h3 id="input">Flash Card</h3>
+          <p id="information">Input the flash card data in the fields to generate your flash cards.</p> -->
+          <fieldset>
+            <form id="add-new-question">
+              <label for="question-dropdown"></label>
+              <select id="question-dropdown" name="question_dropdown" selected="Add New"></select>
+              <label for="question"></label>
+              <textarea  id="question" type="text" name="question" rows="10" cols="30" placeholder="Select an existing question from the drop down list above to edit, or type a new question here." onfocus="this.placeholder=''" required></textarea>
+              <label for="answer"></label>
+              <textarea  id="answer" type="text" name="answer" rows="10" cols="30" placeholder="Edit an existing answer, or type a new answer here." onfocus="this.placeholder=''" required></textarea>
+              <div>
+                <button id="delete" type="button" value="Delete">CLEAR</button>
+                <button type="submit" value="Submit">SUBMIT</button>
+              </div>
+            </form>
+          </fieldset>
+        </section>
+        <section id="show-all">
+          <button id="show-all-cards">SHOW ALL CARDS</button>
+          <div id="all-cards-wrapper">
 
-        </div>
-      </section>
+          </div>
+        </section>
+      </div>
     </main>
 
     <footer>

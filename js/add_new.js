@@ -56,9 +56,9 @@ function selectQuestionHandler() {
   }
   if(!questionFound) {
     resetFormValues();
-    deleteButtonEl.textContent = 'Clear';
+    deleteButtonEl.textContent = 'CLEAR';
   } else {
-    deleteButtonEl.textContent = 'Delete';
+    deleteButtonEl.textContent = 'DELETE';
   }
 }
 
