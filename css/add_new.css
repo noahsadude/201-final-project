@@ -1,18 +1,12 @@
 
-#cardify-logo {
-  padding-top: 5px;
-  padding-bottom: 20px;
-  margin: auto;
-}
-
-#add-new {
+/* #add-new {
   width: 720px;
   margin: 20px auto;
   padding: 20px;
   background: rgba(255, 255, 255, 0.4);
   box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.4);
   border-radius: 5px;
-}
+} */
 
 #question-dropdown {
   display: block;
@@ -30,7 +24,7 @@
 	box-sizing: border-box;
 	border: 1px solid #aaa;
 	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
-	border-radius: .5em;
+	border-radius: 5px;
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
@@ -52,18 +46,27 @@
 
 #question-dropdown:focus {
 	border-color: #aaa;
-	box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
-	box-shadow: 0 0 0 3px -moz-mac-focusring;
+	/* box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7); */
+	/* box-shadow: 0 0 0 3px -moz-mac-focusring; */
 	color: #222;
 	outline: none;
 }
 #question-dropdown option {
-	font-weight:normal;
+	font-weight: normal;
 }
 /* END of Edited from  https://www.filamentgroup.com/lab/select-css.html */
 
 #add-new-question > textarea {
   margin: 20px;
+  background: #e5e5e5;
+  padding: 10px;
+  line-height: 1.5;
+  border-radius: 5px;
+  box-shadow: 2px 3px 7px #494949;
+  font-family: "Montserrat", sans-serif;
+  /* font-family: 'Gloria Hallelujah', cursive; */
+  font-size: 20px;
+  text-align: justify;
 }
 
 #add-new-question > button {
@@ -86,14 +89,7 @@
   word-break: break-word;
 }
 
-textarea {
-  padding: 10px;
-  line-height: 1.5;
-  border-radius: 5px;
-  box-shadow: 5px 10px 5px #014579;
-}
-
-button {
+/* button {
   background-color: #FFFFDA;
   border-radius: 5px;
   padding: 6px 20px;
@@ -106,7 +102,7 @@ button {
 
 button:hover {
   border-color: #FBDB53;
-}
+} */
 
 #add-new-question > textarea {
   margin: 20px;
@@ -134,11 +130,17 @@ button:hover {
   position: absolute;
   width: 100%;
   padding: 10px;
+  color: #546de5;
   backface-visibility: hidden;
+  background: url('../img/paper_front.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 /* Style the back side */
 .flip-card-back {
+  color: #e15f41;
   transform: rotateX(180deg);
+  background: url('../img/paper_back.jpg');
 }
 
 .flip-card-inner, .flip-card-front, .flip-card-back {

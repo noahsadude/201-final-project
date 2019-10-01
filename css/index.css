@@ -1,12 +1,6 @@
 /* THIS FILE CONTAINS STYLING THAT IS UNIQUE TO index.html:
 please use it for stuff like card, buttons etc that is unique to this page */
 
-#cardify-logo {
-  padding-top: 5px;
-  padding-bottom: 20px;
-  margin: auto;
-}
-
 body {
   user-select: none; /* prevent text selection */
 }
@@ -19,17 +13,28 @@ body {
   cursor: pointer;
 }
 
-.instructions, .flip-card-inner, .flip-card-front, .flip-card-back  {
-  min-height: 320px;
+.instructions {
+  min-height: 350px;
 }
 
 /* p element that holds rating buttons instruction */
 #rate-p {
-  color: white;
+  color: #f7f5f5;
   font-size: 18px;
+  font-weight: 900;
   padding-top: 20px;
   padding-bottom: 10px;
 }
+
+/* #yes {
+  background: #546de5;
+}
+#not_sure {
+  background: #f5cd79;
+}
+#no {
+  background: #e15f41;
+} */
 
 /* 3 img elements that hold the rating buttons */
 .known-level {
@@ -38,14 +43,13 @@ body {
   transition: 0.5s;
 }
 
-.known-level:hover {
+/* .known-level:hover {
   transform: scale(1.4);
-}
+} */
 
 #known-level-wrapper {
   font-family: "Montserrat", sans-serif;
 }
-
 #known-level-wrapper > img {
   cursor: pointer;
 }
@@ -54,10 +58,11 @@ body {
   margin: auto;
 }
 
+/* 
 #known-ul li {
   margin: 5px;
-}
-
+} */
+/* 
 #known-ul li:nth-child(1) {
   float: left;
 }
@@ -68,26 +73,24 @@ body {
 
 #known-ul li:last-child {
   float: right;
-}
+} */
 
 figcaption {
   color: white;
   font-size: 13px;
 }
 
-
-
 /* FLIPPING FRONT PAGE CART */
 .flip-card {
   width: 480px;
-  min-height: 320px;
+  min-height: 350px;
   perspective: 1000px;
 }
 
 .card {
   width: 100%;
   height: 100%;
-  transition: transform 0.6s;
+  transition: transform 0.3s;
   transform-style: preserve-3d;
   cursor: pointer;
   position: relative;
@@ -104,11 +107,27 @@ figcaption {
   backface-visibility: hidden;
 }
 
+.flip-card-inner p {
+  margin: 25px;
+}
+
 .flip-card-front {
-  min-height: 320px;
+  color: #546de5;
+  font-size: 30px;
+  line-height: 35px;
+  min-height: 350px;
+  background: url('../img/paper_front.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .flip-card-back {
-  min-height: 320px;
+  color: #e15f41;
+  font-size: 30px;
+  line-height: 35px;
+  min-height: 350px;
   transform: rotateY(180deg);
+  background: url('../img/paper_back.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }

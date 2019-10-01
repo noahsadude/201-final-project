@@ -10,8 +10,10 @@
   </head>
 
   <body>
-     
+
     <header>
+      <a href="index.html" ><img id="cardify-logo" src="img/logo_cardify.png" alt="logo"/></a>
+      <h1>WELCOME TO CARDIFY</h1>
       <nav role="navigation">
         <div id="menuToggle">
           <input type="checkbox" />
@@ -28,43 +30,44 @@
     </header>
     
     <main>
-      <img id="cardify-logo" src="img/logo.png" alt="logo" title="cardify" />
-
-      <h1>WELCOME</h1>
-
-      <section id="progress">
-        <!-- TODO: progress bar and timer -->
-      </section>
-
-      <section id="card-wrapper" class="card-container flip-card">
-        <!-- RENDERED CARD GOES HERE -->
-      </section>
-      <section id="known-level-wrapper"> 
-        <p id="rate-p">Rate your knowledge to move on to the next card.</p>
-        <ul id="known-ul">
-          <li>
-            <figure>
-              <img class="known-level" src="img/trophy-icon.png" alt="known" title="I know this!" />
-              <figcaption>I know this!</figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img class="known-level" src="img/unsure-icon.png" alt="unsure" title="I'm not sure" />
-              <figcaption>I'm not sure.</figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img class="known-level" src="img/sweating-icon.png" alt="unknown" title="I don't know that at all." />
-              <figcaption>I don't know.</figcaption>
-            </figure>
-          </li>
-        </ul>
+      <div class="content-wrapper">
+        <section id="progress">
+          <!-- TODO: progress bar and timer -->
         </section>
-      <section id="next-question-wrapper">
-        <!-- TODO: cards with next questions -->
-      </section>
+
+        <section id="card-wrapper" class="card-container flip-card">
+          <!-- RENDERED CARD GOES HERE -->
+        </section>
+        <section id="known-level-wrapper"> 
+          <p id="rate-p">Do you know the answer?</p>
+          <button id="yes" type="button" value="know">YES</button>
+          <button id="not_sure" type="button" value="familiar">NOT SURE</button>
+          <button id="no" type="button" value="not-known">NO</button>
+          <!-- <ul id="known-ul">
+            <li>
+              <figure>
+                <img class="known-level" src="img/trophy-icon.png" alt="known" title="I know this!" />
+                <figcaption>I know this!</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <img class="known-level" src="img/unsure-icon.png" alt="unsure" title="I'm not sure" />
+                <figcaption>I'm not sure.</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <img class="known-level" src="img/sweating-icon.png" alt="unknown" title="I don't know that at all." />
+                <figcaption>I don't know.</figcaption>
+              </figure>
+            </li>
+          </ul> -->
+          </section>
+        <section id="next-question-wrapper">
+          <!-- TODO: cards with next questions -->
+        </section>
+      </div>
     </main>
     <footer>
       <p id="year"></p>
