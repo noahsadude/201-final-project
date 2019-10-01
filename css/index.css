@@ -113,6 +113,8 @@ figcaption {
 
 .flip-card-front {
   color: #546de5;
+  font-size: 30px;
+  line-height: 35px;
   min-height: 350px;
   background: url('../img/paper_front.jpg');
   background-repeat: no-repeat;
@@ -121,6 +123,8 @@ figcaption {
 
 .flip-card-back {
   color: #e15f41;
+  font-size: 30px;
+  line-height: 35px;
   min-height: 350px;
   transform: rotateY(180deg);
   background: url('../img/paper_back.jpg');
