@@ -195,7 +195,6 @@ footer {
 /* post-it note style */
 .post-it {
   color: black;
-  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
