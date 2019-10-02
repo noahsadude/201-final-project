@@ -119,7 +119,9 @@ function showAllCards() {
     render('p', flipCardFronEl, allQuestions[i].question);
     let flipCardBackEl = render('div', flipCardInnerEl, false, 'flip-card-back post-it');
     render('p', flipCardBackEl, allQuestions[i].answer);
-    let imgEl = render('img', flipCardBackEl, false, 'delete_button', 'img/delete_icon.png');
+    let imgEl = render('img', flipCardBackEl, false, 'delete_button', 'img/edit_icon.png');
+    imgEl.alt = imgEl.title = 'Edit this card';
+    imgEl = render('img', flipCardBackEl, false, 'delete_button', 'img/delete_icon.png');
     imgEl.alt = imgEl.title = 'Delete this card';
   }
   showCards = true;
@@ -142,15 +144,22 @@ function hideCards() {
 //function for deleting card
 function deleteCardHandler(e) {
   if(e.target.tagName === 'IMG') {
-    let currentCardContent = e.target.parentElement.parentElement.firstChild.textContent;
+    let selectedQuestion = e.target.parentElement.parentElement.firstChild.textContent;
     for(let i in allQuestions) {
-      if(currentCardContent === allQuestions[i].question){
+      if(selectedQuestion === allQuestions[i].question) {
         questionFound = true;
         questionFoundIndex = i;
       }
     }
-    deleteQuestionHandler();
+    if(e.target.alt === 'Delete this card') {
+      deleteQuestionHandler();
+    } else {
+      selectQuestionEl.value = allQuestions[questionFoundIndex].question;
+      selectQuestionHandler();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
+
 }
 
 // ***EVENT LISTENERS***
