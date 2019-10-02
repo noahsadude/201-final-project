@@ -151,7 +151,7 @@ function shuffle(objectsOrIndexes){
   for (var i = objectsOrIndexes.length - 1; i >= 0; i--){
     let randomIndex = Math.floor(Math.random() * (i + 1));
     let itemAtIndex = objectsOrIndexes[randomIndex];
-    objectsOrIndexes[randomIndex];
+    objectsOrIndexes[randomIndex] = objectsOrIndexes[i];
     objectsOrIndexes[i] = itemAtIndex;
   }
 
@@ -221,7 +221,7 @@ function handleRateClick(event){
         allQuestions[currentQuestionIndex].knowledgeLevel = 0;
         break;
     }
-   
+
     if (numberOfQuestionsAsked === allQuestions.length){
       notKnownQuestionsIndexes = fillNotKnownQuestionsIndexes();
       currentQuestionIndex = notKnownQuestionsIndexes[currentNotKnownQuestionIndex];
