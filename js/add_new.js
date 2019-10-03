@@ -50,9 +50,7 @@ function removeEnter(string) {
 
 function addNewCategory() {
   let inputEl = render('input', categoryWrapperEl);
-  // inputEl.id = 'new-category-input';
   let buttonEl = render('button', categoryWrapperEl, 'ADD');
-  // buttonEl.id = 'new-category-button';
   buttonEl.type = 'button';
   buttonEl.addEventListener('click', addNewCategoryHandler);
 

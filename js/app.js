@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
 'use strict';
+/* eslint-disable no-unused-vars */
 
 // ***GLOBAL VARIABLES***
 let baseQuestions = [
@@ -239,7 +239,7 @@ function handleFirstCardClick(){
   // currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
   generateIndexes();
   currentQuestionIndex = chosenQuestions[clickCount];
-  renderQuizCard(currentQuestionIndex);
+  renderQuizCard();
   clickCount++;
   cardWrapperEl.removeEventListener('click', handleFirstCardClick);
   cardWrapperEl.addEventListener('click', flipCard);

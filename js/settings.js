@@ -1,5 +1,8 @@
 'use strict';
 /* eslint-disable no-undef */
+
+let selectCategoryEl = document.getElementById('category');
+
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
   modal.style.display = 'block';
@@ -24,10 +27,12 @@ function buildQuestionArray(){
   let arrayOfQuestions = [];
 
   for(let i = 0; i < allQuestions.length; i++){
-    if(known && allQuestions[i].knowledgeLevel === 2 ||
-      familiar && allQuestions[i].knowledgeLevel === 1 ||
-      unknown && allQuestions[i].knowledgeLevel === 0){
-      arrayOfQuestions.push(i);
+    if(selectCategoryEl.value === allQuestions[i].category) {
+      if(known && allQuestions[i].knowledgeLevel === 2 ||
+        familiar && allQuestions[i].knowledgeLevel === 1 ||
+        unknown && allQuestions[i].knowledgeLevel === 0){
+        arrayOfQuestions.push(i);
+      }
     }
   }
   console.table(arrayOfQuestions);
@@ -35,7 +40,23 @@ function buildQuestionArray(){
   // chosenQuestions = shuffle(chosenQuestions);
   store('chosen-questions',chosenQuestions);
   modal.style.display = 'none';
+  clickCount = 0;
+  handleFirstCardClick();
   // alert('settings saved!');
+}
+
+function populateCategory() {
+  let test = localStorage.getItem('questionsKey');
+  if(test){
+    allQuestions = retrieve('questionsKey');
+  }
+  clearContainer(selectCategoryEl);
+  //and then add new categories
+  getCategories();
+  render('option', selectCategoryEl, 'All Categories');
+  for (let i in categories) {
+    render('option', selectCategoryEl, categories[i]);
+  }
 }
 // if(known){
 //   console.log('known checked!');
@@ -67,4 +88,8 @@ function buildQuestionArray(){
 //   }
 // }
 
+// ***EVENT LISTENERS***
 settingsSubmit.addEventListener('click', buildQuestionArray);
+
+// ***EXECUTING CODE***
+populateCategory();
