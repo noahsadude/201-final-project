@@ -53,26 +53,12 @@ body {
   margin: 10px auto;
 }
 
-/* #yes {
-  background: #546de5;
-}
-#not_sure {
-  background: #f5cd79;
-}
-#no {
-  background: #e15f41;
-} */
-
 /* 3 img elements that hold the rating buttons */
 .known-level {
   width: 50px;
   padding: 20px;
   transition: 0.5s;
 }
-
-/* .known-level:hover {
-  transform: scale(1.4);
-} */
 
 #known-level-wrapper {
   font-family: "Montserrat", sans-serif;

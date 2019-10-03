@@ -95,7 +95,6 @@ header img {
   padding: 50px;
   padding-left: 30px;
   padding-top: 125px;
-  /* background: #ffffff; */
   background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
   list-style-type: none;
   -webkit-font-smoothing: antialiased; /* to stop flickering of text in safari */
@@ -147,7 +146,6 @@ h1 {
   display: inline;
   left: 350px;
   top: -60px;
-  /* font-family: 'Bevan', cursive; */
   font-family: 'Montserrat', sans-serif;
   letter-spacing: 5px;
   font-size: 40px;
@@ -202,9 +200,5 @@ footer {
   font-family: 'Gloria Hallelujah', cursive;
   font-size: 25px;
   line-height: 30px;
-  /* padding: 10px; */
-  /* border: 1px solid #E8E8E8;  */
   border-bottom-right-radius: 60px 5px; 
-  /* background: -webkit-linear-gradient(-45deg, #f8f893 81%,#f5f591 82%,#f5f58d 82%,#f7f7c2 100%); */
-  /* background-color: white; */
 }
