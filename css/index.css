@@ -15,6 +15,7 @@ body {
 
 .instructions {
   min-height: 350px;
+  box-shadow: 3px 2px 6px 2px rgba(0,0,0,0.5);
 }
 #settings {
   width: 50px;
@@ -139,6 +140,7 @@ figcaption {
   background: url('../img/paper_front.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  box-shadow: 3px 2px 6px 2px rgba(0,0,0,0.5);
 }
 
 .flip-card-back {
@@ -150,6 +152,7 @@ figcaption {
   background: url('../img/paper_back.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  box-shadow: 3px 2px 6px 2px rgba(0,0,0,0.5);
 }
 
 /* The Modal (background) */
