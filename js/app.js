@@ -61,6 +61,17 @@ let baseQuestions = [
   // ['haphephobia', 'the fear of being touched']
 ];
 let allQuestions = [];
+//settings
+let chosenQuestions = [];
+let chosenQuestionsIndex = 0;
+let modal = document.getElementById('myModal');
+let btn = document.getElementById('settings');
+let span = document.getElementsByClassName('close')[0];
+let settingsSubmit = document.getElementById('settings-submit');
+let settingKnown = document.getElementById('settings-known');
+let settingFamiliar = document.getElementById('settings-familiar');
+let settingNotKnown = document.getElementById('settings-not-known');
+//end settings
 let cardWrapperEl = document.getElementById('card-wrapper');
 let instruction = 'Click on this card to start. Click again to reveal the answer. Each successive click  will flip the same card back and forth. To test yourself on a new question, rate your comfort-level with the current question by selecting one of the buttons below. You can add new cards or revise existing cards at any time by going to the Add New Cards page.';
 let knownLevelWrapperEl = document.getElementById('known-level-wrapper');
@@ -166,17 +177,16 @@ function fillNotKnownQuestionsIndexes(){
 
   for (let i in allQuestions){
     switch (allQuestions[i].knowledgeLevel){
-      case 0:
-        notKnownQuestionsIndexes.push(i);
-        numberOfNotKnowns++;
-        break;
-      case 1:
-        notKnownQuestionsIndexes.push(i);
-        numberOfNotKnowns++;
-        break;
-      case 2:
-        notKnownQuestionsIndexes.push(i);
-        break;
+    case 0:
+      notKnownQuestionsIndexes.push(i);
+      numberOfNotKnowns++;
+      break;
+    case 1:
+      notKnownQuestionsIndexes.push(i);
+      numberOfNotKnowns++;
+      break;
+    case 2:
+      break;
     }
 
     if (numberOfNotKnowns === 0){
@@ -211,18 +221,18 @@ function handleRateClick(event){
     let isValidClick = true;
 
     switch(event.target.value){
-      case undefined:
-        isValidClick = false;
-        break;
-      case 'known':
-        allQuestions[currentQuestionIndex].knowledgeLevel = 2;
-        break;
-      case 'unsure':
-        allQuestions[currentQuestionIndex].knowledgeLevel = 1;
-        break;
-      case 'unknown':
-        allQuestions[currentQuestionIndex].knowledgeLevel = 0;
-        break;
+    case undefined:
+      isValidClick = false;
+      break;
+    case 'known':
+      allQuestions[currentQuestionIndex].knowledgeLevel = 2;
+      break;
+    case 'unsure':
+      allQuestions[currentQuestionIndex].knowledgeLevel = 1;
+      break;
+    case 'unknown':
+      allQuestions[currentQuestionIndex].knowledgeLevel = 0;
+      break;
     }
 
     if (numberOfQuestionsAsked === allQuestions.length){
