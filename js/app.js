@@ -64,6 +64,7 @@ let baseQuestions = [
 let allQuestions = [];
 //settings
 let chosenQuestions = [];
+let clickCount = 0;
 // let chosenQuestionsIndex = 0;
 let modal = document.getElementById('myModal');
 let btn = document.getElementById('settings');
@@ -217,9 +218,9 @@ function handleFirstCardClick(){
 
   // currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
   generateIndexes();
-  currentQuestionIndex = chosenQuestions[0];
+  currentQuestionIndex = chosenQuestions[clickCount];
   renderQuizCard(currentQuestionIndex);
-
+  clickCount++;
   cardWrapperEl.removeEventListener('click', handleFirstCardClick);
   cardWrapperEl.addEventListener('click', flipCard);
   knownLevelWrapperEl.addEventListener('click', handleRateClick);
@@ -257,12 +258,13 @@ function handleRateClick(event){
   // }
 
   // then render a new card
-  if (isValidClick){
+  console.log(clickCount);
+  if (isValidClick && clickCount < chosenQuestions.length){
     // let randomNum = randomNumber(0, allQuestions.length - 1);
     // renderQuizCard(randomNum);
-    currentQuestionIndex++;
+    currentQuestionIndex = chosenQuestions[clickCount];
     renderQuizCard();
-
+    clickCount++;
     // redundant
     // numberOfQuestionsAsked++;
 
@@ -271,6 +273,9 @@ function handleRateClick(event){
     console.log(`handleRatedClick() > updated timesTested: ${allQuestions[currentQuestionIndex].timesTested}`);
 
     store('questionsKey',allQuestions);
+  } else {
+    instruction = 'hello world';
+    renderInstructions();
   }
   // }
 } // end handleRateClick()
