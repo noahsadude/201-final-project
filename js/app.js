@@ -130,6 +130,9 @@ function instantiateAllQuestions(){
 // called at the end of app.js
 function renderInstructions(){
   if(cardWrapperEl){
+    while (cardWrapperEl.firstChild) {
+      cardWrapperEl.removeChild(cardWrapperEl.firstChild);
+    }
     let flipCardInnerEl = render('div', cardWrapperEl, false, 'card');
     let divEl = render('div', flipCardInnerEl, false, 'flip-card-inner instructions post-it');
     render('p', divEl, instruction);
@@ -276,6 +279,7 @@ function handleRateClick(event){
   } else {
     instruction = 'hello world';
     renderInstructions();
+    cardWrapperEl.removeEventListener('click', flipCard);
   }
   // }
 } // end handleRateClick()

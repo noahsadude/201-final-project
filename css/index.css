@@ -9,14 +9,30 @@ body {
   width: 480px;
   min-height: 320px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 20px 20px 20px;
   cursor: pointer;
 }
 
 .instructions {
   min-height: 350px;
 }
-
+#settings {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  left: 730px;
+  background-color: rgba(255, 255, 255, 0.8);
+  background-image: url('../img/settings.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+#settings:hover {
+  transition: 0.2s ease 0s;
+  background-color: rgba(245, 205, 121, 0.6);
+}
 /* p element that holds rating buttons instruction */
 #rate-p {
   color: #f7f5f5;
