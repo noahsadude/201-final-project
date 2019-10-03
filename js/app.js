@@ -87,13 +87,16 @@ function Question(question, answer) {
 
 // ***HELPER FUNCTIONS***
 //fuction for rendering element to the page
-function render(element, parent, content, className) {
+function render(element, parent, content, className, src) {
   let el = document.createElement(element);
   if(content) {
     el.textContent = content;
   }
   if(className) {
     el.className = className;
+  }
+  if(src) {
+    el.src = src;
   }
   parent.appendChild(el);
   return el;
