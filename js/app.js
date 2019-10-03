@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 'use strict';
 
 // ***GLOBAL VARIABLES***
@@ -63,7 +64,7 @@ let baseQuestions = [
 let allQuestions = [];
 //settings
 let chosenQuestions = [];
-let chosenQuestionsIndex = 0;
+// let chosenQuestionsIndex = 0;
 let modal = document.getElementById('myModal');
 let btn = document.getElementById('settings');
 let span = document.getElementsByClassName('close')[0];
@@ -77,9 +78,9 @@ let instruction = 'Click on this card to start. Click again to reveal the answer
 let knownLevelWrapperEl = document.getElementById('known-level-wrapper');
 let footerEl = document.getElementsByTagName('footer');
 let pEl = document.getElementById('year');
-let currentQuestionIndex = 0;
+let currentQuestionIndex;
 let numberOfQuestionsAsked = 0;
-let notKnownQuestionsIndexes = [];
+// let notKnownQuestionsIndexes = [];
 let currentNotKnownQuestionIndex = 0;
 let date = new Date();
 let hour = date.getHours();
@@ -139,6 +140,16 @@ function renderInstructions(){
 //   return Math.floor(Math.random() * (max - min + 1) + min);
 // }
 
+//if user set any settings - use chosenQuestions, else - go through all questions
+function generateIndexes() {
+  if (chosenQuestions.length < 1) {
+    for (let i in allQuestions) {
+      chosenQuestions.push(i);
+    }
+  }
+  console.table(chosenQuestions);
+}
+
 // function renderQuizCard(questionIndex){
 function renderQuizCard(){
   while (cardWrapperEl.firstChild) {
@@ -172,29 +183,29 @@ function shuffle(objectsOrIndexes){
   return objectsOrIndexes;
 }
 
-function fillNotKnownQuestionsIndexes(){
-  let numberOfNotKnowns = 0;
+// function fillNotKnownQuestionsIndexes(){
+//   let numberOfNotKnowns = 0;
 
-  for (let i in allQuestions){
-    switch (allQuestions[i].knowledgeLevel){
-    case 0:
-      notKnownQuestionsIndexes.push(i);
-      numberOfNotKnowns++;
-      break;
-    case 1:
-      notKnownQuestionsIndexes.push(i);
-      numberOfNotKnowns++;
-      break;
-    case 2:
-      break;
-    }
+//   for (let i in allQuestions){
+//     switch (allQuestions[i].knowledgeLevel){
+//     case 0:
+//       notKnownQuestionsIndexes.push(i);
+//       numberOfNotKnowns++;
+//       break;
+//     case 1:
+//       notKnownQuestionsIndexes.push(i);
+//       numberOfNotKnowns++;
+//       break;
+//     case 2:
+//       break;
+//     }
 
-    if (numberOfNotKnowns === 0){
-      instruction = 'Congratulations! You have achieved 100%!';
-      renderInstructions();
-    }
-  }
-}
+//     if (numberOfNotKnowns === 0){
+//       instruction = 'Congratulations! You have achieved 100%!';
+//       renderInstructions();
+//     }
+//   }
+// }
 
 // ***EVENT HANDLERS***
 //while instructions are displayed replace them with question, add eventListener for answer buttons and make the card flip when clicked
@@ -205,6 +216,8 @@ function handleFirstCardClick(){
   // need stop event to stop timer and calculate time elapsed
 
   // currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
+  generateIndexes();
+  currentQuestionIndex = chosenQuestions[0];
   renderQuizCard(currentQuestionIndex);
 
   cardWrapperEl.removeEventListener('click', handleFirstCardClick);
@@ -216,50 +229,50 @@ function handleFirstCardClick(){
 // increment selected known property for the card that is showing
 function handleRateClick(event){
 
-  if (numberOfQuestionsAsked > 0){
-    console.log('event.target.alt: ', event.target.value);
-    let isValidClick = true;
+  // if (numberOfQuestionsAsked > 0){
+  console.log('event.target.alt: ', event.target.value);
+  let isValidClick = true;
 
-    switch(event.target.value){
-    case undefined:
-      isValidClick = false;
-      break;
-    case 'known':
-      allQuestions[currentQuestionIndex].knowledgeLevel = 2;
-      break;
-    case 'unsure':
-      allQuestions[currentQuestionIndex].knowledgeLevel = 1;
-      break;
-    case 'unknown':
-      allQuestions[currentQuestionIndex].knowledgeLevel = 0;
-      break;
-    }
-
-    if (numberOfQuestionsAsked === allQuestions.length){
-      notKnownQuestionsIndexes = fillNotKnownQuestionsIndexes();
-      currentQuestionIndex = notKnownQuestionsIndexes[currentNotKnownQuestionIndex];
-    } else if (numberOfQuestionsAsked > allQuestions.length){
-      currentQuestionIndex = numberOfQuestionsAsked - allQuestions.length;
-      currentNotKnownQuestionIndex++;
-    }
-
-    // then render a new card
-    if (isValidClick){
-      // let randomNum = randomNumber(0, allQuestions.length - 1);
-      // renderQuizCard(randomNum);
-      currentQuestionIndex++;
-      renderQuizCard();
-
-      // redundant
-      // numberOfQuestionsAsked++;
-
-      console.log(`handleRatedClick() > updated numberofQuestionsAsked: ${numberOfQuestionsAsked}`);
-      allQuestions[currentQuestionIndex].timesTested++;
-      console.log(`handleRatedClick() > updated timesTested: ${allQuestions[currentQuestionIndex].timesTested}`);
-
-      store('questionsKey',allQuestions);
-    }
+  switch(event.target.value){
+  case undefined:
+    isValidClick = false;
+    break;
+  case 'known':
+    allQuestions[currentQuestionIndex].knowledgeLevel = 2;
+    break;
+  case 'unsure':
+    allQuestions[currentQuestionIndex].knowledgeLevel = 1;
+    break;
+  case 'unknown':
+    allQuestions[currentQuestionIndex].knowledgeLevel = 0;
+    break;
   }
+
+  // if (numberOfQuestionsAsked === allQuestions.length){
+  //   notKnownQuestionsIndexes = fillNotKnownQuestionsIndexes();
+  //   currentQuestionIndex = notKnownQuestionsIndexes[currentNotKnownQuestionIndex];
+  // } else if (numberOfQuestionsAsked > allQuestions.length){
+  //   currentQuestionIndex = numberOfQuestionsAsked - allQuestions.length;
+  //   currentNotKnownQuestionIndex++;
+  // }
+
+  // then render a new card
+  if (isValidClick){
+    // let randomNum = randomNumber(0, allQuestions.length - 1);
+    // renderQuizCard(randomNum);
+    currentQuestionIndex++;
+    renderQuizCard();
+
+    // redundant
+    // numberOfQuestionsAsked++;
+
+    console.log(`handleRatedClick() > updated numberofQuestionsAsked: ${numberOfQuestionsAsked}`);
+    allQuestions[currentQuestionIndex].timesTested++;
+    console.log(`handleRatedClick() > updated timesTested: ${allQuestions[currentQuestionIndex].timesTested}`);
+
+    store('questionsKey',allQuestions);
+  }
+  // }
 } // end handleRateClick()
 
 function store(key, value){

@@ -96,7 +96,7 @@ header img {
   padding-left: 30px;
   padding-top: 125px;
   /* background: #ffffff; */
-  background: rgba(255, 255, 255, 0.6);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
   list-style-type: none;
   -webkit-font-smoothing: antialiased; /* to stop flickering of text in safari */
   transform-origin: 0% 0%;
