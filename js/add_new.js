@@ -55,7 +55,9 @@ function addNewCategory() {
   buttonEl.addEventListener('click', addNewCategoryHandler);
 
   function addNewCategoryHandler() {
-    categories.push(inputEl.value);
+    if(inputEl.value !== '') {
+      categories.push(inputEl.value);
+    }
     clearContainer(categoryWrapperEl);
     populateCategory();
   }
