@@ -33,6 +33,10 @@ body {
   transition: 0.2s ease 0s;
   background-color: rgba(245, 205, 121, 0.6);
 }
+#settings:active {
+  transition: 0s;
+  transform: translateY(3px);
+}
 /* p element that holds rating buttons instruction */
 #rate-p {
   color: #f7f5f5;
@@ -157,18 +161,20 @@ figcaption {
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+  overflow: hidden; /*hide scrollbar */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
 .modal-content {
+  width: 780px;
+  height: 300px;
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  border-radius: 5px;
 }
 
 /* The Close Button */

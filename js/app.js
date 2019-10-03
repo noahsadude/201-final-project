@@ -73,6 +73,7 @@ let settingsSubmit = document.getElementById('settings-submit');
 let settingKnown = document.getElementById('settings-known');
 let settingFamiliar = document.getElementById('settings-familiar');
 let settingNotKnown = document.getElementById('settings-not-known');
+let randomOrderEl = document.getElementById('random-order');
 //end settings
 let cardWrapperEl = document.getElementById('card-wrapper');
 let instruction = 'Click on this card to start. Click again to reveal the answer. Each successive click  will flip the same card back and forth. To test yourself on a new question, rate your comfort-level with the current question by selecting one of the buttons below. You can add new cards or revise existing cards at any time by going to the Add New Cards page.';
@@ -150,6 +151,9 @@ function generateIndexes() {
     for (let i in allQuestions) {
       chosenQuestions.push(i);
     }
+  }
+  if(randomOrderEl.checked) {
+    chosenQuestions = shuffle(chosenQuestions);
   }
   console.table(chosenQuestions);
 }
@@ -313,7 +317,7 @@ if(cardWrapperEl){
     console.log('base questions instantiated');
   }
 
-  allQuestions = shuffle(allQuestions);
+  // allQuestions = shuffle(allQuestions);
   for(let i in allQuestions){
     console.log(allQuestions[i].question);
   }
