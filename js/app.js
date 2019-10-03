@@ -8,66 +8,68 @@ let baseQuestions = [
   ['break statement', 'used to jump out of a switch() or a loop and resumes code after the loop'],
   ['continue statement', 'breaks one iteration in the loop, if a specified condition occurs, and continues with the next iteration in the loop.'],
   ['ophidiophobia', 'the fear of snakes'],
-  ['cynophobia', 'the fear of dogs'],
-  ['acrophobia', 'the fear of heights'],
-  ['astraphobia', 'the fear of thunder/lightning'],
-  ['mysophobia', 'the fear of germs'],
-  ['aerophobia', 'the fear of flying'],
-  ['thanatophobia', 'the fear of death'],
-  ['glossophobia', 'the fear of public speaking'],
-  ['atychiphobia', 'the fear of failure'],
-  ['alektorophobia', 'the fear of chickens'],
-  ['enochlophobia', 'the fear of crowds'],
-  ['autophobia', 'the fear of abandonment'],
-  ['hemophobia', 'the fear of blood'],
-  ['xenophobia', 'the fear of the unknown'],
-  ['vehophobia', 'the fear of driving'],
-  ['basiphobia', 'the fear of falling'],
-  ['achievemephobia', 'the fear of success'],
-  ['ailurophobia', 'the fear of cats'],
-  ['metathesiophobia', 'the fear of change'],
-  ['globophobia', 'the fear of balloons'],
-  ['nyctophobia', 'the fear of darkness'],
-  ['philophobia', 'the fear of love'],
-  ['triskaidekaphobia', 'the fear of the number 13'],
-  ['emetophobia', 'the fear of vomiting'],
-  ['gephyrophobia', 'the fear of bridges'],
-  ['panophobia', 'the fear of everything'],
-  ['paraskevidekatriaphobia', 'the fear of Friday the 13th'],
-  ['apiphobia', 'the fear of bees'],
-  ['koumpounophobia', 'the fear of buttons'],
-  ['athazagoraphobia', 'the fear of being forgotten or not remembering things'],
-  ['katsaridaphobia', 'the fear of cockroaches'],
-  ['latrophobia', 'the fear of doctors'],
-  ['pediophobia', 'the fear of dolls'],
-  ['ichthyophobia', 'the fear of fish'],
-  ['sidonglobophobia', 'the fear of cotton balls'],
-  ['scelerophobia', 'the fear of crime'],
-  ['pogonophobia', 'the fear of beards'],
-  ['omphalophobia', 'the fear of belly buttons'],
-  ['chaetophobia', 'the fear of hair'],
-  ['nosocomephobia', 'the fear of hospitals'],
-  ['ligyrophobia', 'the fear of loud noises'],
-  ['spheksophobia', 'the fear of wasps'],
-  ['coulrophobia', 'the fear of clowns'],
-  ['allodoxaphobia', 'the fear of other people\'s opinions of you'],
-  ['kinemortophobia', 'the fear of zombies'],
-  ['taphophobia', 'the fear of being buried alive'],
-  ['aurophobia', 'the fear of finding gold'],
-  ['nomophobia', 'the fear of being without cellphones'],
-  ['Hippopotomonstrosesquippedaliophobia', 'the fear of long words. This is one of two names for this condition.'],
-  ['Sesquipedalophobia', 'the fear of long words. This is one of two names for this condition.'],
-  ['phobophobia', 'the fear of fear'],
-  ['haphephobia', 'the fear of being touched']
+  // ['cynophobia', 'the fear of dogs'],
+  // ['acrophobia', 'the fear of heights'],
+  // ['astraphobia', 'the fear of thunder/lightning'],
+  // ['mysophobia', 'the fear of germs'],
+  // ['aerophobia', 'the fear of flying'],
+  // ['thanatophobia', 'the fear of death'],
+  // ['glossophobia', 'the fear of public speaking'],
+  // ['atychiphobia', 'the fear of failure'],
+  // ['alektorophobia', 'the fear of chickens'],
+  // ['enochlophobia', 'the fear of crowds'],
+  // ['autophobia', 'the fear of abandonment'],
+  // ['hemophobia', 'the fear of blood'],
+  // ['xenophobia', 'the fear of the unknown'],
+  // ['vehophobia', 'the fear of driving'],
+  // ['basiphobia', 'the fear of falling'],
+  // ['achievemephobia', 'the fear of success'],
+  // ['ailurophobia', 'the fear of cats'],
+  // ['metathesiophobia', 'the fear of change'],
+  // ['globophobia', 'the fear of balloons'],
+  // ['nyctophobia', 'the fear of darkness'],
+  // ['philophobia', 'the fear of love'],
+  // ['triskaidekaphobia', 'the fear of the number 13'],
+  // ['emetophobia', 'the fear of vomiting'],
+  // ['gephyrophobia', 'the fear of bridges'],
+  // ['panophobia', 'the fear of everything'],
+  // ['paraskevidekatriaphobia', 'the fear of Friday the 13th'],
+  // ['apiphobia', 'the fear of bees'],
+  // ['koumpounophobia', 'the fear of buttons'],
+  // ['athazagoraphobia', 'the fear of being forgotten or not remembering things'],
+  // ['katsaridaphobia', 'the fear of cockroaches'],
+  // ['latrophobia', 'the fear of doctors'],
+  // ['pediophobia', 'the fear of dolls'],
+  // ['ichthyophobia', 'the fear of fish'],
+  // ['sidonglobophobia', 'the fear of cotton balls'],
+  // ['scelerophobia', 'the fear of crime'],
+  // ['pogonophobia', 'the fear of beards'],
+  // ['omphalophobia', 'the fear of belly buttons'],
+  // ['chaetophobia', 'the fear of hair'],
+  // ['nosocomephobia', 'the fear of hospitals'],
+  // ['ligyrophobia', 'the fear of loud noises'],
+  // ['spheksophobia', 'the fear of wasps'],
+  // ['coulrophobia', 'the fear of clowns'],
+  // ['allodoxaphobia', 'the fear of other people\'s opinions of you'],
+  // ['kinemortophobia', 'the fear of zombies'],
+  // ['taphophobia', 'the fear of being buried alive'],
+  // ['aurophobia', 'the fear of finding gold'],
+  // ['nomophobia', 'the fear of being without cellphones'],
+  // ['Hippopotomonstrosesquippedaliophobia', 'the fear of long words. This is one of two names for this condition.'],
+  // ['Sesquipedalophobia', 'the fear of long words. This is one of two names for this condition.'],
+  // ['phobophobia', 'the fear of fear'],
+  // ['haphephobia', 'the fear of being touched']
 ];
 let allQuestions = [];
 let cardWrapperEl = document.getElementById('card-wrapper');
-let startInstruction = 'Click on this card to start. Click again to reveal the answer. Each successive click  will flip the same card back and forth. To test yourself on a new question, rate your comfort-level with the current question by selecting one of the buttons below. You can add new cards or revise existing cards at any time by going to the Add New Cards page.';
+let instruction = 'Click on this card to start. Click again to reveal the answer. Each successive click  will flip the same card back and forth. To test yourself on a new question, rate your comfort-level with the current question by selecting one of the buttons below. You can add new cards or revise existing cards at any time by going to the Add New Cards page.';
 let knownLevelWrapperEl = document.getElementById('known-level-wrapper');
 let footerEl = document.getElementsByTagName('footer');
 let pEl = document.getElementById('year');
-let currentQuestionIndex;
+let currentQuestionIndex = 0;
 let numberOfQuestionsAsked = 0;
+let notKnownQuestionsIndexes = [];
+let currentNotKnownQuestionIndex = 0;
 let date = new Date();
 let hour = date.getHours();
 let minutes = ('0'+ date.getMinutes()).slice(-2);
@@ -78,9 +80,7 @@ function Question(question, answer) {
   this.question = question;
   this.answer = answer;
   this.timesTested = 0;
-  this.markedKnown = 0;
-  this.markedFamiliar = 0;
-  this.markedUnknown = 0;
+  this.knowledgeLevel = 0;
 
   allQuestions.push(this);
 }
@@ -112,7 +112,7 @@ function instantiateAllQuestions(){
 }
 
 // called at the end of app.js
-function renderInstructions(instruction){
+function renderInstructions(){
   if(cardWrapperEl){
     let flipCardInnerEl = render('div', cardWrapperEl, false, 'card');
     let divEl = render('div', flipCardInnerEl, false, 'flip-card-inner instructions post-it');
@@ -120,24 +120,24 @@ function renderInstructions(instruction){
   }
 }
 
-// function for generating a random number
-function randomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
+// // function for generating a random number
+// function randomNumber(min, max) {
+//   return Math.floor(Math.random() * (max - min + 1) + min);
+// }
 
-// function for rendering a card
-function renderQuizCard(questionIndex){
+// function renderQuizCard(questionIndex){
+function renderQuizCard(){
   while (cardWrapperEl.firstChild) {
     cardWrapperEl.removeChild(cardWrapperEl.firstChild);
   }
   let flipCardInnerEl = render('div', cardWrapperEl, false, 'card');
   let flipCardFronEl = render('div', flipCardInnerEl, false, 'flip-card-inner flip-card-front post-it');
-  render('p', flipCardFronEl, allQuestions[questionIndex].question);
+  render('p', flipCardFronEl, allQuestions[currentQuestionIndex].question);
   let flipCardBackEl = render('div', flipCardInnerEl, false, 'flip-card-inner flip-card-back post-it');
-  render('p', flipCardBackEl, allQuestions[questionIndex].answer);
+  render('p', flipCardBackEl, allQuestions[currentQuestionIndex].answer);
 
   //update values
-  currentQuestionIndex = questionIndex;
+  // currentQuestionIndex = questionIndex;
   numberOfQuestionsAsked++;
   allQuestions[currentQuestionIndex].timesTested++;
 }
@@ -147,51 +147,103 @@ function flipCard() {
   card.classList.toggle('is-flipped');
 }
 
+function shuffle(objectsOrIndexes){
+  for (var i = objectsOrIndexes.length - 1; i >= 0; i--){
+    let randomIndex = Math.floor(Math.random() * (i + 1));
+    let itemAtIndex = objectsOrIndexes[randomIndex];
+    objectsOrIndexes[randomIndex] = objectsOrIndexes[i];
+    objectsOrIndexes[i] = itemAtIndex;
+  }
+
+  return objectsOrIndexes;
+}
+
+function fillNotKnownQuestionsIndexes(){
+  let numberOfNotKnowns = 0;
+
+  for (let i in allQuestions){
+    switch (allQuestions[i].knowledgeLevel){
+      case 0:
+        notKnownQuestionsIndexes.push(i);
+        numberOfNotKnowns++;
+        break;
+      case 1:
+        notKnownQuestionsIndexes.push(i);
+        numberOfNotKnowns++;
+        break;
+      case 2:
+        notKnownQuestionsIndexes.push(i);
+        break;
+    }
+
+    if (numberOfNotKnowns === 0){
+      instruction = 'Congratulations! You have achieved 100%!';
+      renderInstructions();
+    }
+  }
+}
+
 // ***EVENT HANDLERS***
 //while instructions are displayed replace them with question, add eventListener for answer buttons and make the card flip when clicked
-function handleCardClick() {
+// renamed function
+function handleFirstCardClick(){
   // start timer
   console.log(`Started at: ${hour}:${minutes}`);
   // need stop event to stop timer and calculate time elapsed
 
-  currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
+  // currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
   renderQuizCard(currentQuestionIndex);
 
-  cardWrapperEl.removeEventListener('click', handleCardClick);
+  cardWrapperEl.removeEventListener('click', handleFirstCardClick);
   cardWrapperEl.addEventListener('click', flipCard);
   knownLevelWrapperEl.addEventListener('click', handleRateClick);
 }
 
-// increment selected known property for the card that is showing
-function handleRateClick(event) {
-  if(numberOfQuestionsAsked > 0) {
 
+// increment selected known property for the card that is showing
+function handleRateClick(event){
+
+  if (numberOfQuestionsAsked > 0){
     console.log('event.target.alt: ', event.target.value);
     let isValidClick = true;
 
-    switch(event.target.value) {
-    case undefined:
-      isValidClick = false;
-      break;
-    case 'know':
-      allQuestions[currentQuestionIndex].markedKnown++;
-      break;
-    case 'familiar':
-      allQuestions[currentQuestionIndex].markedFamiliar++;
-      break;
-    case 'not-known':
-      allQuestions[currentQuestionIndex].markedUnknown++;
-      break;
+    switch(event.target.value){
+      case undefined:
+        isValidClick = false;
+        break;
+      case 'known':
+        allQuestions[currentQuestionIndex].knowledgeLevel = 2;
+        break;
+      case 'unsure':
+        allQuestions[currentQuestionIndex].knowledgeLevel = 1;
+        break;
+      case 'unknown':
+        allQuestions[currentQuestionIndex].knowledgeLevel = 0;
+        break;
+    }
+
+    if (numberOfQuestionsAsked === allQuestions.length){
+      notKnownQuestionsIndexes = fillNotKnownQuestionsIndexes();
+      currentQuestionIndex = notKnownQuestionsIndexes[currentNotKnownQuestionIndex];
+    } else if (numberOfQuestionsAsked > allQuestions.length){
+      currentQuestionIndex = numberOfQuestionsAsked - allQuestions.length;
+      currentNotKnownQuestionIndex++;
     }
 
     // then render a new card
-    if(isValidClick) {
-      let randomNum = randomNumber(0, allQuestions.length - 1);
-      renderQuizCard(randomNum);
-      numberOfQuestionsAsked++;
-      console.log('updated numberofQeustionsAsked from handleRateClick(): ', numberOfQuestionsAsked);
-      allQuestions[randomNum].timesTested++;
-      console.log('updated timesTested in handleRateClick():', allQuestions[randomNum].timesTested);
+    if (isValidClick){
+      // let randomNum = randomNumber(0, allQuestions.length - 1);
+      // renderQuizCard(randomNum);
+      currentQuestionIndex++;
+      renderQuizCard();
+
+      // redundant
+      // numberOfQuestionsAsked++;
+
+      console.log(`handleRatedClick() > updated numberofQuestionsAsked: ${numberOfQuestionsAsked}`);
+      allQuestions[currentQuestionIndex].timesTested++;
+      console.log(`handleRatedClick() > updated timesTested: ${allQuestions[currentQuestionIndex].timesTested}`);
+
       store('questionsKey',allQuestions);
     }
   }
@@ -211,12 +263,13 @@ function retrieve(key){
 
 // ***EVENT LISTENERS***
 if(cardWrapperEl){
-  cardWrapperEl.addEventListener('click', handleCardClick);
+  cardWrapperEl.addEventListener('click', handleFirstCardClick);
 }
 
 // ***EXECUTING CODE***
 (function(){
   let test = localStorage.getItem('questionsKey');
+
   if(test){
     instantiateAllQuestions();
     console.log('all questions instantiated');
@@ -224,7 +277,12 @@ if(cardWrapperEl){
     instantiateBaseQuestions();
     console.log('base questions instantiated');
   }
-  renderInstructions(startInstruction);
+
+  allQuestions = shuffle(allQuestions);
+  for(let i in allQuestions){
+    console.log(allQuestions[i].question);
+  }
+  renderInstructions();
 })();
 
 // footer content
