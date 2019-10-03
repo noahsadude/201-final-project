@@ -50,6 +50,7 @@ function buildQuestionArray(){
     }
   }
   chosenQuestions = arrayOfQuestions;
+  chosenQuestions = shuffle(chosenQuestions);
   store('chosen-questions',chosenQuestions);
   alert('settings saved!');
 }
