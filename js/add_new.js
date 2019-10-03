@@ -1,6 +1,8 @@
 /* eslint-disable no-undef */
 // ***GLOBAL VARIABLES***
 let formEl = document.getElementById('add-new-question');
+let categoryWrapperEl = document.getElementById('category-wrapper');
+let selectCategoryEl = document.getElementById('category');
 let selectQuestionEl = document.getElementById('question-dropdown');
 let questionEl = document.getElementById('question');
 let answerEl = document.getElementById('answer');
@@ -13,20 +15,27 @@ let showCards = false;
 
 // ***HELPER FUNCTIONS***
 //function for filling selectQuestion dropdown with values from allQuestions array
+function populateCategory() {
+  let test = localStorage.getItem('questionsKey');
+  if(test){
+    allQuestions = retrieve('questionsKey');
+  }
+  clearContainer(selectCategoryEl);
+  //and then add new categories
+  getCategories();
+  render('option', selectCategoryEl, 'All Categories');
+  for (let i in categories) {
+    render('option', selectCategoryEl, categories[i]);
+  }
+  render('option', selectCategoryEl, 'Add New');
+}
+
 function populateForm() {
   let test = localStorage.getItem('questionsKey');
   if(test){
     allQuestions = retrieve('questionsKey');
   }
-  //clear the dropdown first
-  while(selectQuestionEl.firstChild) {
-    selectQuestionEl.removeChild(selectQuestionEl.firstChild);
-  }
-  //and then add new questions
-  render('option', selectQuestionEl, 'Add New');
-  for (var i = 0; i < allQuestions.length; i++) {
-    render('option', selectQuestionEl, allQuestions[i].question);
-  }
+  selectCategoryHandler();
 }
 
 //function for emptying form values
@@ -36,12 +45,46 @@ function resetFormValues() {
 
 //function for removing enter keys
 function removeEnter(string) {
-  console.log(string);
-  console.log(string.replace(/\n/g, ''));
   return string.replace(/\n/g, '');
 }
 
+function addNewCategory() {
+  let inputEl = render('input', categoryWrapperEl);
+  // inputEl.id = 'new-category-input';
+  let buttonEl = render('button', categoryWrapperEl, 'ADD');
+  // buttonEl.id = 'new-category-button';
+  buttonEl.type = 'button';
+  buttonEl.addEventListener('click', addNewCategoryHandler);
+
+  function addNewCategoryHandler() {
+    categories.push(inputEl.value);
+    clearContainer(categoryWrapperEl);
+    populateCategory();
+  }
+}
+
 // ***EVENT HANDLERS***
+function selectCategoryHandler() {
+  //clear the dropdowns first
+  clearContainer(selectQuestionEl);
+  //and then add new questions
+  render('option', selectQuestionEl, 'Add New');
+  for (i in allQuestions) {
+    if(selectCategoryEl.value === 'All Categories' ||
+    selectCategoryEl.value === allQuestions[i].category) {
+      render('option', selectQuestionEl, allQuestions[i].question);
+    }
+  }
+  if(showCards) {
+    showAllCards();
+  }
+  if(selectCategoryEl.value === 'Add New'){
+    addNewCategory();
+  } else {
+    clearContainer(categoryWrapperEl);
+  }
+}
+
 //function for getting element index if such question exists in allQuestions array
 function selectQuestionHandler() {
   questionFound = false;
@@ -66,12 +109,13 @@ function selectQuestionHandler() {
 function submitQuestionHandler(e) {
   e.preventDefault();
   //get the form values
+  let category = selectCategoryEl.value;
   let dropdown = selectQuestionEl.value;
   let question = removeEnter(e.target.question.value);
   let answer = removeEnter(e.target.answer.value);
   //if this is a new question - add it to the array of questions, else - edit selected
-  if(dropdown === 'Add New') {
-    new Question(question, answer);
+  if(dropdown === 'Add New' && category !== 'All Categories') {
+    new Question(question, answer, category);
     console.log('new question submitted!');
     store('questionsKey', allQuestions);
     resetFormValues();
@@ -109,20 +153,21 @@ function deleteQuestionHandler() {
 
 //function for rendering card for all questions from allQuestion array
 function showAllCards() {
-  while (allCardsWrapperEl.firstChild) {
-    allCardsWrapperEl.removeChild(allCardsWrapperEl.firstChild);
-  }
+  clearContainer(allCardsWrapperEl);
   for (let i in allQuestions) {
-    let flipCardEl = render('div', allCardsWrapperEl, false, 'card-container flip-card');
-    let flipCardInnerEl = render('div', flipCardEl, false, 'flip-card-inner post-it');
-    let flipCardFronEl = render('div', flipCardInnerEl, false, 'flip-card-front post-it');
-    render('p', flipCardFronEl, allQuestions[i].question);
-    let flipCardBackEl = render('div', flipCardInnerEl, false, 'flip-card-back post-it');
-    render('p', flipCardBackEl, allQuestions[i].answer);
-    let imgEl = render('img', flipCardBackEl, false, 'delete_button', 'img/edit_icon.png');
-    imgEl.alt = imgEl.title = 'Edit this card';
-    imgEl = render('img', flipCardBackEl, false, 'delete_button', 'img/delete_icon.png');
-    imgEl.alt = imgEl.title = 'Delete this card';
+    if(selectCategoryEl.value === 'All Categories' ||
+    selectCategoryEl.value === allQuestions[i].category) {
+      let flipCardEl = render('div', allCardsWrapperEl, false, 'card-container flip-card');
+      let flipCardInnerEl = render('div', flipCardEl, false, 'flip-card-inner post-it');
+      let flipCardFronEl = render('div', flipCardInnerEl, false, 'flip-card-front post-it');
+      render('p', flipCardFronEl, allQuestions[i].question);
+      let flipCardBackEl = render('div', flipCardInnerEl, false, 'flip-card-back post-it');
+      render('p', flipCardBackEl, allQuestions[i].answer);
+      let imgEl = render('img', flipCardBackEl, false, 'delete_button', 'img/edit_icon.png');
+      imgEl.alt = imgEl.title = 'Edit this card';
+      imgEl = render('img', flipCardBackEl, false, 'delete_button', 'img/delete_icon.png');
+      imgEl.alt = imgEl.title = 'Delete this card';
+    }
   }
   showCards = true;
   showAllCardsButtonEl.textContent = 'HIDE CARDS';
@@ -132,9 +177,7 @@ function showAllCards() {
 
 //function for hiding all cards
 function hideCards() {
-  while (allCardsWrapperEl.firstChild) {
-    allCardsWrapperEl.removeChild(allCardsWrapperEl.firstChild);
-  }
+  clearContainer(allCardsWrapperEl);
   showCards = false;
   showAllCardsButtonEl.textContent = 'SHOW ALL CARDS';
   showAllCardsButtonEl.removeEventListener('click', hideCards);
@@ -159,15 +202,17 @@ function deleteCardHandler(e) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
-
 }
+
 
 // ***EVENT LISTENERS***
 formEl.addEventListener('submit', submitQuestionHandler);
+selectCategoryEl.addEventListener('change', selectCategoryHandler);
 selectQuestionEl.addEventListener('change', selectQuestionHandler);
 deleteButtonEl.addEventListener('click', deleteQuestionHandler);
 showAllCardsButtonEl.addEventListener('click', showAllCards);
 allCardsWrapperEl.addEventListener('click', deleteCardHandler);
 
 // ***EXECUTING CODE***
+populateCategory();
 populateForm();

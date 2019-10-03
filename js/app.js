@@ -3,67 +3,68 @@
 
 // ***GLOBAL VARIABLES***
 let baseQuestions = [
-  ['refactor', 'the process of restructuring existing computer code without changing its external behavior.'],
-  ['instantiate', ' to create an instance of an object in an object-oriented programming language.'],
-  ['do/while statement', 'creates a loop that executes a block of code once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.'],
-  ['break statement', 'used to jump out of a switch() or a loop and resumes code after the loop'],
-  ['continue statement', 'breaks one iteration in the loop, if a specified condition occurs, and continues with the next iteration in the loop.'],
-  ['ophidiophobia', 'the fear of snakes'],
-  // ['cynophobia', 'the fear of dogs'],
-  // ['acrophobia', 'the fear of heights'],
-  // ['astraphobia', 'the fear of thunder/lightning'],
-  // ['mysophobia', 'the fear of germs'],
-  // ['aerophobia', 'the fear of flying'],
-  // ['thanatophobia', 'the fear of death'],
-  // ['glossophobia', 'the fear of public speaking'],
-  // ['atychiphobia', 'the fear of failure'],
-  // ['alektorophobia', 'the fear of chickens'],
-  // ['enochlophobia', 'the fear of crowds'],
-  // ['autophobia', 'the fear of abandonment'],
-  // ['hemophobia', 'the fear of blood'],
-  // ['xenophobia', 'the fear of the unknown'],
-  // ['vehophobia', 'the fear of driving'],
-  // ['basiphobia', 'the fear of falling'],
-  // ['achievemephobia', 'the fear of success'],
-  // ['ailurophobia', 'the fear of cats'],
-  // ['metathesiophobia', 'the fear of change'],
-  // ['globophobia', 'the fear of balloons'],
-  // ['nyctophobia', 'the fear of darkness'],
-  // ['philophobia', 'the fear of love'],
-  // ['triskaidekaphobia', 'the fear of the number 13'],
-  // ['emetophobia', 'the fear of vomiting'],
-  // ['gephyrophobia', 'the fear of bridges'],
-  // ['panophobia', 'the fear of everything'],
-  // ['paraskevidekatriaphobia', 'the fear of Friday the 13th'],
-  // ['apiphobia', 'the fear of bees'],
-  // ['koumpounophobia', 'the fear of buttons'],
-  // ['athazagoraphobia', 'the fear of being forgotten or not remembering things'],
-  // ['katsaridaphobia', 'the fear of cockroaches'],
-  // ['latrophobia', 'the fear of doctors'],
-  // ['pediophobia', 'the fear of dolls'],
-  // ['ichthyophobia', 'the fear of fish'],
-  // ['sidonglobophobia', 'the fear of cotton balls'],
-  // ['scelerophobia', 'the fear of crime'],
-  // ['pogonophobia', 'the fear of beards'],
-  // ['omphalophobia', 'the fear of belly buttons'],
-  // ['chaetophobia', 'the fear of hair'],
-  // ['nosocomephobia', 'the fear of hospitals'],
-  // ['ligyrophobia', 'the fear of loud noises'],
-  // ['spheksophobia', 'the fear of wasps'],
-  // ['coulrophobia', 'the fear of clowns'],
-  // ['allodoxaphobia', 'the fear of other people\'s opinions of you'],
-  // ['kinemortophobia', 'the fear of zombies'],
-  // ['taphophobia', 'the fear of being buried alive'],
-  // ['aurophobia', 'the fear of finding gold'],
-  // ['nomophobia', 'the fear of being without cellphones'],
-  // ['Hippopotomonstrosesquippedaliophobia', 'the fear of long words. This is one of two names for this condition.'],
-  // ['Sesquipedalophobia', 'the fear of long words. This is one of two names for this condition.'],
-  // ['phobophobia', 'the fear of fear'],
-  // ['haphephobia', 'the fear of being touched']
+  ['refactor', 'the process of restructuring existing computer code without changing its external behavior.', 'JavaScript'],
+  ['instantiate', ' to create an instance of an object in an object-oriented programming language.', 'JavaScript'],
+  ['do/while statement', 'creates a loop that executes a block of code once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.', 'JavaScript'],
+  ['break statement', 'used to jump out of a switch() or a loop and resumes code after the loop', 'JavaScript'],
+  ['continue statement', 'breaks one iteration in the loop, if a specified condition occurs, and continues with the next iteration in the loop.', 'JavaScript'],
+  ['ophidiophobia', 'the fear of snakes', 'Phobias'],
+  // ['cynophobia', 'the fear of dogs', 'Phobias'],
+  // ['acrophobia', 'the fear of heights', 'Phobias'],
+  // ['astraphobia', 'the fear of thunder/lightning', 'Phobias'],
+  // ['mysophobia', 'the fear of germs', 'Phobias'],
+  // ['aerophobia', 'the fear of flying', 'Phobias'],
+  // ['thanatophobia', 'the fear of death', 'Phobias'],
+  // ['glossophobia', 'the fear of public speaking', 'Phobias'],
+  // ['atychiphobia', 'the fear of failure', 'Phobias'],
+  // ['alektorophobia', 'the fear of chickens', 'Phobias'],
+  // ['enochlophobia', 'the fear of crowds', 'Phobias'],
+  // ['autophobia', 'the fear of abandonment', 'Phobias'],
+  // ['hemophobia', 'the fear of blood', 'Phobias'],
+  // ['xenophobia', 'the fear of the unknown', 'Phobias'],
+  // ['vehophobia', 'the fear of driving', 'Phobias'],
+  // ['basiphobia', 'the fear of falling', 'Phobias'],
+  // ['achievemephobia', 'the fear of success', 'Phobias'],
+  // ['ailurophobia', 'the fear of cats', 'Phobias'],
+  // ['metathesiophobia', 'the fear of change', 'Phobias'],
+  // ['globophobia', 'the fear of balloons', 'Phobias'],
+  // ['nyctophobia', 'the fear of darkness', 'Phobias'],
+  // ['philophobia', 'the fear of love', 'Phobias'],
+  // ['triskaidekaphobia', 'the fear of the number 13', 'Phobias'],
+  // ['emetophobia', 'the fear of vomiting', 'Phobias'],
+  // ['gephyrophobia', 'the fear of bridges', 'Phobias'],
+  // ['panophobia', 'the fear of everything', 'Phobias'],
+  // ['paraskevidekatriaphobia', 'the fear of Friday the 13th', 'Phobias'],
+  // ['apiphobia', 'the fear of bees', 'Phobias'],
+  // ['koumpounophobia', 'the fear of buttons', 'Phobias'],
+  // ['athazagoraphobia', 'the fear of being forgotten or not remembering things', 'Phobias'],
+  // ['katsaridaphobia', 'the fear of cockroaches', 'Phobias'],
+  // ['latrophobia', 'the fear of doctors', 'Phobias'],
+  // ['pediophobia', 'the fear of dolls', 'Phobias'],
+  // ['ichthyophobia', 'the fear of fish', 'Phobias'],
+  // ['sidonglobophobia', 'the fear of cotton balls', 'Phobias'],
+  // ['scelerophobia', 'the fear of crime', 'Phobias'],
+  // ['pogonophobia', 'the fear of beards', 'Phobias'],
+  // ['omphalophobia', 'the fear of belly buttons', 'Phobias'],
+  // ['chaetophobia', 'the fear of hair', 'Phobias'],
+  // ['nosocomephobia', 'the fear of hospitals', 'Phobias'],
+  // ['ligyrophobia', 'the fear of loud noises', 'Phobias'],
+  // ['spheksophobia', 'the fear of wasps', 'Phobias'],
+  // ['coulrophobia', 'the fear of clowns', 'Phobias'],
+  // ['allodoxaphobia', 'the fear of other people\'s opinions of you', 'Phobias'],
+  // ['kinemortophobia', 'the fear of zombies', 'Phobias'],
+  // ['taphophobia', 'the fear of being buried alive', 'Phobias'],
+  // ['aurophobia', 'the fear of finding gold', 'Phobias'],
+  // ['nomophobia', 'the fear of being without cellphones', 'Phobias'],
+  // ['Hippopotomonstrosesquippedaliophobia', 'the fear of long words. This is one of two names for this condition.', 'Phobias'],
+  // ['Sesquipedalophobia', 'the fear of long words. This is one of two names for this condition.', 'Phobias'],
+  // ['phobophobia', 'the fear of fear', 'Phobias'],
+  // ['haphephobia', 'the fear of being touched', 'Phobias']
 ];
 let allQuestions = [];
 //settings
 let chosenQuestions = [];
+let categories = [];
 let clickCount = 0;
 // let chosenQuestionsIndex = 0;
 let modal = document.getElementById('myModal');
@@ -90,9 +91,10 @@ let minutes = ('0'+ date.getMinutes()).slice(-2);
 let year = date.getFullYear();
 
 // ***CONSTRUCTOR FUNCTIONS***
-function Question(question, answer) {
+function Question(question, answer, category) {
   this.question = question;
   this.answer = answer;
+  this.category = category;
   this.timesTested = 0;
   this.knowledgeLevel = 0;
 
@@ -116,10 +118,16 @@ function render(element, parent, content, className, src) {
   return el;
 }
 
+function clearContainer(containerElement) {
+  while(containerElement.firstChild) {
+    containerElement.removeChild(containerElement.firstChild);
+  }
+}
+
 // instantiate new Question objects from baseQuestions[]
 function instantiateBaseQuestions(){
   for(let i in baseQuestions) {
-    new Question(baseQuestions[i][0], baseQuestions[i][1]);
+    new Question(baseQuestions[i][0], baseQuestions[i][1], baseQuestions[i][2]);
   }
 }
 
@@ -131,12 +139,19 @@ function instantiateAllQuestions(){
 // called at the end of app.js
 function renderInstructions(){
   if(cardWrapperEl){
-    while (cardWrapperEl.firstChild) {
-      cardWrapperEl.removeChild(cardWrapperEl.firstChild);
-    }
+    clearContainer(cardWrapperEl);
     let flipCardInnerEl = render('div', cardWrapperEl, false, 'card');
     let divEl = render('div', flipCardInnerEl, false, 'flip-card-inner instructions post-it');
     render('p', divEl, instruction);
+  }
+}
+
+// fill in the categories array with unique categories
+function getCategories() {
+  for (let i in allQuestions) {
+    if(!categories.includes(allQuestions[i].category)) {
+      categories.push(allQuestions[i].category);
+    }
   }
 }
 
@@ -160,9 +175,7 @@ function generateIndexes() {
 
 // function renderQuizCard(questionIndex){
 function renderQuizCard(){
-  while (cardWrapperEl.firstChild) {
-    cardWrapperEl.removeChild(cardWrapperEl.firstChild);
-  }
+  clearContainer(cardWrapperEl);
   let flipCardInnerEl = render('div', cardWrapperEl, false, 'card');
   let flipCardFronEl = render('div', flipCardInnerEl, false, 'flip-card-inner flip-card-front post-it');
   render('p', flipCardFronEl, allQuestions[currentQuestionIndex].question);
@@ -318,9 +331,9 @@ if(cardWrapperEl){
   }
 
   // allQuestions = shuffle(allQuestions);
-  for(let i in allQuestions){
-    console.log(allQuestions[i].question);
-  }
+  // for(let i in allQuestions){
+  //   console.log(allQuestions[i].question);
+  // }
   renderInstructions();
 })();
 
