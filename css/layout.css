@@ -206,7 +206,4 @@ footer {
   border-bottom-right-radius: 60px 5px; 
   /* background: -webkit-linear-gradient(-45deg, #f8f893 81%,#f5f591 82%,#f5f58d 82%,#f7f7c2 100%); */
   /* background-color: white; */
-  background: url('../img/paper_texture.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
 }
