@@ -1,5 +1,5 @@
-'use strict';
 /* eslint-disable no-unused-vars */
+'use strict';
 
 // ***GLOBAL VARIABLES***
 let baseQuestions = [
@@ -85,11 +85,16 @@ let footerEl = document.getElementsByTagName('footer');
 let pEl = document.getElementById('year');
 let currentQuestionIndex;
 let numberOfQuestionsAsked = 0;
+let numberOfUnknownQuestionsAtStart;
+let numberOfUnknownQuestionsAtFinish;
 // let notKnownQuestionsIndexes = [];
-let currentNotKnownQuestionIndex = 0;
+// let currentNotKnownQuestionIndex = 0;
+let timer;
+let seconds = 0;
+let minutes = 0;
 let date = new Date();
-let hour = date.getHours();
-let minutes = ('0'+ date.getMinutes()).slice(-2);
+// let hour = date.getHours();
+// let minutes = ('0'+ date.getMinutes()).slice(-2);
 let year = date.getFullYear();
 
 // ***CONSTRUCTOR FUNCTIONS***
@@ -120,6 +125,7 @@ function render(element, parent, content, className, src) {
   return el;
 }
 
+//function for removing all child elements of selected container
 function clearContainer(containerElement) {
   while(containerElement.firstChild) {
     containerElement.removeChild(containerElement.firstChild);
@@ -176,6 +182,44 @@ function generateIndexes() {
     chosenQuestions = shuffle(chosenQuestions);
   }
   console.table(chosenQuestions);
+}
+
+function startTimer() {
+  window.clearInterval(timer);
+  seconds = 0;
+  minutes = 0;
+  timer = window.setInterval(countUp, 1000);
+}
+
+function countUp() {
+  seconds++;
+  if (seconds === 60) {
+    seconds = 0;
+    minutes++;
+  }
+  let timeString = `${minutes} minutes and ${seconds} seconds`;
+  console.log(timeString);
+  return timeString;
+}
+
+//count number of unknown or familiar quesitons at start
+function countGradesAtStart() {
+  numberOfUnknownQuestionsAtStart = 0;
+  for (let i in chosenQuestions) {
+    if(allQuestions[chosenQuestions[i]].knowledgeLevel < 2) {
+      numberOfUnknownQuestionsAtStart++;
+    }
+  }
+}
+
+////count number of unknown or familiar quesitons at finish
+function countGradesAtFinish() {
+  numberOfUnknownQuestionsAtFinish = 0;
+  for (let i in chosenQuestions) {
+    if(allQuestions[chosenQuestions[i]].knowledgeLevel < 2) {
+      numberOfUnknownQuestionsAtFinish++;
+    }
+  }
 }
 
 // function renderQuizCard(questionIndex){
@@ -238,19 +282,22 @@ function shuffle(objectsOrIndexes){
 // renamed function
 function handleFirstCardClick(){
   // start timer
-  console.log(`Started at: ${hour}:${minutes}`);
+  // console.log(`Started at: ${hour}:${minutes}`);
   // need stop event to stop timer and calculate time elapsed
 
   // currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
   generateIndexes();
-  currentQuestionIndex = chosenQuestions[clickCount];
   if(chosenQuestions.length > 0) {
+    currentQuestionIndex = chosenQuestions[clickCount];
     renderQuizCard();
   }
   clickCount++;
   cardWrapperEl.removeEventListener('click', handleFirstCardClick);
   cardWrapperEl.addEventListener('click', flipCard);
   knownLevelWrapperEl.addEventListener('click', handleRateClick);
+
+  countGradesAtStart();
+  startTimer();
 }
 
 
@@ -258,7 +305,7 @@ function handleFirstCardClick(){
 function handleRateClick(event){
 
   // if (numberOfQuestionsAsked > 0){
-  console.log('event.target.alt: ', event.target.value);
+  // console.log('event.target.alt: ', event.target.value);
   let isValidClick = true;
 
   switch(event.target.value){
@@ -295,16 +342,23 @@ function handleRateClick(event){
     // redundant
     // numberOfQuestionsAsked++;
 
-    console.log(`handleRatedClick() > updated numberofQuestionsAsked: ${numberOfQuestionsAsked}`);
+    // console.log(`handleRatedClick() > updated numberofQuestionsAsked: ${numberOfQuestionsAsked}`);
     allQuestions[currentQuestionIndex].timesTested++;
-    console.log(`handleRatedClick() > updated timesTested: ${allQuestions[currentQuestionIndex].timesTested}`);
+    // console.log(`handleRatedClick() > updated timesTested: ${allQuestions[currentQuestionIndex].timesTested}`);
 
     store('questionsKey',allQuestions);
   } else {
-    instruction = 'hello world';
+    countGradesAtFinish();
+    let questionsLearned = numberOfUnknownQuestionsAtStart - numberOfUnknownQuestionsAtFinish;
+    if (questionsLearned > 0) {
+      instruction = `Congratulations! You've learned ${questionsLearned} out of ${chosenQuestions.length} questions in ${countUp()}`;
+    } else {
+      instruction = `You've spent ${countUp()} and didn't learn any questions out of ${chosenQuestions.length} shown. Try again!`;
+    }
     renderInstructions();
     cardWrapperEl.removeEventListener('click', flipCard);
     knownLevelWrapperEl.removeEventListener('click', handleRateClick);
+    window.clearInterval(timer);
   }
   // }
 } // end handleRateClick()
