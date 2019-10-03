@@ -351,7 +351,7 @@ function handleRateClick(event){
     countGradesAtFinish();
     let questionsLearned = numberOfUnknownQuestionsAtStart - numberOfUnknownQuestionsAtFinish;
     if (questionsLearned > 0) {
-      instruction = `Congratulations! You've learned ${questionsLearned} out of ${chosenQuestions.length} questions in ${countUp()}`;
+      instruction = `Congratulations! You've learned ${questionsLearned} new out of ${chosenQuestions.length} questions in ${countUp()}`;
     } else {
       instruction = `You've spent ${countUp()} and didn't learn any questions out of ${chosenQuestions.length} shown. Try again!`;
     }
