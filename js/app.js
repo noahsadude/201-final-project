@@ -178,6 +178,7 @@ function fillNotKnownQuestionsIndexes(){
 
     if (numberOfNotKnowns === 0){
       instruction = 'Congratulations! You have achieved 100%!';
+      knownLevelWrapperEl.removeEventListener('click', handleRateClick);
       renderInstructions();
     }
   }
