@@ -27,7 +27,8 @@ function buildQuestionArray(){
   let arrayOfQuestions = [];
 
   for(let i = 0; i < allQuestions.length; i++){
-    if(selectCategoryEl.value === allQuestions[i].category) {
+    if(selectCategoryEl.value === allQuestions[i].category ||
+      selectCategoryEl.value === 'All Categories') {
       if(known && allQuestions[i].knowledgeLevel === 2 ||
         familiar && allQuestions[i].knowledgeLevel === 1 ||
         unknown && allQuestions[i].knowledgeLevel === 0){
@@ -39,6 +40,7 @@ function buildQuestionArray(){
   chosenQuestions = arrayOfQuestions;
   // chosenQuestions = shuffle(chosenQuestions);
   store('chosen-questions',chosenQuestions);
+  settingsSaved = true;
   modal.style.display = 'none';
   clickCount = 0;
   handleFirstCardClick();

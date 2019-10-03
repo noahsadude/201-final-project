@@ -9,63 +9,64 @@ let baseQuestions = [
   ['break statement', 'used to jump out of a switch() or a loop and resumes code after the loop', 'JavaScript'],
   ['continue statement', 'breaks one iteration in the loop, if a specified condition occurs, and continues with the next iteration in the loop.', 'JavaScript'],
   ['ophidiophobia', 'the fear of snakes', 'Phobias'],
-  // ['cynophobia', 'the fear of dogs', 'Phobias'],
-  // ['acrophobia', 'the fear of heights', 'Phobias'],
-  // ['astraphobia', 'the fear of thunder/lightning', 'Phobias'],
-  // ['mysophobia', 'the fear of germs', 'Phobias'],
-  // ['aerophobia', 'the fear of flying', 'Phobias'],
-  // ['thanatophobia', 'the fear of death', 'Phobias'],
-  // ['glossophobia', 'the fear of public speaking', 'Phobias'],
-  // ['atychiphobia', 'the fear of failure', 'Phobias'],
-  // ['alektorophobia', 'the fear of chickens', 'Phobias'],
-  // ['enochlophobia', 'the fear of crowds', 'Phobias'],
-  // ['autophobia', 'the fear of abandonment', 'Phobias'],
-  // ['hemophobia', 'the fear of blood', 'Phobias'],
-  // ['xenophobia', 'the fear of the unknown', 'Phobias'],
-  // ['vehophobia', 'the fear of driving', 'Phobias'],
-  // ['basiphobia', 'the fear of falling', 'Phobias'],
-  // ['achievemephobia', 'the fear of success', 'Phobias'],
-  // ['ailurophobia', 'the fear of cats', 'Phobias'],
-  // ['metathesiophobia', 'the fear of change', 'Phobias'],
-  // ['globophobia', 'the fear of balloons', 'Phobias'],
-  // ['nyctophobia', 'the fear of darkness', 'Phobias'],
-  // ['philophobia', 'the fear of love', 'Phobias'],
-  // ['triskaidekaphobia', 'the fear of the number 13', 'Phobias'],
-  // ['emetophobia', 'the fear of vomiting', 'Phobias'],
-  // ['gephyrophobia', 'the fear of bridges', 'Phobias'],
-  // ['panophobia', 'the fear of everything', 'Phobias'],
-  // ['paraskevidekatriaphobia', 'the fear of Friday the 13th', 'Phobias'],
-  // ['apiphobia', 'the fear of bees', 'Phobias'],
-  // ['koumpounophobia', 'the fear of buttons', 'Phobias'],
-  // ['athazagoraphobia', 'the fear of being forgotten or not remembering things', 'Phobias'],
-  // ['katsaridaphobia', 'the fear of cockroaches', 'Phobias'],
-  // ['latrophobia', 'the fear of doctors', 'Phobias'],
-  // ['pediophobia', 'the fear of dolls', 'Phobias'],
-  // ['ichthyophobia', 'the fear of fish', 'Phobias'],
-  // ['sidonglobophobia', 'the fear of cotton balls', 'Phobias'],
-  // ['scelerophobia', 'the fear of crime', 'Phobias'],
-  // ['pogonophobia', 'the fear of beards', 'Phobias'],
-  // ['omphalophobia', 'the fear of belly buttons', 'Phobias'],
-  // ['chaetophobia', 'the fear of hair', 'Phobias'],
-  // ['nosocomephobia', 'the fear of hospitals', 'Phobias'],
-  // ['ligyrophobia', 'the fear of loud noises', 'Phobias'],
-  // ['spheksophobia', 'the fear of wasps', 'Phobias'],
-  // ['coulrophobia', 'the fear of clowns', 'Phobias'],
-  // ['allodoxaphobia', 'the fear of other people\'s opinions of you', 'Phobias'],
-  // ['kinemortophobia', 'the fear of zombies', 'Phobias'],
-  // ['taphophobia', 'the fear of being buried alive', 'Phobias'],
-  // ['aurophobia', 'the fear of finding gold', 'Phobias'],
-  // ['nomophobia', 'the fear of being without cellphones', 'Phobias'],
-  // ['Hippopotomonstrosesquippedaliophobia', 'the fear of long words. This is one of two names for this condition.', 'Phobias'],
-  // ['Sesquipedalophobia', 'the fear of long words. This is one of two names for this condition.', 'Phobias'],
-  // ['phobophobia', 'the fear of fear', 'Phobias'],
-  // ['haphephobia', 'the fear of being touched', 'Phobias']
+  ['cynophobia', 'the fear of dogs', 'Phobias'],
+  ['acrophobia', 'the fear of heights', 'Phobias'],
+  ['astraphobia', 'the fear of thunder/lightning', 'Phobias'],
+  ['mysophobia', 'the fear of germs', 'Phobias'],
+  ['aerophobia', 'the fear of flying', 'Phobias'],
+  ['thanatophobia', 'the fear of death', 'Phobias'],
+  ['glossophobia', 'the fear of public speaking', 'Phobias'],
+  ['atychiphobia', 'the fear of failure', 'Phobias'],
+  ['alektorophobia', 'the fear of chickens', 'Phobias'],
+  ['enochlophobia', 'the fear of crowds', 'Phobias'],
+  ['autophobia', 'the fear of abandonment', 'Phobias'],
+  ['hemophobia', 'the fear of blood', 'Phobias'],
+  ['xenophobia', 'the fear of the unknown', 'Phobias'],
+  ['vehophobia', 'the fear of driving', 'Phobias'],
+  ['basiphobia', 'the fear of falling', 'Phobias'],
+  ['achievemephobia', 'the fear of success', 'Phobias'],
+  ['ailurophobia', 'the fear of cats', 'Phobias'],
+  ['metathesiophobia', 'the fear of change', 'Phobias'],
+  ['globophobia', 'the fear of balloons', 'Phobias'],
+  ['nyctophobia', 'the fear of darkness', 'Phobias'],
+  ['philophobia', 'the fear of love', 'Phobias'],
+  ['triskaidekaphobia', 'the fear of the number 13', 'Phobias'],
+  ['emetophobia', 'the fear of vomiting', 'Phobias'],
+  ['gephyrophobia', 'the fear of bridges', 'Phobias'],
+  ['panophobia', 'the fear of everything', 'Phobias'],
+  ['paraskevidekatriaphobia', 'the fear of Friday the 13th', 'Phobias'],
+  ['apiphobia', 'the fear of bees', 'Phobias'],
+  ['koumpounophobia', 'the fear of buttons', 'Phobias'],
+  ['athazagoraphobia', 'the fear of being forgotten or not remembering things', 'Phobias'],
+  ['katsaridaphobia', 'the fear of cockroaches', 'Phobias'],
+  ['latrophobia', 'the fear of doctors', 'Phobias'],
+  ['pediophobia', 'the fear of dolls', 'Phobias'],
+  ['ichthyophobia', 'the fear of fish', 'Phobias'],
+  ['sidonglobophobia', 'the fear of cotton balls', 'Phobias'],
+  ['scelerophobia', 'the fear of crime', 'Phobias'],
+  ['pogonophobia', 'the fear of beards', 'Phobias'],
+  ['omphalophobia', 'the fear of belly buttons', 'Phobias'],
+  ['chaetophobia', 'the fear of hair', 'Phobias'],
+  ['nosocomephobia', 'the fear of hospitals', 'Phobias'],
+  ['ligyrophobia', 'the fear of loud noises', 'Phobias'],
+  ['spheksophobia', 'the fear of wasps', 'Phobias'],
+  ['coulrophobia', 'the fear of clowns', 'Phobias'],
+  ['allodoxaphobia', 'the fear of other people\'s opinions of you', 'Phobias'],
+  ['kinemortophobia', 'the fear of zombies', 'Phobias'],
+  ['taphophobia', 'the fear of being buried alive', 'Phobias'],
+  ['aurophobia', 'the fear of finding gold', 'Phobias'],
+  ['nomophobia', 'the fear of being without cellphones', 'Phobias'],
+  ['Hippopotomonstrosesquippedaliophobia', 'the fear of long words. This is one of two names for this condition.', 'Phobias'],
+  ['Sesquipedalophobia', 'the fear of long words. This is one of two names for this condition.', 'Phobias'],
+  ['phobophobia', 'the fear of fear', 'Phobias'],
+  ['haphephobia', 'the fear of being touched', 'Phobias']
 ];
 let allQuestions = [];
 //settings
 let chosenQuestions = [];
 let categories = [];
 let clickCount = 0;
+let settingsSaved = false;
 // let chosenQuestionsIndex = 0;
 let modal = document.getElementById('myModal');
 let btn = document.getElementById('settings');
@@ -77,7 +78,8 @@ let settingNotKnown = document.getElementById('settings-not-known');
 let randomOrderEl = document.getElementById('random-order');
 //end settings
 let cardWrapperEl = document.getElementById('card-wrapper');
-let instruction = 'Click on this card to start. Click again to reveal the answer. Each successive click  will flip the same card back and forth. To test yourself on a new question, rate your comfort-level with the current question by selecting one of the buttons below. You can add new cards or revise existing cards at any time by going to the Add New Cards page.';
+// let instruction = 'Click on this card to start. Click again to reveal the answer. Each successive click  will flip the same card back and forth. To test yourself on a new question, rate your comfort-level with the current question by selecting one of the buttons below. You can add new cards or revise existing cards at any time by going to the Add New Cards page.';
+let instruction = 'Click here to start. Click again to reveal the answer. To get a new question, select one of the buttons below';
 let knownLevelWrapperEl = document.getElementById('known-level-wrapper');
 let footerEl = document.getElementsByTagName('footer');
 let pEl = document.getElementById('year');
@@ -162,7 +164,10 @@ function getCategories() {
 
 //if user set any settings - use chosenQuestions, else - go through all questions
 function generateIndexes() {
-  if (chosenQuestions.length < 1) {
+  if (settingsSaved && chosenQuestions.length < 1) {
+    instruction = 'No questions match selected criteria';
+    renderInstructions();
+  } else if (!settingsSaved) {
     for (let i in allQuestions) {
       chosenQuestions.push(i);
     }
@@ -239,7 +244,9 @@ function handleFirstCardClick(){
   // currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
   generateIndexes();
   currentQuestionIndex = chosenQuestions[clickCount];
-  renderQuizCard();
+  if(chosenQuestions.length > 0) {
+    renderQuizCard();
+  }
   clickCount++;
   cardWrapperEl.removeEventListener('click', handleFirstCardClick);
   cardWrapperEl.addEventListener('click', flipCard);
@@ -297,6 +304,7 @@ function handleRateClick(event){
     instruction = 'hello world';
     renderInstructions();
     cardWrapperEl.removeEventListener('click', flipCard);
+    knownLevelWrapperEl.removeEventListener('click', handleRateClick);
   }
   // }
 } // end handleRateClick()
