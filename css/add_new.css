@@ -136,7 +136,6 @@
 .flip-card:hover .flip-card-inner {
   transform: rotateX(180deg);
 }
-  
 
 .delete_button {
   width: 30px;
