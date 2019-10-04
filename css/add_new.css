@@ -1,14 +1,17 @@
-
-/* #add-new {
-  width: 720px;
-  margin: 20px auto;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.4);
-  box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.4);
-  border-radius: 5px;
-} */
-
-#question-dropdown {
+#category-wrapper > input {
+  min-width: 80px;
+  margin: 10px auto;
+  font-size: 14px;
+	font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+	padding: .6em 1.4em .5em .8em;
+  max-width: 100%;
+  border: 1px solid #aaa;
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+	border-radius: 5px;
+}
+#question-dropdown, #category {
   display: block;
   width: 300px;
   margin: 10px auto;
@@ -36,22 +39,20 @@
   background-size: .65em auto, 100%;
 }
 
-#question-dropdown::-ms-expand {
+#question-dropdown::-ms-expand, #category::-ms-expand {
 	display: none;
 }
 
-#question-dropdown:hover {
+#question-dropdown:hover, #category:hover {
 	border-color: #FBDB53;
 }
 
-#question-dropdown:focus {
+#question-dropdown:focus, #category:focus {
 	border-color: #aaa;
-	/* box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7); */
-	/* box-shadow: 0 0 0 3px -moz-mac-focusring; */
 	color: #222;
 	outline: none;
 }
-#question-dropdown option {
+#question-dropdown option, #category option {
 	font-weight: normal;
 }
 /* END of Edited from  https://www.filamentgroup.com/lab/select-css.html */
@@ -64,7 +65,6 @@
   border-radius: 5px;
   box-shadow: 2px 3px 7px #494949;
   font-family: "Montserrat", sans-serif;
-  /* font-family: 'Gloria Hallelujah', cursive; */
   font-size: 20px;
   text-align: justify;
 }
@@ -88,21 +88,6 @@
   word-break: break-all;
   word-break: break-word;
 }
-
-/* button {
-  background-color: #FFFFDA;
-  border-radius: 5px;
-  padding: 6px 20px;
-  margin: 15px 18px 0 18px;
-  font-family: "Times New Roman, serif";
-  color: #00069D;
-  font-size: 16px;
-  font-family: "Montserrat", sans-serif;
-}
-
-button:hover {
-  border-color: #FBDB53;
-} */
 
 #add-new-question > textarea {
   margin: 20px;
@@ -135,6 +120,7 @@ button:hover {
   background: url('../img/paper_front.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  box-shadow: 3px 2px 6px 2px rgba(0,0,0,0.5);
 }
 /* Style the back side */
 .flip-card-back {
