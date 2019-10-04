@@ -9,14 +9,40 @@ body {
   width: 480px;
   min-height: 320px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 20px 20px 20px;
   cursor: pointer;
 }
 
 .instructions {
   min-height: 350px;
+  background: url('../img/paper_texture.jpg');
+  box-shadow: 3px 2px 6px 2px rgba(0,0,0,0.5);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-size: 35px;
+  line-height: 55px;
 }
-
+#settings {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  left: 730px;
+  background-color: rgba(255, 255, 255, 0.8);
+  background-image: url('../img/settings.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+#settings:hover {
+  transition: 0.2s ease 0s;
+  background-color: rgba(245, 205, 121, 0.6);
+}
+#settings:active {
+  transition: 0s;
+  transform: translateY(3px);
+}
 /* p element that holds rating buttons instruction */
 #rate-p {
   color: #f7f5f5;
@@ -24,17 +50,8 @@ body {
   font-weight: 900;
   padding-top: 20px;
   padding-bottom: 10px;
+  margin: 10px auto;
 }
-
-/* #yes {
-  background: #546de5;
-}
-#not_sure {
-  background: #f5cd79;
-}
-#no {
-  background: #e15f41;
-} */
 
 /* 3 img elements that hold the rating buttons */
 .known-level {
@@ -42,10 +59,6 @@ body {
   padding: 20px;
   transition: 0.5s;
 }
-
-/* .known-level:hover {
-  transform: scale(1.4);
-} */
 
 #known-level-wrapper {
   font-family: "Montserrat", sans-serif;
@@ -57,23 +70,6 @@ body {
   width: 300px;
   margin: auto;
 }
-
-/* 
-#known-ul li {
-  margin: 5px;
-} */
-/* 
-#known-ul li:nth-child(1) {
-  float: left;
-}
-
-#known-ul li:nth-child(2) {
-  float: left;
-} 
-
-#known-ul li:last-child {
-  float: right;
-} */
 
 figcaption {
   color: white;
@@ -94,6 +90,8 @@ figcaption {
   transform-style: preserve-3d;
   cursor: pointer;
   position: relative;
+  word-break: break-all;
+  word-break: break-word;
 }
 
 .card.is-flipped {
@@ -108,7 +106,7 @@ figcaption {
 }
 
 .flip-card-inner p {
-  margin: 25px;
+  padding: 25px;
 }
 
 .flip-card-front {
@@ -119,6 +117,7 @@ figcaption {
   background: url('../img/paper_front.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  box-shadow: 3px 2px 6px 2px rgba(0,0,0,0.5);
 }
 
 .flip-card-back {
@@ -130,4 +129,95 @@ figcaption {
   background: url('../img/paper_back.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  box-shadow: 3px 2px 6px 2px rgba(0,0,0,0.5);
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: hidden; /*hide scrollbar */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  width: 780px;
+  height: 300px;
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 5px;
+}
+.modal-content * {
+  margin-top: 10px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+h2 {
+  font-size: 25px;
+}
+#category {
+  display: block;
+  width: 300px;
+  margin: 35px auto;
+  font-size: 14px;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 700;
+	color: #444;
+	line-height: 1.3;
+	padding: .6em 1.4em .5em .8em;
+	max-width: 100%;
+	box-sizing: border-box;
+	border: 1px solid #aaa;
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+	border-radius: 5px;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: #fff;
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+	  linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+	background-repeat: no-repeat, repeat;
+	background-position: right .7em top 50%, 0 0;
+  background-size: .65em auto, 100%;
+}
+#category::-ms-expand {
+	display: none;
+}
+#category:hover {
+	border-color: #FBDB53;
+}
+#category:focus {
+	border-color: #aaa;
+	color: #222;
+	outline: none;
+}
+#category option {
+	font-weight: normal;
+}
+
+#settings-submit {
+  margin-top: 35px;
 }

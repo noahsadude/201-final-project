@@ -31,6 +31,9 @@
     
     <main>
       <div class="content-wrapper">
+        <div id="settings">
+          <!-- <span>SETTINGS</span> -->
+        </div>
         <section id="progress">
           <!-- TODO: progress bar and timer -->
         </section>
@@ -67,11 +70,44 @@
         <section id="next-question-wrapper">
           <!-- TODO: cards with next questions -->
         </section>
+        <!-- settings modal -->
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Which cards do you want to see?</h2>
+            <div>
+              <label for="category"></label>
+              <select id="category" name="category" selected="All Categories"></select>
+            </div>
+            <span>
+              <input type="checkbox" id="settings-known" name="known" checked>
+              <label for="known">Known Items</label>
+            </span>
+            <span>
+              <input type="checkbox" id="settings-familiar" name="familar" checked>
+              <label for="scales">Familiar Items</label>
+            </span>
+            <span>
+              <input type="checkbox" id="settings-not-known" name="not-known" checked>
+              <label for="not-known">Items I don't know</label>
+            </span>
+            <div>
+              <input type="checkbox" id="random-order" name="random-order" checked>
+              <label for="random-order">Randomize cards</label>
+            </div>
+            <div>
+              <button id="settings-submit" type="button" value="settings-submit">Save settings</button>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
     <footer>
       <p id="year"></p>
     </footer>
     <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/settings.js"></script>
   </body>
 </html>
