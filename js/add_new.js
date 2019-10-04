@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-// ***GLOBAL VARIABLES***
+
 let formEl = document.getElementById('add-new-question');
 let categoryWrapperEl = document.getElementById('category-wrapper');
 let selectCategoryEl = document.getElementById('category');
@@ -13,15 +13,13 @@ let questionFound;
 let questionFoundIndex;
 let showCards = false;
 
-// ***HELPER FUNCTIONS***
-//function for filling selectQuestion dropdown with values from allQuestions array
 function populateCategory() {
   let test = localStorage.getItem('questionsKey');
   if(test){
     allQuestions = retrieve('questionsKey');
   }
+
   clearContainer(selectCategoryEl);
-  //and then add new categories
   getCategories();
   render('option', selectCategoryEl, 'All Categories');
   for (let i in categories) {
@@ -38,12 +36,10 @@ function populateForm() {
   selectCategoryHandler();
 }
 
-//function for emptying form values
 function resetFormValues() {
   questionEl.value = answerEl.value = '';
 }
 
-//function for removing enter keys
 function removeEnter(string) {
   return string.replace(/\n/g, '');
 }
@@ -63,21 +59,22 @@ function addNewCategory() {
   }
 }
 
-// ***EVENT HANDLERS***
 function selectCategoryHandler() {
-  //clear the dropdowns first
   clearContainer(selectQuestionEl);
-  //and then add new questions
+  // then add new questions
   render('option', selectQuestionEl, 'Add New');
+
   for (i in allQuestions) {
     if(selectCategoryEl.value === 'All Categories' ||
     selectCategoryEl.value === allQuestions[i].category) {
       render('option', selectQuestionEl, allQuestions[i].question);
     }
   }
+
   if(showCards) {
     showAllCards();
   }
+
   if(selectCategoryEl.value === 'Add New'){
     addNewCategory();
   } else {
@@ -85,10 +82,9 @@ function selectCategoryHandler() {
   }
 }
 
-//function for getting element index if such question exists in allQuestions array
 function selectQuestionHandler() {
   questionFound = false;
-  //if question exists - get its index, else - clear question and answer forms
+  // if question exists, get its index,
   for(let i in allQuestions) {
     if(selectQuestionEl.value === allQuestions[i].question){
       questionEl.value = allQuestions[i].question;
@@ -97,6 +93,7 @@ function selectQuestionHandler() {
       questionFoundIndex = i;
     }
   }
+  // if question doesn't exist, clear question and answer forms
   if(!questionFound) {
     resetFormValues();
     deleteButtonEl.textContent = 'CLEAR';
@@ -105,15 +102,15 @@ function selectQuestionHandler() {
   }
 }
 
-//function for adding new question or editing existing
+// adds new question or edits existing question
 function submitQuestionHandler(e) {
   e.preventDefault();
-  //get the form values
+
   let category = selectCategoryEl.value;
   let dropdown = selectQuestionEl.value;
   let question = removeEnter(e.target.question.value);
   let answer = removeEnter(e.target.answer.value);
-  //if this is a new question - add it to the array of questions, else - edit selected
+  //if new question, add to array of questions, else edit selected
   if(dropdown === 'Add New' && category !== 'All Categories') {
     new Question(question, answer, category);
     console.log('new question submitted!');
@@ -131,12 +128,12 @@ function submitQuestionHandler(e) {
       populateForm();
     }
   }
+
   if(showCards) {
     showAllCards();
   }
 }
 
-//function for deleting selected question
 function deleteQuestionHandler() {
   if(questionFound) {
     allQuestions.splice(questionFoundIndex, 1);
@@ -151,7 +148,6 @@ function deleteQuestionHandler() {
   }
 }
 
-//function for rendering card for all questions from allQuestion array
 function showAllCards() {
   clearContainer(allCardsWrapperEl);
   for (let i in allQuestions) {
@@ -169,13 +165,13 @@ function showAllCards() {
       imgEl.alt = imgEl.title = 'Delete this card';
     }
   }
+
   showCards = true;
   showAllCardsButtonEl.textContent = 'HIDE CARDS';
   showAllCardsButtonEl.removeEventListener('click', showAllCards);
   showAllCardsButtonEl.addEventListener('click', hideCards);
 }
 
-//function for hiding all cards
 function hideCards() {
   clearContainer(allCardsWrapperEl);
   showCards = false;
@@ -184,7 +180,6 @@ function hideCards() {
   showAllCardsButtonEl.addEventListener('click', showAllCards);
 }
 
-//function for deleting card
 function deleteCardHandler(e) {
   if(e.target.tagName === 'IMG') {
     let selectedQuestion = e.target.parentElement.parentElement.firstChild.textContent;
@@ -204,8 +199,6 @@ function deleteCardHandler(e) {
   }
 }
 
-
-// ***EVENT LISTENERS***
 formEl.addEventListener('submit', submitQuestionHandler);
 selectCategoryEl.addEventListener('change', selectCategoryHandler);
 selectQuestionEl.addEventListener('change', selectQuestionHandler);
@@ -213,6 +206,5 @@ deleteButtonEl.addEventListener('click', deleteQuestionHandler);
 showAllCardsButtonEl.addEventListener('click', showAllCards);
 allCardsWrapperEl.addEventListener('click', deleteCardHandler);
 
-// ***EXECUTING CODE***
 populateCategory();
 populateForm();
