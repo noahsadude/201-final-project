@@ -59,7 +59,40 @@ let baseQuestions = [
   ['Hippopotomonstrosesquippedaliophobia', 'the fear of long words. This is one of two names for this condition.', 'Phobias'],
   ['Sesquipedalophobia', 'the fear of long words. This is one of two names for this condition.', 'Phobias'],
   ['phobophobia', 'the fear of fear', 'Phobias'],
-  ['haphephobia', 'the fear of being touched', 'Phobias']
+  ['haphephobia', 'the fear of being touched', 'Phobias'],
+  ['coherent', 'последовательный', 'English-Russian'],
+  ['alumni', 'выпускник', 'English-Russian'],
+  ['surd', 'иррациональный', 'English-Russian'],
+  ['turquoise', 'бирюзовый', 'English-Russian'],
+  ['divergent', 'расходящийся', 'English-Russian'],
+  ['whereas', 'в то время как', 'English-Russian'],
+  ['mitigate', 'смягчать', 'English-Russian'],
+  ['deceived', 'обманутый', 'English-Russian'],
+  ['churn', 'маслобойка', 'English-Russian'],
+  ['mayhap', 'может быть', 'English-Russian'],
+  ['trample', 'топтать', 'English-Russian'],
+  ['auroch', 'зубр', 'English-Russian'],
+  ['herd', 'пасти', 'English-Russian'],
+  ['shy away', 'уклоняться', 'English-Russian'],
+  ['treadmill', 'бегущая дорожка', 'English-Russian'],
+  ['adamant', 'непреклонный', 'English-Russian'],
+  ['daunting', 'пугающий', 'English-Russian'],
+  ['ancillary', 'подсобный', 'English-Russian'],
+  ['smolder', 'тлеть', 'English-Russian'],
+  ['immutable', 'immutable', 'English-Russian'],
+  ['collaborate', 'сотрудничать', 'English-Russian'],
+  ['sullen', 'угрюмый', 'English-Russian'],
+  ['resilience', 'упругость', 'English-Russian'],
+  ['entail', 'влечь за собой', 'English-Russian'],
+  ['without further adieu', 'без лишних слов', 'English-Russian'],
+  ['per se', 'как таковой', 'English-Russian'],
+  ['compel', 'принуждать', 'English-Russian'],
+  ['tremulous', 'трепетный', 'English-Russian'],
+  ['exasperation', 'озлобление', 'English-Russian'],
+  ['irascible', 'вспыльчивый', 'English-Russian'],
+  ['ruddy', 'румяный', 'English-Russian'],
+  ['perch', 'окунь', 'English-Russian'],
+  ['forswear', 'зарекаться', 'English-Russian']
 ];
 let allQuestions = [];
 //settings
@@ -303,7 +336,6 @@ function handleFirstCardClick(){
 
 // increment selected known property for the card that is showing
 function handleRateClick(event){
-
   // if (numberOfQuestionsAsked > 0){
   // console.log('event.target.alt: ', event.target.value);
   let isValidClick = true;
@@ -332,33 +364,34 @@ function handleRateClick(event){
   // }
 
   // then render a new card
-  console.log(clickCount);
-  if (isValidClick && clickCount < chosenQuestions.length){
+  if(isValidClick) {
+    if(clickCount < chosenQuestions.length){
     // let randomNum = randomNumber(0, allQuestions.length - 1);
     // renderQuizCard(randomNum);
-    currentQuestionIndex = chosenQuestions[clickCount];
-    renderQuizCard();
-    clickCount++;
-    // redundant
-    // numberOfQuestionsAsked++;
+      currentQuestionIndex = chosenQuestions[clickCount];
+      renderQuizCard();
+      clickCount++;
+      // redundant
+      // numberOfQuestionsAsked++;
 
-    // console.log(`handleRatedClick() > updated numberofQuestionsAsked: ${numberOfQuestionsAsked}`);
-    allQuestions[currentQuestionIndex].timesTested++;
-    // console.log(`handleRatedClick() > updated timesTested: ${allQuestions[currentQuestionIndex].timesTested}`);
+      // console.log(`handleRatedClick() > updated numberofQuestionsAsked: ${numberOfQuestionsAsked}`);
+      allQuestions[currentQuestionIndex].timesTested++;
+      // console.log(`handleRatedClick() > updated timesTested: ${allQuestions[currentQuestionIndex].timesTested}`);
 
-    store('questionsKey',allQuestions);
-  } else {
-    countGradesAtFinish();
-    let questionsLearned = numberOfUnknownQuestionsAtStart - numberOfUnknownQuestionsAtFinish;
-    if (questionsLearned > 0) {
-      instruction = `Congratulations! You've learned ${questionsLearned} new out of ${chosenQuestions.length} questions in ${countUp()}`;
+      store('questionsKey',allQuestions);
     } else {
-      instruction = `You've spent ${countUp()} and didn't learn any questions out of ${chosenQuestions.length} shown. Try again!`;
+      countGradesAtFinish();
+      let questionsLearned = numberOfUnknownQuestionsAtStart - numberOfUnknownQuestionsAtFinish;
+      if (questionsLearned > 0) {
+        instruction = `Congratulations! You've learned ${questionsLearned} new out of ${chosenQuestions.length} questions in ${countUp()}`;
+      } else {
+        instruction = `You've spent ${countUp()} and didn't learn any new questions out of ${chosenQuestions.length} shown. Try again!`;
+      }
+      renderInstructions();
+      cardWrapperEl.removeEventListener('click', flipCard);
+      knownLevelWrapperEl.removeEventListener('click', handleRateClick);
+      window.clearInterval(timer);
     }
-    renderInstructions();
-    cardWrapperEl.removeEventListener('click', flipCard);
-    knownLevelWrapperEl.removeEventListener('click', handleRateClick);
-    window.clearInterval(timer);
   }
   // }
 } // end handleRateClick()
