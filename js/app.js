@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 'use strict';
 
-// ***GLOBAL VARIABLES***
 let baseQuestions = [
   ['refactor', 'the process of restructuring existing computer code without changing its external behavior.', 'JavaScript'],
   ['instantiate', ' to create an instance of an object in an object-oriented programming language.', 'JavaScript'],
@@ -95,12 +94,10 @@ let baseQuestions = [
   ['forswear', 'зарекаться', 'English-Russian']
 ];
 let allQuestions = [];
-//settings
 let chosenQuestions = [];
 let categories = [];
 let clickCount = 0;
 let settingsSaved = false;
-// let chosenQuestionsIndex = 0;
 let modal = document.getElementById('myModal');
 let btn = document.getElementById('settings');
 let span = document.getElementsByClassName('close')[0];
@@ -109,10 +106,8 @@ let settingKnown = document.getElementById('settings-known');
 let settingFamiliar = document.getElementById('settings-familiar');
 let settingNotKnown = document.getElementById('settings-not-known');
 let randomOrderEl = document.getElementById('random-order');
-//end settings
 let cardWrapperEl = document.getElementById('card-wrapper');
-// let instruction = 'Click on this card to start. Click again to reveal the answer. Each successive click  will flip the same card back and forth. To test yourself on a new question, rate your comfort-level with the current question by selecting one of the buttons below. You can add new cards or revise existing cards at any time by going to the Add New Cards page.';
-let instruction = 'Click here to start. Click again to reveal the answer. To get a new question, select one of the buttons below';
+let instruction = 'Click here to start. Click again to reveal the answer. To see a new card, select one of the buttons below';
 let knownLevelWrapperEl = document.getElementById('known-level-wrapper');
 let footerEl = document.getElementsByTagName('footer');
 let pEl = document.getElementById('year');
@@ -120,17 +115,12 @@ let currentQuestionIndex;
 let numberOfQuestionsAsked = 0;
 let numberOfUnknownQuestionsAtStart;
 let numberOfUnknownQuestionsAtFinish;
-// let notKnownQuestionsIndexes = [];
-// let currentNotKnownQuestionIndex = 0;
 let timer;
 let seconds = 0;
 let minutes = 0;
 let date = new Date();
-// let hour = date.getHours();
-// let minutes = ('0'+ date.getMinutes()).slice(-2);
 let year = date.getFullYear();
 
-// ***CONSTRUCTOR FUNCTIONS***
 function Question(question, answer, category) {
   this.question = question;
   this.answer = answer;
@@ -141,8 +131,6 @@ function Question(question, answer, category) {
   allQuestions.push(this);
 }
 
-// ***HELPER FUNCTIONS***
-//fuction for rendering element to the page
 function render(element, parent, content, className, src) {
   let el = document.createElement(element);
   if(content) {
@@ -158,26 +146,22 @@ function render(element, parent, content, className, src) {
   return el;
 }
 
-//function for removing all child elements of selected container
 function clearContainer(containerElement) {
   while(containerElement.firstChild) {
     containerElement.removeChild(containerElement.firstChild);
   }
 }
 
-// instantiate new Question objects from baseQuestions[]
 function instantiateBaseQuestions(){
   for(let i in baseQuestions) {
     new Question(baseQuestions[i][0], baseQuestions[i][1], baseQuestions[i][2]);
   }
 }
 
-// instantiate new Question objects from allQuestions[]
 function instantiateAllQuestions(){
   allQuestions = retrieve('questionsKey');
 }
 
-// called at the end of app.js
 function renderInstructions(){
   if(cardWrapperEl){
     clearContainer(cardWrapperEl);
@@ -196,12 +180,8 @@ function getCategories() {
   }
 }
 
-// // function for generating a random number
-// function randomNumber(min, max) {
-//   return Math.floor(Math.random() * (max - min + 1) + min);
-// }
-
-//if user set any settings - use chosenQuestions, else - go through all questions
+// if user set any settings - use chosenQuestions,
+// else - go through all questions
 function generateIndexes() {
   if (settingsSaved && chosenQuestions.length < 1) {
     instruction = 'No questions match selected criteria';
@@ -235,7 +215,6 @@ function countUp() {
   return timeString;
 }
 
-//count number of unknown or familiar quesitons at start
 function countGradesAtStart() {
   numberOfUnknownQuestionsAtStart = 0;
   for (let i in chosenQuestions) {
@@ -245,7 +224,6 @@ function countGradesAtStart() {
   }
 }
 
-////count number of unknown or familiar quesitons at finish
 function countGradesAtFinish() {
   numberOfUnknownQuestionsAtFinish = 0;
   for (let i in chosenQuestions) {
@@ -255,7 +233,6 @@ function countGradesAtFinish() {
   }
 }
 
-// function renderQuizCard(questionIndex){
 function renderQuizCard(){
   clearContainer(cardWrapperEl);
   let flipCardInnerEl = render('div', cardWrapperEl, false, 'card');
@@ -264,8 +241,6 @@ function renderQuizCard(){
   let flipCardBackEl = render('div', flipCardInnerEl, false, 'flip-card-inner flip-card-back post-it');
   render('p', flipCardBackEl, allQuestions[currentQuestionIndex].answer);
 
-  //update values
-  // currentQuestionIndex = questionIndex;
   numberOfQuestionsAsked++;
   allQuestions[currentQuestionIndex].timesTested++;
 }
@@ -286,40 +261,9 @@ function shuffle(objectsOrIndexes){
   return objectsOrIndexes;
 }
 
-// function fillNotKnownQuestionsIndexes(){
-//   let numberOfNotKnowns = 0;
-
-//   for (let i in allQuestions){
-//     switch (allQuestions[i].knowledgeLevel){
-//     case 0:
-//       notKnownQuestionsIndexes.push(i);
-//       numberOfNotKnowns++;
-//       break;
-//     case 1:
-//       notKnownQuestionsIndexes.push(i);
-//       numberOfNotKnowns++;
-//       break;
-//     case 2:
-//       break;
-//     }
-
-//     if (numberOfNotKnowns === 0){
-//       instruction = 'Congratulations! You have achieved 100%!';
-//       renderInstructions();
-//     }
-//   }
-// }
-
-// ***EVENT HANDLERS***
-//while instructions are displayed replace them with question, add eventListener for answer buttons and make the card flip when clicked
-// renamed function
 function handleFirstCardClick(){
-  // start timer
-  // console.log(`Started at: ${hour}:${minutes}`);
-  // need stop event to stop timer and calculate time elapsed
-
-  // currentQuestionIndex = randomNumber(0, allQuestions.length - 1);
   generateIndexes();
+
   if(chosenQuestions.length > 0) {
     currentQuestionIndex = chosenQuestions[clickCount];
     renderQuizCard();
@@ -333,11 +277,7 @@ function handleFirstCardClick(){
   startTimer();
 }
 
-
-// increment selected known property for the card that is showing
 function handleRateClick(event){
-  // if (numberOfQuestionsAsked > 0){
-  // console.log('event.target.alt: ', event.target.value);
   let isValidClick = true;
 
   switch(event.target.value){
@@ -355,28 +295,13 @@ function handleRateClick(event){
     break;
   }
 
-  // if (numberOfQuestionsAsked === allQuestions.length){
-  //   notKnownQuestionsIndexes = fillNotKnownQuestionsIndexes();
-  //   currentQuestionIndex = notKnownQuestionsIndexes[currentNotKnownQuestionIndex];
-  // } else if (numberOfQuestionsAsked > allQuestions.length){
-  //   currentQuestionIndex = numberOfQuestionsAsked - allQuestions.length;
-  //   currentNotKnownQuestionIndex++;
-  // }
-
-  // then render a new card
   if(isValidClick) {
     if(clickCount < chosenQuestions.length){
-    // let randomNum = randomNumber(0, allQuestions.length - 1);
-    // renderQuizCard(randomNum);
       currentQuestionIndex = chosenQuestions[clickCount];
       renderQuizCard();
       clickCount++;
-      // redundant
-      // numberOfQuestionsAsked++;
 
-      // console.log(`handleRatedClick() > updated numberofQuestionsAsked: ${numberOfQuestionsAsked}`);
       allQuestions[currentQuestionIndex].timesTested++;
-      // console.log(`handleRatedClick() > updated timesTested: ${allQuestions[currentQuestionIndex].timesTested}`);
 
       store('questionsKey',allQuestions);
     } else {
@@ -393,8 +318,7 @@ function handleRateClick(event){
       window.clearInterval(timer);
     }
   }
-  // }
-} // end handleRateClick()
+}
 
 function store(key, value){
   //local storage
@@ -408,12 +332,10 @@ function retrieve(key){
   return value;
 }
 
-// ***EVENT LISTENERS***
 if(cardWrapperEl){
   cardWrapperEl.addEventListener('click', handleFirstCardClick);
 }
 
-// ***EXECUTING CODE***
 (function(){
   let test = localStorage.getItem('questionsKey');
 
@@ -425,13 +347,8 @@ if(cardWrapperEl){
     console.log('base questions instantiated');
   }
 
-  // allQuestions = shuffle(allQuestions);
-  // for(let i in allQuestions){
-  //   console.log(allQuestions[i].question);
-  // }
   renderInstructions();
 })();
 
-// footer content
 pEl.textContent = `${'\u00A9'} ${year} CodeFellows StrikeForce`;
 footerEl[0].appendChild(pEl);

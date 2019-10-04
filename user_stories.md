@@ -25,27 +25,3 @@
 1. As a flash card user, I want to have any edits to or deletions or additions of questions to be saved automatically when I close out of Cardify.
 1. As a flash card user, I want to know about the developers of Cardify.
 1. As a flash card user, I want to 
-
-
-We decided to only allow a new card to be shown when the user rates the current question, so this should be deleted:
-1. As a flash card user, I want to be shown a new question when I click on the answer-side of the card;
-
-We haven't agreed to implement these, so they should only go in the Trello Level II or III stretch goals list. (Would a stretch goals section be appropriate here?)
-1. As a developer, I want to enable the user to select a question topic from a dropdown list;
-1. As a developer, I want to color code flash cards to give people the option to quiz on multiple groups of flash cards;
-1. As a developer, I want to provide an option to stop showing a particular flashcard for a while;
-1. As a developer, I want to add learning modules;
-1. As a developer, I want to display a results chart showing correct vs incorrect answers grouped by section/topic;
-1. As a developer, I want to add a mode where the user can choose what will be displayed as the question: the term or the definition;
-1. As a developer, I want to add a timer so that the user will know how much time they spent on each question / total session;
-1. As a developer, I want to add a progress bar (questions wrong, questions right);
-1. As a developer, I want to add a screen reader feature so that the user can be read the card content;
-1. As a developer, I want to add to the quiz page a submission textbox / textarea (radio, checkbox, etc) to allow the user to answer. (Search submission string for keywords?);
-
-1. As a flash card user, I want my cards to be able to be downloaded;
-1. As a flash card user, I want my cards to have animation;
-1. As a flash card user, I want to be able to share cards with others;
-1. As a flash card user, I want to be able to upload images or draw on the question or answer side;
-1. As a flash card user, I want to be able to create a 1000 cards and have them where ever I go on my device instead of carrying 1000 physical flash cards;
-
-~~~~~~~~~~~Deleted link to our Google document as this is internal only~~~~~~~~~~~~~
