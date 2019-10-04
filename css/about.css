@@ -34,3 +34,8 @@ please use it for stuff like images, paragrphs etc that is unique to this page *
   font-size: 17px;
   line-height: 25px;
 }
+
+.profile-pic{
+  width:200px;
+  height:200px;
+}
