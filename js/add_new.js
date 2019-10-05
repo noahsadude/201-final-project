@@ -61,7 +61,6 @@ function addNewCategory() {
 
 function selectCategoryHandler() {
   clearContainer(selectQuestionEl);
-  // then add new questions
   render('option', selectQuestionEl, 'Add New');
 
   for (i in allQuestions) {

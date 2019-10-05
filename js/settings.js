@@ -36,15 +36,12 @@ function buildQuestionArray(){
       }
     }
   }
-  console.table(arrayOfQuestions);
   chosenQuestions = arrayOfQuestions;
-  // chosenQuestions = shuffle(chosenQuestions);
   store('chosen-questions',chosenQuestions);
   settingsSaved = true;
   modal.style.display = 'none';
   clickCount = 0;
   handleFirstCardClick();
-  // alert('settings saved!');
 }
 
 function populateCategory() {
@@ -52,6 +49,7 @@ function populateCategory() {
   if(test){
     allQuestions = retrieve('questionsKey');
   }
+  //first clear the container
   clearContainer(selectCategoryEl);
   //and then add new categories
   getCategories();
@@ -60,35 +58,6 @@ function populateCategory() {
     render('option', selectCategoryEl, categories[i]);
   }
 }
-// if(known){
-//   console.log('known checked!');
-//   for(let i = 0; i<allQuestions.length; i++){
-//     console.log('for loop for known started. currently at '+i);
-//     if(allQuestions[i].knowledgeLevel === 2){
-//       arrayOfQuestions.push(i);
-//     }
-//   }
-// }
-// if(familiar){
-//   console.log('familiar checked!');
-//   for(let i = 0; i<allQuestions.length; i++){
-//     console.log('for loop for familiar started. currently at '+i);
-//     if(allQuestions[i].knowledgeLevel === 1){
-//       arrayOfQuestions.push(i);
-//       console.log(arrayOfQuestions);
-//     }
-//   }
-// }
-// if(unknown){
-//   console.log('unknown checked!');
-//   for(let i = 0; i<allQuestions.length; i++){
-//     console.log('for loop for unknown started. currently at '+i);
-//     if(allQuestions[i].knowledgeLevel === 0){
-//       arrayOfQuestions.push(i);
-//       console.log(arrayOfQuestions);
-//     }
-//   }
-// }
 
 // ***EVENT LISTENERS***
 settingsSubmit.addEventListener('click', buildQuestionArray);

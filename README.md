@@ -47,7 +47,7 @@ If you would like to add a new card, go to Add New Cards in the drop-down menu a
 
 [Flip card when clicked](https://codepen.io/desandro/pen/LmWoWe)
 
-[Icon](https://icons8.com/)
+[Icons](https://icons8.com/)
 
 [Logo](https://www.freelogodesign.org/)
 
