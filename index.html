@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Cardify</title>
     <link href="css/reset.css" type="text/css" rel="stylesheet" />
     <link href="css/layout.css" type="text/css" rel="stylesheet" />
     <link href="css/index.css" type="text/css" rel="stylesheet" />
@@ -10,7 +10,10 @@
   </head>
 
   <body>
+
     <header>
+      <a href="index.html" ><img id="cardify-logo" src="img/logo_cardify.png" alt="logo"/></a>
+      <h1>WELCOME TO CARDIFY</h1>
       <nav role="navigation">
         <div id="menuToggle">
           <input type="checkbox" />
@@ -25,47 +28,58 @@
         </div>
       </nav>
     </header>
-
+    
     <main>
-      <h1>WELCOME TO CARDIFY</h1>
-
-      <section id="progress">
-        <!-- TODO: progress bar and timer -->
-      </section>
-
-      <section id="card-wrapper" class="post-it">
-        <p id="question-or-answer"></p>
-      </section>
-      <section id="known-level-wrapper"> 
-        <p id="rate-p">Rate your knowledge to move on to the next card.</p>
-        <ul id="known-ul">
-          <li>
-            <figure>
-              <img class="known-level" src="img/trophy-icon.png" alt="known" title="I know this!" />
-              <figcaption>I know this!</figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img class="known-level" src="img/unsure-icon.png" alt="unsure" title="I'm not sure" />
-              <figcaption>I'm not sure.</figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img class="known-level" src="img/sweating-icon.png" alt="unknown" title="I don't know that at all." />
-              <figcaption>I don't know.</figcaption>
-            </figure>
-          </li>
-        </ul>
+      <div class="content-wrapper">
+        <div id="settings">
+        </div>
+        <section id="card-wrapper" class="card-container flip-card">
+          <!-- RENDERED CARD GOES HERE -->
         </section>
-      <section id="next-question-wrapper">
-        <!-- TODO: cards with next questions -->
-      </section>
+        <section id="known-level-wrapper"> 
+          <p id="rate-p">Do you know the answer?</p>
+          <button id="yes" type="button" value="known">YES</button>
+          <button id="not_sure" type="button" value="unsure">NOT SURE</button>
+          <button id="no" type="button" value="unknown">NO</button>
+          </section>
+        <!-- settings modal -->
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Which cards do you want to see?</h2>
+            <div>
+              <label for="category"></label>
+              <select id="category" name="category" selected="All Categories"></select>
+            </div>
+            <span>
+              <input type="checkbox" id="settings-known" name="known" checked>
+              <label for="known">Known Items</label>
+            </span>
+            <span>
+              <input type="checkbox" id="settings-familiar" name="familar" checked>
+              <label for="scales">Familiar Items</label>
+            </span>
+            <span>
+              <input type="checkbox" id="settings-not-known" name="not-known" checked>
+              <label for="not-known">Items I don't know</label>
+            </span>
+            <div>
+              <input type="checkbox" id="random-order" name="random-order" checked>
+              <label for="random-order">Randomize cards</label>
+            </div>
+            <div>
+              <button id="settings-submit" type="button" value="settings-submit">Save settings</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
     <footer>
       <p id="year"></p>
     </footer>
     <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/settings.js"></script>
   </body>
 </html>
